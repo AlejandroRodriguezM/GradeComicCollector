@@ -1,0 +1,33 @@
+.text-area {
+    -fx-background-color: #F4F4F4;
+    -fx-border-color: transparent;
+    -fx-padding: 4;
+    -fx-font-family: "Arial";
+    -fx-font-size: 12px;
+    -fx-text-fill: #333333;
+}
+
+.text-area:focused {
+    -fx-border-color: #0088FF;
+    -fx-border-width: 2px;
+}
+
+.text-area:hover {
+    -fx-background-color: #EDEDED;
+}
+
+.text-area:disabled {
+    -fx-opacity: 0.5;
+}
+
+.text-area:selected {
+    -fx-background-color: #B3D9FF;
+}
+
+.combo-box .list-view {
+    -fx-background-color: transparent;
+    -fx-opacity: 0; /* Hace que el desplegable sea invisible */
+    -fx-pref-width: 0; /* Establece el ancho del desplegable a 0 para desactivarlo */
+    -fx-pref-height: 0; /* Establece la altura del desplegable a 0 para desactivarlo */
+}
+

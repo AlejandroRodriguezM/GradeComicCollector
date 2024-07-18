@@ -1,0 +1,366 @@
+.label {
+    -fx-font-size: 10.0px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-padding: 2.0px 2.0px;
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1.0px;
+    -fx-border-radius: 4.0px;
+}
+
+.label:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+.label:focused {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #4a90e2;
+}
+
+.label:disabled {
+    -fx-opacity: 0.6;
+}
+
+.button {
+    -fx-font-size: 12.0px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 8.0px 1.0px;
+    -fx-border-width: 1.0px;
+    -fx-border-radius: 4.0px;
+}
+
+.button:hover {
+    -fx-cursor: hand;
+    -fx-opacity: 0.8;
+}
+
+.button:pressed {
+    -fx-opacity: 0.5;
+}
+
+#botonGuardarResultado {
+-fx-font-size: 10.0px;
+    -fx-background-color: #00A8FF; /* Color azul */
+}
+
+#botonGuardarResultado:hover {
+    -fx-background-color: #009EE8; /* Color azul más oscuro en hover */
+}
+
+#botonImprimir {
+-fx-font-size: 10.0px;
+    -fx-background-color: #00A8FF; /* Color azul */
+}
+
+#botonImprimir:hover {
+    -fx-background-color: #009EE8; /* Color azul más oscuro en hover */
+}
+
+.button#botonActualizarPrecio,.button#botonRecomponerPortadas,.button#botonDescargarSQL,.button#botonDescargarPdf,.button#botonActualizarDatos,.button#botonActualizarPortadas,.button#botonActualizarTodo,.button#botonDescargarExcel,.button#botonDescargarPortadas,.button#botonNormalizarDB, .button#botonActualizarSoftware, .button#botonDescargarSW, .button#botonReCopiarPortadas, .button#botonComprimirPortadas {
+    -fx-background-color: #5cb85c;
+    -fx-border-color: #4cae4c;
+}
+
+.button#botonActualizarPrecio:hover,.button#botonRecomponerPortadas:hover,.button#botonDescargarSQL:hover,.button#botonDescargarExcel:hover,.button#botonDescargarPortadas:hover,.button#botonNormalizarDB:hover, .button#botonActualizarSoftware:hover, .button#botonDescargarSW:hover {
+    -fx-background-color: #4cae4c;
+}
+
+.button#botonbbdd {
+    -fx-background-color: #5cb85c;
+    -fx-border-color: #4cae4c;
+}
+
+.button#botonbbdd:hover {
+    -fx-background-color: #4cae4c;
+}
+
+.button#botonMostrarParametro {
+    -fx-background-color: #5cb85c;
+    -fx-border-color: #4cae4c;
+}
+
+.button#botonMostrarParametro:hover {
+    -fx-background-color: #4cae4c;
+}
+
+.button#botonMostrarGuardados {
+    -fx-background-color: #5cb85c;
+    -fx-border-color: #4cae4c;
+}
+
+.button#botonMostrarGuardados:hover {
+    -fx-background-color: #4cae4c;
+}
+
+.button#botonLimpiarCarta {
+    -fx-background-color: #ffd700; /* Amarillo */
+    -fx-border-color: #e5b800; /* Borde */
+    -fx-text-fill: black;
+}
+
+.button#botonLimpiarCarta:hover {
+    -fx-background-color: #e5b800;
+}
+
+.button#botonVolverMenu {
+    -fx-background-color: #ffd700; /* Amarillo */
+    -fx-border-color: #e5b800; /* Borde */
+    -fx-text-fill: black;
+}
+
+.button#botonVolverMenu:hover {
+    -fx-background-color: #e5b800;
+}
+
+.button#botonSubidaPortada {
+-fx-font-size: 10.0px;
+    -fx-background-color: #d9534f;
+    -fx-border-color: #d43f3a;
+}
+
+.button#botonSubidaPortada:hover {
+-fx-font-size: 10.0px;
+}
+
+.button#botonVender {
+    -fx-background-color: #d9534f;
+}
+
+.button#botonVender:hover {
+    -fx-background-color: #c9302c;
+}
+
+.button#botonEliminar {
+    -fx-background-color: #d9534f;
+    -fx-border-color: #d43f3a;
+}
+
+.button#botonEliminar:hover {
+    -fx-background-color: #c9302c;
+}
+
+.button#botonLimpiar {
+    -fx-background-color: #ffd700; /* Amarillo */
+    -fx-border-color: #e5b800; /* Borde */
+    -fx-text-fill: black;
+}
+
+.button#botonLimpiar:hover {
+   -fx-background-color: #e5b800;
+}
+
+.button#botonIntroducir {
+    -fx-background-color: #6495ED;
+    -fx-border-color: #6495ED;
+}
+
+.button#botonIntroducir:hover {
+    -fx-background-color: #3b71d3;
+    -fx-border-color: #3b71d3;
+}
+
+.button#botonNuevaPortada {
+    -fx-background-color: #337ab7;
+    -fx-border-color: #2e6da4;
+}
+
+.button#botonNuevaPortada:hover {
+    -fx-background-color: #2e6da4;
+}
+
+.button#botonModificar {
+    -fx-font-size: 10.0px;
+    -fx-background-color: #d9534f;
+    -fx-border-color: #d43f3a;
+}
+
+.button#botonModificar:hover {
+    -fx-font-size: 10.0px;
+    -fx-background-color: #c9302c;
+}
+
+.button#botonModificarCarta {
+    -fx-background-color: #d9534f;
+    -fx-border-color: #d43f3a;
+}
+
+.button#botonModificarCarta:hover {
+    -fx-background-color: #c9302c;
+}
+
+.button#botonParametroCarta {
+    -fx-font-size: 10.0px;
+    -fx-background-color: #92C5FC;
+    -fx-border-color: #92C5FC;
+}
+
+.button#botonParametroCarta:hover {
+    -fx-font-size: 10.0px;
+    -fx-background-color: #00A9FF;
+}
+
+.button#botonLeidos {
+    -fx-background-color: #5cb85c;
+    -fx-border-color: #4cae4c;
+}
+
+.button#botonLeidos:hover {
+    -fx-background-color: #4cae4c;
+}
+
+.button#botonAgregarPuntuacion {
+    -fx-background-color: #d9534f;
+    -fx-border-color: #d43f3a;
+}
+
+.button#botonAgregarPuntuacion:hover {
+    -fx-background-color: #c9302c;
+}
+
+.button#botonBorrarOpinion {
+    -fx-background-color: #d9534f;
+    -fx-border-color: #d43f3a;
+}
+
+.button#botonBorrarOpinion:hover {
+    -fx-background-color: #c9302c;
+}
+
+.button#botonElegir {
+    -fx-background-color: #5cb85c;
+    -fx-border-color: #4cae4c;
+}
+
+.button#botonElegir:hover {
+    -fx-background-color: #4cae4c;
+}
+
+.button#botonBorrarTodo {
+    -fx-background-color: #702963;
+    -fx-border-color: #702963;
+}
+
+.button#botonBorrarTodo:hover {
+    -fx-background-color: #702963;
+}
+
+.button#botonDeshacer {
+    -fx-background-color: #E49B0F;
+    -fx-border-color: #E49B0F;
+}
+
+.button#botonDeshacer:hover {
+    -fx-background-color: #E49B0F;
+}
+
+.button#botonDescargar {
+    -fx-font-size: 23.0px;
+    -fx-background-color: #5cb85c;
+    -fx-border-color: #5cb85c;
+}
+
+.button#botonDescargar:hover {
+    -fx-font-size: 23.0px;
+    -fx-background-color: #5cb85c;
+}
+
+.button#botonMenuCodigoBarras {
+    -fx-font-size: 9.0px;
+}
+
+.button#botonGuardarCarta,.button#botonGuardarListaCartas {
+    -fx-background-color: #4169E1;
+    -fx-border-color: #4169E1;
+}
+
+.button#botonGuardarCarta:hover,.button#botonGuardarListaCartas:hover {
+    -fx-background-color: #483D8B;
+    -fx-border-color: #483D8B;
+}
+
+.button#botonIntroducirCodigo {
+-fx-font-size: 12.0px;
+    -fx-background-color: #6495ED;
+}
+
+.button#botonIntroducirCodigo:hover {
+    -fx-background-color: #6495ED;
+}
+
+.button#botonGuardarCambioCarta { 
+    -fx-border-width: 5px;
+-fx-font-size: 10.0px;
+    -fx-background-color: #93C572;
+}
+
+.button#botonGuardarCambioCarta:hover {
+    -fx-background-color: #62854c;
+}
+
+.button#botonBusquedaAvanzada { 
+    -fx-border-width: 5px;
+    -fx-font-size: 9.0px;
+    -fx-background-color: green;
+}
+
+.button#botonClonarCarta { 
+    -fx-border-width: 5px;
+    -fx-font-size: 10.0px;
+    -fx-background-color: #4169E1;
+}
+
+.button#botonClonarCarta:hover {
+    -fx-background-color: #483D8B;
+}
+
+.button#botonBusquedaAvanzada:hover {
+    -fx-background-color: #006400;
+}
+
+.button#botonBusquedaCodigo {
+    -fx-background-color: ecb653;
+}
+
+.button#botonBusquedaCodigo:hover {
+    -fx-background-color: c49235;
+}
+
+.button#botonEliminarImportadoCarta,.button#botonEliminarImportadoListaCarta { 
+    -fx-border-width: 5px;
+    -fx-background-color: #ec5353;
+}
+
+.button#botonEliminarImportadoCarta:hover,.button#botonEliminarImportadoListaCarta:hover {
+    -fx-background-color: #702626;
+}
+
+.button#guardarDatosApi {
+    -fx-background-color: #6495ED;
+    -fx-border-color: #6495ED;
+}
+
+.button#guardarDatosApi:hover {
+    -fx-background-color: #3b71d3;
+    -fx-border-color: #3b71d3;
+}
+
+.button#restablecerDatos {
+    -fx-background-color: #E49B0F;
+    -fx-border-color: #E49B0F;
+}
+
+.button#restablecerDatos:hover {
+    -fx-background-color: #b47a0c;
+    -fx-border-color: #b47a0c;
+}
+
+.button#botonCancelarSubida,.button#botonCancelarSubidaPortadas {
+    -fx-background-color: #d9534f;
+    -fx-border-color: #d43f3a;
+}
+
+.button#botonCancelarSubida:hover,.button#botonCancelarSubidaPortadas:hover {
+    -fx-background-color: #c9302c;
+}

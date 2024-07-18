@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="732.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.SobreMiController">
+   <children>
+      <ImageView fitHeight="414.0" fitWidth="735.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/fondo_sobremi.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="numeroVersion" layoutX="8.0" layoutY="283.0" maxWidth="143.0" mnemonicParsing="false" onAction="#accesoGitHub" prefHeight="34.0" prefWidth="143.0" stylesheets="@../style/sobremi_style.css" text="Perfil en GitHub" />
+      <Button fx:id="botonLinkedin" layoutX="8.0" layoutY="322.0" maxWidth="142.0" mnemonicParsing="false" onAction="#accesoLinkedin" prefHeight="34.0" prefWidth="142.0" stylesheets="@../style/sobremi_style.css" text="Perfil en Linkedin" />
+      <Button fx:id="botonYoutube" layoutX="9.0" layoutY="361.0" maxWidth="172.0" mnemonicParsing="false" onAction="#accesoYoutube" prefHeight="34.0" prefWidth="142.0" stylesheets="@../style/sobremi_style.css" text="Perfil Youtube" />
+      <ImageView fitHeight="63.0" fitWidth="79.0" layoutX="155.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/icono%20youtube.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="41.0" fitWidth="39.0" layoutX="180.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/linkedin.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="39.0" fitWidth="60.0" layoutX="167.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/icono%20github.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="TextoInfo" alignment="TOP_LEFT" cache="true" layoutX="5.0" layoutY="30.0" prefHeight="100.0" prefWidth="719.0" stylesheets="@../style/sobremi_style.css" text="Programa creado por Alejandro Rodriguez. Este es un proyecto personal creado en 2022 hasta la fecha. Este programa sirve como portfolio de programación. No dudes en seguirme :)" wrapText="true" />
+      <Button fx:id="botonCompra" layoutX="11.0" layoutY="228.0" mnemonicParsing="false" onAction="#comprarComic" prefHeight="43.0" prefWidth="185.0" stylesheets="@../style/sobremi_style.css" text="Webs recomendadas" wrapText="true" />
+      <MenuBar fx:id="menu_navegacion" prefHeight="25.0" prefWidth="735.0">
+         <menus>
+            <Menu fx:id="navegacion_cerrar" mnemonicParsing="false" text="Archivo">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Exportar CSV" visible="false" />
+                  <MenuItem mnemonicParsing="false" text="Importar CSV" visible="false" />
+                  <MenuItem mnemonicParsing="false" text="Exportar base de datos" visible="false" />
+                  <MenuItem mnemonicParsing="false" text="Eliminar base de datos" visible="false" />
+                  <MenuItem fx:id="menu_archivo_sobreMi" mnemonicParsing="false" text="Sobre mi" visible="false" />
+                  <MenuItem fx:id="menu_archivo_volver" disable="true" mnemonicParsing="false" text="Volver al menu" visible="false" />
+                  <MenuItem fx:id="menu_archivo_desconectar" mnemonicParsing="false" onAction="#desconectar" text="Desconectar" visible="false" />
+                  <MenuItem fx:id="menu_archivo_cerrar" mnemonicParsing="false" onAction="#volverMenu" text="Cerrar" />
+               </items>
+            </Menu>
+            <Menu fx:id="navegacion_comic" mnemonicParsing="false" text="Ventanas" visible="false">
+               <items>
+                  <MenuItem fx:id="menu_comic_aniadir" mnemonicParsing="false" text="Añadir comic" visible="false" />
+                  <MenuItem fx:id="menu_comic_eliminar" mnemonicParsing="false" text="Eliminar Comic" visible="false" />
+                  <MenuItem fx:id="menu_comic_modificar" mnemonicParsing="false" text="Modificar Comic" visible="false" />
+                  <MenuItem fx:id="menu_comic_puntuar" mnemonicParsing="false" text="Puntuar Comic" visible="false" />
+                  <MenuItem fx:id="menu_comic_aleatoria" mnemonicParsing="false" text="Lectura aleatoria" visible="false" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <Button fx:id="botonOtroProyecto" layoutX="569.0" layoutY="353.0" maxWidth="143.0" mnemonicParsing="false" onAction="#misOtroProyectos" prefHeight="34.0" prefWidth="143.0" stylesheets="@../style/sobremi_style.css" text="Otro proyecto" />
+      <Button fx:id="botonVolverMenu" layoutX="453.0" layoutY="353.0" maxWidth="143.0" mnemonicParsing="false" onAction="#volverMenu" prefHeight="34.0" prefWidth="104.0" style="-fx-background-color: green;" stylesheets="@../style/sobremi_style.css" text="Volver" />
+      <Label fx:id="alarmaConexionSql" layoutX="414.0" layoutY="355.0" prefHeight="30.0" prefWidth="29.0" style="-fx-background-radius: 50; -fx-background-color: red;" stylesheets="@../style/alarma_conexion_style.css" />
+   </children>
+</Pane>

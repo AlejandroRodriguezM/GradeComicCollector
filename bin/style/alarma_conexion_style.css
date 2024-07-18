@@ -1,0 +1,8 @@
+#alarmaConexion, #alarmaConexionSql, #alarmaConexionInternet {
+    -fx-font-size: 14px;
+    -fx-text-fill: #ff0000; /* Color rojo */
+    -fx-padding: 2px; /* Ajustar el padding */
+    -fx-background-radius: 50%; /* Hacer el fondo redondo */
+    -fx-border-width: 0; /* Elimina el borde */
+    -fx-background-color: red;
+}
