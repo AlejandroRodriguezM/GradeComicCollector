@@ -28,7 +28,7 @@ public class DatabaseManagerDAO {
 	public static AtomicInteger contadorCambios = new AtomicInteger(0);
 
 	private static final String DB_FOLDER = System.getProperty("user.home") + File.separator + "AppData"
-			+ File.separator + "Roaming" + File.separator + "gradeo" + File.separator;
+			+ File.separator + "Roaming" + File.separator + "gradeoComics" + File.separator;
 
 	/**
 	 * Permite introducir un nuevo cómic en la base de datos.
@@ -60,12 +60,12 @@ public class DatabaseManagerDAO {
 		
 		try (Connection connection = DriverManager.getConnection(url)) {
 			try (Statement statement = connection.createStatement()) {
-				String dropTableSQL = "DROP TABLE IF EXISTS albumbbdd";
+				String dropTableSQL = "DROP TABLE IF EXISTS comicGbbdd";
 				statement.executeUpdate(dropTableSQL);
 			}
 
 			try (Statement statement = connection.createStatement()) {
-				String createTableSQL = "CREATE TABLE IF NOT EXISTS albumbbdd ("
+				String createTableSQL = "CREATE TABLE IF NOT EXISTS comicGbbdd ("
 						+ "idComic INTEGER PRIMARY KEY AUTOINCREMENT, " + "nomComic TEXT NOT NULL, "
 						+ "codComic TEXT NOT NULL, " + "numComic TEXT NOT NULL, " + "anioComic TEXT NOT NULL, "
 						+ "coleccionComic TEXT NOT NULL, " + "edicionComic TEXT NOT NULL, "
@@ -113,13 +113,27 @@ public class DatabaseManagerDAO {
 		try (Connection connection = ConectManager.conexion()) {
 			DatabaseMetaData metaData = connection.getMetaData();
 
-			ResultSet tables = metaData.getTables(nombreDatabase, null, "albumbbdd", null);
+			ResultSet tables = metaData.getTables(nombreDatabase, null, "comicsGbbdd", null);
 			if (tables.next()) {
 				// La tabla existe, ahora verifiquemos las columnas
-				ResultSet columns = metaData.getColumns(nombreDatabase, null, "albumbbdd", null);
-				Set<String> expectedColumns = Set.of("idComic", "nomComic", "codComic", "numComic", "anioComic",
-						"coleccionComic", "edicionComic", "empresaComic", "gradeoComic", "urlReferenciaComic",
-						"direccionImagenComic");
+				ResultSet columns = metaData.getColumns(nombreDatabase, null, "comicsGbbdd", null);
+				Set<String> expectedColumns = Set.of(
+					    "idComic",              // ID del cómic
+					    "tituloComic",          // Título del cómic
+					    "codigoComic",          // Código del cómic
+					    "numeroComic",          // Número del cómic
+					    "fechaGradeo",          // Fecha de grado
+					    "anioPublicacion",      // Año de publicación
+					    "editorComic",          // Editor del cómic
+					    "gradeoComic",          // Grado del cómic
+					    "keyComentarios",       // Comentarios
+					    "artistaComic",         // Artista del cómic
+					    "guionistaComic",       // Guionista del cómic
+					    "varianteComic",        // Variante del cómic
+					    "direccionImagenComic", // Dirección de la imagen
+					    "urlReferenciaComic"    // URL de referencia
+					);
+
 
 				Set<String> actualColumns = new HashSet<>();
 
@@ -152,7 +166,7 @@ public class DatabaseManagerDAO {
 			return; // No hay actualizaciones pendientes
 		}
 
-		String consultaUpdate = "UPDATE albumbbdd SET " + columna + " = ? WHERE idComic = ?";
+		String consultaUpdate = "UPDATE comicGbbdd SET " + columna + " = ? WHERE idComic = ?";
 		String url = "jdbc:sqlite:" + DB_FOLDER + FuncionesFicheros.datosEnvioFichero();
 
 		try (Connection connection = DriverManager.getConnection(url);
@@ -243,35 +257,6 @@ public class DatabaseManagerDAO {
 		texto = texto.replaceAll("^\\s*[,\\s-]+", ""); // Al principio
 		texto = texto.replaceAll("[,\\s-]+\\s*$", ""); // Al final
 		return texto;
-	}
-
-	public static String getComercializadora(String palabra) {
-		// Convertir la palabra a minúsculas para hacer la comparación insensible a
-		// mayúsculas
-		String palabraLower = palabra.toLowerCase();
-
-		// Comprobar si la palabra contiene "marve" o "dc"
-		if (palabraLower.contains("magic")) {
-			return "Magic: The Gathering";
-		} else if (palabraLower.contains("pokemon")) {
-			return "Pokemon";
-		} else if (palabraLower.contains("yu")) {
-			return "YuGiOh";
-		} else if (palabraLower.contains("piece")) {
-			return "One Piece";
-		} else if (palabraLower.contains("lorcana")) {
-			return "Disney Lorcana";
-		} else if (palabraLower.contains("unlimited")) {
-			return "Star Wars Unlimited";
-		} else if (palabraLower.contains("blood")) {
-			return "Flesh Blood";
-		} else if (palabraLower.contains("Dragon")) {
-			return "Dragon Ball";
-		} else if (palabraLower.contains("destiny")) {
-			return "Star Wars Destiny";
-		} else {
-			return palabra;
-		}
 	}
 
 	/**

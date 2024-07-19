@@ -19,7 +19,6 @@ public class ComicGradeo implements Cloneable {
     protected String fechaGradeo;
     protected String anioPublicacion;
     protected String editorComic;
-    protected String tipoVariante;
     protected String gradeoComic;
     protected String keyComentarios;
     protected String artistaComic;
@@ -55,10 +54,6 @@ public class ComicGradeo implements Cloneable {
 
     public String getEditorComic() {
         return editorComic;
-    }
-
-    public String getTipoVariante() {
-        return tipoVariante;
     }
 
     public String getGradeoComic() {
@@ -118,10 +113,6 @@ public class ComicGradeo implements Cloneable {
         this.editorComic = editorComic;
     }
 
-    public void setTipoVariante(String tipoVariante) {
-        this.tipoVariante = tipoVariante;
-    }
-
     public void setGradeoComic(String gradeoComic) {
         this.gradeoComic = gradeoComic;
     }
@@ -159,7 +150,6 @@ public class ComicGradeo implements Cloneable {
         private String fechaGradeo;
         private String anioPublicacion;
         private String editorComic;
-        private String tipoVariante;
         private String gradeoComic;
         private String keyComentarios;
         private String artistaComic;
@@ -195,11 +185,6 @@ public class ComicGradeo implements Cloneable {
 
         public ComicGradeoBuilder editorComic(String editorComic) {
             this.editorComic = editorComic;
-            return this;
-        }
-
-        public ComicGradeoBuilder tipoVariante(String tipoVariante) {
-            this.tipoVariante = tipoVariante;
             return this;
         }
 
@@ -251,7 +236,6 @@ public class ComicGradeo implements Cloneable {
         this.fechaGradeo = builder.fechaGradeo;
         this.anioPublicacion = builder.anioPublicacion;
         this.editorComic = builder.editorComic;
-        this.tipoVariante = builder.tipoVariante;
         this.gradeoComic = builder.gradeoComic;
         this.keyComentarios = builder.keyComentarios;
         this.artistaComic = builder.artistaComic;
@@ -269,7 +253,6 @@ public class ComicGradeo implements Cloneable {
         this.fechaGradeo = "";
         this.anioPublicacion = "";
         this.editorComic = "";
-        this.tipoVariante = "";
         this.gradeoComic = "";
         this.keyComentarios = "";
         this.artistaComic = "";
@@ -293,7 +276,7 @@ public class ComicGradeo implements Cloneable {
     }
 
     public boolean estaVacio() {
-        return isNullOrEmpty(this.tituloComic) && this.numeroComic.equals("0") && isNullOrEmpty(this.tipoVariante)
+        return isNullOrEmpty(this.tituloComic) && this.numeroComic.equals("0")
                 && isNullOrEmpty(this.gradeoComic) && isNullOrEmpty(this.urlReferenciaComic)
                 && isNullOrEmpty(this.direccionImagenComic) && isNullOrEmpty(this.editorComic);
     }
@@ -304,7 +287,6 @@ public class ComicGradeo implements Cloneable {
 
     public static void limpiarCamposComic(ComicGradeo comic) {
         comic.setTituloComic(limpiarCampo(comic.getTituloComic()));
-        comic.setTipoVariante(limpiarCampo(comic.getTipoVariante()));
         comic.setGradeoComic(limpiarCampo(comic.getGradeoComic()));
         comic.setEditorComic(limpiarCampo(comic.getEditorComic()));
     }
@@ -329,9 +311,6 @@ public class ComicGradeo implements Cloneable {
         if (!comic.getNumeroComic().equals("0")) {
             return true;
         }
-        if (comic.getTipoVariante() != null && !comic.getTipoVariante().isEmpty()) {
-            return true;
-        }
         if (comic.getGradeoComic() != null && !comic.getGradeoComic().isEmpty()) {
             return true;
         }
@@ -352,7 +331,6 @@ public class ComicGradeo implements Cloneable {
         Utilidades.appendIfNotEmpty(contenidoComic, "Fecha de Gradeo", fechaGradeo);
         Utilidades.appendIfNotEmpty(contenidoComic, "Año de Publicación", anioPublicacion);
         Utilidades.appendIfNotEmpty(contenidoComic, "Editor", editorComic);
-        Utilidades.appendIfNotEmpty(contenidoComic, "Tipo de Variante", tipoVariante);
         Utilidades.appendIfNotEmpty(contenidoComic, "Gradeo", gradeoComic);
         Utilidades.appendIfNotEmpty(contenidoComic, "Comentarios Clave", keyComentarios);
         Utilidades.appendIfNotEmpty(contenidoComic, "Artista", artistaComic);

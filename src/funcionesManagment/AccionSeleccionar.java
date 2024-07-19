@@ -65,9 +65,15 @@ public class AccionSeleccionar {
 
 						if ("modificar".equals(AccionFuncionesComunes.TIPO_ACCION)) {
 							AccionControlUI.mostrarOpcion(AccionFuncionesComunes.TIPO_ACCION);
-						}
-						Utilidades.cambiarVisibilidad(elementos[0], true);
 
+							Utilidades.cambiarVisibilidad(elementos[0], true);
+
+						}
+
+						if (!getReferenciaVentana().getIdComicTratarTextField().getText().isEmpty()) {
+							Utilidades.cambiarVisibilidad(elementos[0], false);
+						}
+						
 						// Borrar cualquier mensaje de error presente
 						AccionFuncionesComunes.borrarErrores();
 						AccionControlUI.validarCamposClave(true);
@@ -75,6 +81,7 @@ public class AccionSeleccionar {
 				}
 			});
 		}
+		
 
 		// Verificar si idRow es nulo antes de intentar acceder a sus métodos
 		if (newSelection != null) {
@@ -125,6 +132,8 @@ public class AccionSeleccionar {
 			accionRellenoDatos.setAtributosDesdeTabla(comicTemp);
 			AccionControlUI.validarCamposClave(false);
 
+			Utilidades.setDatePickerValue(getReferenciaVentana().getDataPickFechaP(), comicTemp.getFechaGradeo());
+			
 			if (AccionFuncionesComunes.TIPO_ACCION.equals("modificar")) {
 				AccionControlUI.mostrarOpcion(AccionFuncionesComunes.TIPO_ACCION);
 				getReferenciaVentana().getIdComicTratarTextField().setText(comicTemp.getIdComic());

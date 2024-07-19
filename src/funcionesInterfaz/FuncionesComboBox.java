@@ -67,29 +67,32 @@ public class FuncionesComboBox {
 			ComboBox<String> comboBox = comboboxes.get(i);
 			modificarPopup(comboBox);
 			String value = comboBox.getValue() != null ? comboBox.getValue() : "";
-
 			switch (i) {
 			case 0:
-				comic.setNomComic(value);
+				comic.setTituloComic(value);
 				break;
 			case 1:
-				comic.setNumComic(value);
+				comic.setNumeroComic(value);
 				break;
 			case 2:
-				comic.setEdicionComic(value);
+				comic.setEditorComic(value);
 				break;
 			case 3:
-				comic.setColeccionComic(value);
-				break;
-			case 4:
 				comic.setGradeoComic(value);
 				break;
+			case 4:
+				comic.setGuionistaComic(value);
+				break;
 			case 5:
-				comic.setEmpresaComic(value);
+				comic.setVarianteComic(value);
+				break;
+			case 6:
+				comic.setArtistaComic(value);
 				break;
 			default:
 				break;
 			}
+			
 		}
 		return comic;
 	}
@@ -143,11 +146,13 @@ public class FuncionesComboBox {
 	 */
 	public void actualizarComboBoxes(List<ComboBox<String>> comboboxes, ComicGradeo comic) {
 
-		ComicGradeo comicTemp = new ComicGradeo.ComicGradeoBuilder("", comic.getNomComic())
-				.codComic(comic.getCodComic()).numComic(comic.getNumComic()).anioComic(comic.getAnioComic())
-				.coleccionComic(comic.getColeccionComic()).edicionComic(comic.getEdicionComic())
-				.empresaComic(comic.getEmpresaComic()).gradeoComic(comic.getGradeoComic()).urlReferenciaComic("")
-				.direccionImagenComic("").build();
+		ComicGradeo comicTemp = new ComicGradeo.ComicGradeoBuilder("", comic.getTituloComic())
+				.codigoComic(comic.getCodigoComic()).numeroComic(comic.getNumeroComic())
+				.fechaGradeo(comic.getFechaGradeo()).anioPublicacion(comic.getAnioPublicacion())
+				.editorComic(comic.getEditorComic()).gradeoComic(comic.getGradeoComic())
+				.keyComentarios(comic.getKeyComentarios()).artistaComic(comic.getArtistaComic())
+				.guionistaComic(comic.getGuionistaComic()).varianteComic(comic.getVarianteComic())
+				.direccionImagenComic("").urlReferenciaComic("").build();
 
 		String sql = DBUtilidades.datosConcatenados(comicTemp);
 
@@ -160,7 +165,7 @@ public class FuncionesComboBox {
 				comboboxes.get(i).hide();
 
 				List<String> itemsActuales = ListasComicsDAO.listaOrdenada.get(i);
-
+				
 				if (itemsActuales != null && !itemsActuales.isEmpty()) {
 
 					ObservableList<String> itemsObservable = FXCollections.observableArrayList(itemsActuales);

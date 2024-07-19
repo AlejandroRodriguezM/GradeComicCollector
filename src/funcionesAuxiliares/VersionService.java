@@ -14,7 +14,7 @@ import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
 public class VersionService extends Service<String> {
-	private static final String GITHUB_URL = "https://raw.githubusercontent.com/AlejandroRodriguezM/GradeCard-Collector/main/src/funcionesAuxiliares/version.txt";
+	private static final String GITHUB_URL = "https://raw.githubusercontent.com/AlejandroRodriguezM/GradeComic-Collector/main/src/funcionesAuxiliares/version.txt";
 
 	@Override
 	protected Task<String> createTask() {

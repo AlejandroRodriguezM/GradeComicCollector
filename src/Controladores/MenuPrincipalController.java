@@ -761,7 +761,7 @@ public class MenuPrincipalController implements Initializable {
 	void verEstadistica(ActionEvent event) {
 		enviarReferencias();
 		AlarmaList.iniciarAnimacionEstadistica(prontInfo);
-		ListasComicsDAO.generar_fichero_estadisticas();
+//		ListasComicsDAO.generar_fichero_estadisticas();
 		AlarmaList.detenerAnimacionPront(prontInfo);
 		String mensaje = "Fichero creado correctamente";
 

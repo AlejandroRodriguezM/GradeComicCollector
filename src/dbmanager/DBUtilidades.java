@@ -20,21 +20,27 @@ public class DBUtilidades {
 	}
 
 	public static void setParameters(PreparedStatement ps, ComicGradeo datos, boolean includeID) throws SQLException {
-	    ps.setString(1, datos.getNomComic());
-	    ps.setString(2, datos.getCodComic());
-	    ps.setString(3, datos.getNumComic());
-	    ps.setString(4, datos.getAnioComic());
-	    ps.setString(5, datos.getColeccionComic());
-	    ps.setString(6, datos.getEdicionComic());
-	    ps.setString(7, datos.getEmpresaComic());
-	    ps.setString(8, datos.getGradeoComic());
-	    ps.setString(9, datos.getUrlReferenciaComic());
-	    ps.setString(10, datos.getDireccionImagenComic());
-
+	    // Establecer parámetros para los campos de ComicGradeo
+	    ps.setString(1, datos.getTituloComic()); // título del cómic
+	    ps.setString(2, datos.getCodigoComic()); // código del cómic
+	    ps.setString(3, datos.getNumeroComic()); // número del cómic
+	    ps.setString(4, datos.getFechaGradeo()); // fecha de gradeo
+	    ps.setString(5, datos.getAnioPublicacion()); // año de publicación
+	    ps.setString(6, datos.getEditorComic()); // editor del cómic
+	    ps.setString(7, datos.getGradeoComic()); // gradeo del cómic
+	    ps.setString(8, datos.getKeyComentarios()); // key de comentarios
+	    ps.setString(9, datos.getArtistaComic()); // artista del cómic
+	    ps.setString(10, datos.getGuionistaComic()); // guionista del cómic
+	    ps.setString(11, datos.getVarianteComic()); // variante del cómic
+	    ps.setString(12, datos.getDireccionImagenComic()); // dirección de la imagen
+	    ps.setString(13, datos.getUrlReferenciaComic()); // URL de referencia
+	    
+	    // Establecer el ID si se requiere para actualizaciones
 	    if (includeID) {
-	        ps.setString(11, datos.getIdComic());
+	        ps.setString(14, datos.getIdComic()); // ID del cómic
 	    }
 	}
+
 
 
 //	############################################
@@ -51,27 +57,37 @@ public class DBUtilidades {
 		}
 	}
 
-	public static String datosConcatenados(ComicGradeo Comic) {
+	public static String datosConcatenados(ComicGradeo comic) {
 	    String connector = " WHERE ";
 
+	    // Construir la consulta SQL base
 	    StringBuilder sql = new StringBuilder(SelectManager.SENTENCIA_BUSQUEDA_COMPLETA);
 
-	    connector = agregarCondicion(sql, connector, "idComic", Comic.getIdComic());
-	    connector = agregarCondicion(sql, connector, "nomComic", Comic.getNomComic());
-	    connector = agregarCondicion(sql, connector, "codComic", Comic.getCodComic());
-	    connector = agregarCondicion(sql, connector, "numComic", Comic.getNumComic());
-	    connector = agregarCondicion(sql, connector, "anioComic", Comic.getAnioComic());
-	    connector = agregarCondicion(sql, connector, "coleccionComic", Comic.getColeccionComic());
-	    connector = agregarCondicion(sql, connector, "edicionComic", Comic.getEdicionComic());
-	    connector = agregarCondicion(sql, connector, "empresaComic", Comic.getEmpresaComic());
-	    connector = agregarCondicionLike(sql, connector, "gradeoComic", Comic.getGradeoComic());
+	    // Agregar condiciones para cada campo del cómic
+	    connector = agregarCondicion(sql, connector, "idComic", comic.getIdComic());
+	    connector = agregarCondicion(sql, connector, "tituloComic", comic.getTituloComic());
+	    connector = agregarCondicion(sql, connector, "codigoComic", comic.getCodigoComic());
+	    connector = agregarCondicion(sql, connector, "numeroComic", comic.getNumeroComic());
+	    connector = agregarCondicion(sql, connector, "fechaGradeo", comic.getFechaGradeo());
+	    connector = agregarCondicion(sql, connector, "anioPublicacion", comic.getAnioPublicacion());
+	    connector = agregarCondicion(sql, connector, "editorComic", comic.getEditorComic());
+	    connector = agregarCondicionLike(sql, connector, "gradeoComic", comic.getGradeoComic());
+	    connector = agregarCondicion(sql, connector, "keyComentarios", comic.getKeyComentarios());
+	    connector = agregarCondicion(sql, connector, "artistaComic", comic.getArtistaComic());
+	    connector = agregarCondicion(sql, connector, "guionistaComic", comic.getGuionistaComic());
+	    connector = agregarCondicion(sql, connector, "varianteComic", comic.getVarianteComic());
+	    connector = agregarCondicion(sql, connector, "direccionImagenComic", comic.getDireccionImagenComic());
+	    connector = agregarCondicion(sql, connector, "urlReferenciaComic", comic.getUrlReferenciaComic());
 
+	    // Si no se ha agregado ninguna condición, devolver una cadena vacía
 	    if (connector.trim().equalsIgnoreCase("WHERE")) {
 	        return "";
 	    }
 
+	    // Devolver la consulta SQL con las condiciones agregadas
 	    return (connector.length() > 0) ? sql.toString() : "";
 	}
+
 
 	public static String agregarCondicion(StringBuilder sql, String connector, String columna, String valor) {
 		if (!valor.isEmpty()) {
@@ -92,7 +108,7 @@ public class DBUtilidades {
 	public static String datosGenerales(String tipoBusqueda, String busquedaGeneral) {
 	    String connector = " WHERE ";
 	    StringBuilder sql = new StringBuilder();
-	    sql.append("SELECT * FROM albumbbdd");
+	    sql.append("SELECT * FROM comicsGbbdd");
 
 	    switch (tipoBusqueda.toLowerCase()) {
 	    case "nomComic":
@@ -246,7 +262,6 @@ public class DBUtilidades {
 	        String fechaGradeo = rs.getString("fechaGradeo");
 	        String anioPublicacion = rs.getString("anioPublicacion");
 	        String editorComic = rs.getString("editorComic");
-	        String tipoVariante = rs.getString("tipoVariante");
 	        String gradeoComic = rs.getString("gradeoComic");
 	        String keyComentarios = rs.getString("keyComentarios");
 	        String artistaComic = rs.getString("artistaComic");
@@ -261,7 +276,6 @@ public class DBUtilidades {
 	                .fechaGradeo(fechaGradeo)
 	                .anioPublicacion(anioPublicacion)
 	                .editorComic(editorComic)
-	                .tipoVariante(tipoVariante)
 	                .gradeoComic(gradeoComic)
 	                .keyComentarios(keyComentarios)
 	                .artistaComic(artistaComic)

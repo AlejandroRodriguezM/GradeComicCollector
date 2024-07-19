@@ -11,7 +11,7 @@ public class AddToPath {
 	private static final String DOWNLOAD_DIR = System.getProperty("user.home") + File.separator + "nodejs";
 	private static String userHome = System.getProperty("user.home");
 	private static String ubicacion = userHome + File.separator + "AppData" + File.separator + "Roaming";
-	private static String carpetaLibreria = ubicacion + File.separator + "gradeo";
+	private static String carpetaLibreria = ubicacion + File.separator + "gradeoComics";
 	public static String rutaDestinoRecursos = carpetaLibreria + File.separator + "recursos";
 	private static Ventanas nav = new Ventanas();
 

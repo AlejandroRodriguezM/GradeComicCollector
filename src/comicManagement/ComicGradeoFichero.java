@@ -26,14 +26,13 @@ public class ComicGradeoFichero {
 			String fechaGradeo = data[4];
 			String anioPublicacion = data[5];
 			String editorComic = data[6];
-			String tipoVariante = data[7];
-			String gradeoComic = comprobarGradeo(data[8]);
-			String keyComentarios = data[9];
-			String artistaComic = data[10];
-			String guionistaComic = data[11];
-			String varianteComic = data[12];
-			String direccionImagenComic = data[13];
-			String urlReferenciaComic = data[14];
+			String gradeoComic = comprobarGradeo(data[7]);
+			String keyComentarios = data[8];
+			String artistaComic = data[9];
+			String guionistaComic = data[10];
+			String varianteComic = data[11];
+			String direccionImagenComic = data[12];
+			String urlReferenciaComic = data[13];
 
 			String nombrePortada = Utilidades.obtenerNombrePortada(false, direccionImagenComic);
 			String imagen = FuncionesExcel.DEFAULT_PORTADA_IMAGE_PATH + File.separator + nombrePortada;
@@ -42,10 +41,9 @@ public class ComicGradeoFichero {
 
 			return new ComicGradeo.ComicGradeoBuilder(idComic, tituloComic).codigoComic(codigoComic)
 					.numeroComic(numeroComic).fechaGradeo(fechaGradeo).anioPublicacion(anioPublicacion)
-					.editorComic(editorComic).tipoVariante(tipoVariante).gradeoComic(gradeoComic)
-					.keyComentarios(keyComentarios).artistaComic(artistaComic).guionistaComic(guionistaComic)
-					.varianteComic(varianteComic).direccionImagenComic(imagen).urlReferenciaComic(urlReferenciaComic)
-					.build();
+					.editorComic(editorComic).gradeoComic(gradeoComic).keyComentarios(keyComentarios)
+					.artistaComic(artistaComic).guionistaComic(guionistaComic).varianteComic(varianteComic)
+					.direccionImagenComic(imagen).urlReferenciaComic(urlReferenciaComic).build();
 		} else {
 			return null;
 		}

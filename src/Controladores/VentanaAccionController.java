@@ -144,7 +144,7 @@ public class VentanaAccionController implements Initializable {
 	private TableColumn<ComicGradeo, String> columnaGuionista;
 
 	@FXML
-	private TableColumn<ComicGradeo, String> columnaGuionista1;
+	private TableColumn<ComicGradeo, String> columnaVariante;
 
 	@FXML
 	private TableColumn<ComicGradeo, String> columnaNombre;
@@ -228,7 +228,7 @@ public class VentanaAccionController implements Initializable {
 	private VBox rootVBox;
 
 	@FXML
-	private TableView<?> tablaBBDD;
+	private TableView<ComicGradeo> tablaBBDD;
 
 	@FXML
 	private TextArea textAreaKeyComic;
@@ -243,7 +243,7 @@ public class VentanaAccionController implements Initializable {
 	private TextField textFieldDireccionComic;
 
 	@FXML
-	private TextField textFieldEmpresaComic;
+	private TextField textFieldEditorComic;
 
 	@FXML
 	private TextField textFieldFechaG;
@@ -294,19 +294,23 @@ public class VentanaAccionController implements Initializable {
 
 	public AccionReferencias guardarReferencia() {
 
-		referenciaVentana.setNombreComicTextField(textFieldNombreComic);
+		referenciaVentana.setTituloComicTextField(textFieldNombreComic);
 		referenciaVentana.setCodigoComicTextField(textFieldCodigoComic);
-		referenciaVentana.setAnioComicTextField(textFieldAnioComic);
 		referenciaVentana.setNumeroComicTextField(textFieldNumeroComic);
-		referenciaVentana.setEdicionComicTextField(textFieldEdicionComic);
-		referenciaVentana.setColeccionComicTextField(textFieldColeccionComic);
+		referenciaVentana.setDataPickFechaP(dataPickFechaP);
+		referenciaVentana.setFechaGradeoTextField(textFieldFechaG);
+		referenciaVentana.setArtistaComicTextField(textFieldArtistaComic);
+		referenciaVentana.setVarianteTextField(textFieldVarianteComic);
+		referenciaVentana.setGuionistaComicTextField(textFieldGuionistaComic);
 		referenciaVentana.setGradeoComicTextField(textFieldGradeoComic);
 		referenciaVentana.setUrlReferenciaTextField(textFieldUrlComic);
 		referenciaVentana.setDireccionImagenTextField(textFieldDireccionComic);
 		referenciaVentana.setNombreTiendaCombobox(comboBoxTienda);
-		referenciaVentana.setNombreEmpresaTextField(textFieldEmpresaComic);
+		referenciaVentana.setNombreEditorTextField(textFieldEditorComic);
 		referenciaVentana.setIdComicTratarTextField(textFieldIdComic);
 		referenciaVentana.setBusquedaCodigoTextField(busquedaCodigo);
+
+		referenciaVentana.setKeyComicData(textAreaKeyComic);
 
 		referenciaVentana.setBotonClonarComic(botonClonarComic);
 		referenciaVentana.setBotonCancelarSubida(botonCancelarSubida);
@@ -330,15 +334,16 @@ public class VentanaAccionController implements Initializable {
 		referenciaVentana.setStageVentana(estadoStage());
 		referenciaVentana.setProgresoCarga(progresoCarga);
 
-		referenciaVentana.setLabelColeccion(labelcoleccion);
-		referenciaVentana.setLabelNombre(labelNombre);
-		referenciaVentana.setLabelCodigo(labelCodigo);
-		referenciaVentana.setLabelEmpresa(labelEmpresa);
-
 		referenciaVentana.setLabelIdMod(labelId);
-		referenciaVentana.setLabelAnio(labelAnio);
-		referenciaVentana.setLabelEdicion(labelEdicion);
-		referenciaVentana.setLabelColeccion(labelcoleccion);
+		referenciaVentana.setLabelNombre(labelNombre);
+		referenciaVentana.setLabelfechaP(labelFechaP);
+		referenciaVentana.setLabelfechaG(labelFechaG);
+		referenciaVentana.setLabelArtista(labelArtista);
+		referenciaVentana.setLabelVariante(labelVariante);
+		referenciaVentana.setLabelGuionista(labelGuionista);
+
+		referenciaVentana.setLabelCodigo(labelCodigo);
+		referenciaVentana.setLabelEditor(labelEditor);
 		referenciaVentana.setLabelGradeo(labelGradeo);
 		referenciaVentana.setLabelReferencia(labelReferencia);
 		referenciaVentana.setLabelPortada(labelPortada);
@@ -357,17 +362,18 @@ public class VentanaAccionController implements Initializable {
 		referenciaVentana.setNavegacionCerrar(navegacionOpciones);
 		referenciaVentana.setNavegacionEstadistica(navegacionEstadistica);
 
-		AccionReferencias.setListaTextFields(FXCollections
-				.observableArrayList(Arrays.asList(textFieldNombreComic, textFieldEdicionComic, textFieldColeccionComic,
+		AccionReferencias.setListaTextFields(FXCollections.observableArrayList(
+				Arrays.asList(textFieldNombreComic, textFieldNumeroComic, textFieldFechaG, textFieldEditorComic,
+						textFieldArtistaComic, textFieldVarianteComic, textFieldGuionistaComic, textFieldEditorComic,
 						textFieldGradeoComic, textFieldIdComic, textFieldDireccionComic, textFieldUrlComic)));
 
-		referenciaVentana.setControlAccion(Arrays.asList(textFieldNombreComic, textFieldNumeroComic,
-				textFieldEdicionComic, textFieldColeccionComic, textFieldAnioComic, textFieldUrlComic,
-				textFieldEmpresaComic, textFieldGradeoComic, textFieldCodigoComic, textFieldDireccionComic,
-				textFieldIdComic, busquedaCodigo));
+		referenciaVentana.setControlAccion(Arrays.asList(textFieldNombreComic, textFieldNumeroComic, dataPickFechaP,
+				textFieldFechaG, textFieldArtistaComic, textFieldVarianteComic, textFieldGuionistaComic,
+				textFieldUrlComic, textFieldDireccionComic, textAreaKeyComic, textFieldEditorComic,
+				textFieldGradeoComic, textFieldCodigoComic, textFieldIdComic));
 
-		AccionReferencias.setListaColumnasTabla(Arrays.asList(columnaNombre, columnaNumero, columnaCertificacion,
-				columnaEmpresa, columnaEdicion, columnaColeccion));
+		AccionReferencias.setListaColumnasTabla(Arrays.asList(columnaNombre, columnaNumero, columnaArtista,
+				columnaGuionista, columnaVariante, columnaCertificacion));
 
 		return referenciaVentana;
 	}
@@ -456,22 +462,25 @@ public class VentanaAccionController implements Initializable {
 	public void formatearTextField() {
 		FuncionesManejoFront.eliminarEspacioInicialYFinal(textFieldNombreComic);
 		FuncionesManejoFront.eliminarSimbolosEspeciales(textFieldNombreComic);
-		FuncionesManejoFront.restringirSimbolos(textFieldEdicionComic);
-		FuncionesManejoFront.restringirSimbolos(textFieldColeccionComic);
+		FuncionesManejoFront.restringirSimbolos(textFieldEditorComic);
+		FuncionesManejoFront.restringirSimbolos(textFieldFechaG);
 		FuncionesManejoFront.restringirSimbolos(textFieldGradeoComic);
 
 		FuncionesManejoFront.reemplazarEspaciosMultiples(textFieldNombreComic);
-		FuncionesManejoFront.reemplazarEspaciosMultiples(textFieldEdicionComic);
-		FuncionesManejoFront.reemplazarEspaciosMultiples(textFieldColeccionComic);
+		FuncionesManejoFront.reemplazarEspaciosMultiples(textFieldFechaG);
+		FuncionesManejoFront.reemplazarEspaciosMultiples(textFieldArtistaComic);
+		FuncionesManejoFront.reemplazarEspaciosMultiples(textFieldArtistaComic);
+		FuncionesManejoFront.reemplazarEspaciosMultiples(textFieldVarianteComic);
+		FuncionesManejoFront.reemplazarEspaciosMultiples(textFieldGuionistaComic);
 		FuncionesManejoFront.reemplazarEspaciosMultiples(textFieldGradeoComic);
+		FuncionesManejoFront.reemplazarEspaciosMultiples(textFieldCodigoComic);
 		FuncionesManejoFront.reemplazarEspaciosMultiples(textFieldNumeroComic);
 
 		FuncionesManejoFront.permitirUnSimbolo(textFieldNombreComic);
-		FuncionesManejoFront.permitirUnSimbolo(textFieldEdicionComic);
-		FuncionesManejoFront.permitirUnSimbolo(textFieldColeccionComic);
 		FuncionesManejoFront.permitirUnSimbolo(textFieldGradeoComic);
 		FuncionesManejoFront.permitirUnSimbolo(busquedaCodigo);
 		textFieldIdComic.setTextFormatter(FuncionesComboBox.validadorNenteros());
+		textFieldFechaG.setTextFormatter(FuncionesComboBox.validadorNenteros());
 
 		if (AccionFuncionesComunes.TIPO_ACCION.equalsIgnoreCase("aniadir")) {
 			textFieldIdComic.setTextFormatter(FuncionesComboBox.desactivarValidadorNenteros());

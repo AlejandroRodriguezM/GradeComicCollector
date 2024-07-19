@@ -8,9 +8,10 @@ import comicManagement.ComicGradeo;
 public class InsertManager {
 
 	public static final String INSERT_SENTENCIA = "INSERT INTO comicsGbbdd ("
-			+ "idComic, tituloComic, codigoComic, numeroComic, fechaGradeo, anioPublicacion, editorComic, tipoVariante, "
-			+ "gradeoComic, keyComentarios, artistaComic, guionistaComic, varianteComic, direccionImagenComic, urlReferenciaComic) "
-			+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	        + "tituloComic, codigoComic, numeroComic, fechaGradeo, anioPublicacion, editorComic, "
+	        + "gradeoComic, keyComentarios, artistaComic, guionistaComic, varianteComic, direccionImagenComic, urlReferenciaComic) "
+	        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
 
 	/**
 	 * Inserta los datos de un cómic en la base de datos.

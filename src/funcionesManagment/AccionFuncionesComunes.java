@@ -26,6 +26,7 @@ import alarmas.AlarmaList;
 import comicManagement.ComicGradeo;
 import dbmanager.ComicManagerDAO;
 import dbmanager.DatabaseManagerDAO;
+import dbmanager.ListasCartasDAO;
 import dbmanager.ListasComicsDAO;
 import dbmanager.UpdateManager;
 import ficherosFunciones.FuncionesFicheros;
@@ -200,30 +201,30 @@ public class AccionFuncionesComunes {
 
 	public static void actualizarInformacionComics(ComicGradeo comicOriginal) {
 
-		String numComicGradeo = comicOriginal.getNumComic();
-		String nombreCorregido = Utilidades.eliminarParentesis(comicOriginal.getNomComic());
+		String numComicGradeo = comicOriginal.getNumeroComic();
+		String nombreCorregido = Utilidades.eliminarParentesis(comicOriginal.getTituloComic());
 		String nombreLimpio = Utilidades.extraerNombreLimpio(nombreCorregido);
 		nombreLimpio = DatabaseManagerDAO.corregirPatrones(nombreLimpio);
-		String edicion = DatabaseManagerDAO.getComercializadora((comicOriginal.getEdicionComic()));
+		String editor = comicOriginal.getEditorComic();
 
-		comicOriginal.setNomComic(nombreLimpio);
-		comicOriginal.setNumComic(numComicGradeo);
-		comicOriginal.setEdicionComic(edicion);
+		comicOriginal.setTituloComic(nombreLimpio);
+		comicOriginal.setNumeroComic(numComicGradeo);
+		comicOriginal.setEditorComic(editor);
 		comicOriginal.setDireccionImagenComic(comicOriginal.getDireccionImagenComic());
 
 	}
 
 	public static void actualizarCompletoComics(ComicGradeo comicOriginal) {
 
-		String numComicGradeo = comicOriginal.getNumComic();
-		String nombreCorregido = Utilidades.eliminarParentesis(comicOriginal.getNomComic());
+		String numComicGradeo = comicOriginal.getNumeroComic();
+		String nombreCorregido = Utilidades.eliminarParentesis(comicOriginal.getTituloComic());
 		String nombreLimpio = Utilidades.extraerNombreLimpio(nombreCorregido);
 		nombreLimpio = DatabaseManagerDAO.corregirPatrones(nombreLimpio);
-		String edicion = DatabaseManagerDAO.getComercializadora((comicOriginal.getEdicionComic()));
+		String editor = (comicOriginal.getEditorComic());
 
-		comicOriginal.setNomComic(nombreLimpio);
-		comicOriginal.setNumComic(numComicGradeo);
-		comicOriginal.setEdicionComic(edicion);
+		comicOriginal.setTituloComic(nombreLimpio);
+		comicOriginal.setNumeroComic(numComicGradeo);
+		comicOriginal.setEditorComic(editor);
 
 	}
 
@@ -398,16 +399,6 @@ public class AccionFuncionesComunes {
 		comicOriginal.setDireccionImagenComic(urlFinal);
 	}
 
-	public static String imagenComic(ComicGradeo comicOriginal) {
-		String argument = "cardtrader+" + comicOriginal.getNomComic().replace(" ", "+") + "+"
-				+ comicOriginal.getNumComic() + "+" + comicOriginal.getColeccionComic().replace(" ", "+");
-		String urlComicGradeo = FuncionesScrapeoComunes.searchWebImagen(argument);
-		if (urlComicGradeo.contains("/cards/")) {
-			return FuncionesScrapeoComunes.extraerDatosImagen(urlComicGradeo);
-		}
-		return "";
-	}
-
 	/**
 	 * Funcion que escribe en el TextField de "Direccion de imagen" la dirrecion de
 	 * la imagen
@@ -475,19 +466,31 @@ public class AccionFuncionesComunes {
 	}
 
 	public static void limpiarDatosComic() {
-		getReferenciaVentana().getNombreComicTextField().setText("");
-		getReferenciaVentana().getEdicionComicTextField().setText("");
-		getReferenciaVentana().getColeccionComicTextField().setText("");
-		getReferenciaVentana().getGradeoComicTextField().setText("");
-		getReferenciaVentana().getAnioComicTextField().setText("");
+		// Limpiar campos de texto
+		getReferenciaVentana().getTituloComicTextField().setText("");
 		getReferenciaVentana().getCodigoComicTextField().setText("");
+		getReferenciaVentana().getFechaGradeoTextField().setText("");
+		getReferenciaVentana().getNombreEditorTextField().setText("");
+		getReferenciaVentana().getArtistaComicTextField().setText("");
+		getReferenciaVentana().getGuionistaComicTextField().setText("");
+		getReferenciaVentana().getVarianteTextField().setText("");
+		getReferenciaVentana().getGradeoComicTextField().setText("");
 		getReferenciaVentana().getIdComicTratarTextField().setText("");
 		getReferenciaVentana().getDireccionImagenTextField().setText("");
-		getReferenciaVentana().getBusquedaCodigoTextField().setText("");
 		getReferenciaVentana().getUrlReferenciaTextField().setText("");
 		getReferenciaVentana().getNumeroComicTextField().setText("");
+
+		// Limpiar el TextArea
+		getReferenciaVentana().getKeyComicData().setText(""); // Asegúrate de tener el método get para el TextArea
+
+		// Limpiar el DatePicker
+		getReferenciaVentana().getDataPickFechaP().setValue(null); // Asegúrate de tener el método get para el
+																	// DatePicker
+
+		// Limpiar la imagen (si es necesario)
+		getReferenciaVentana().getImagenComic().setImage(null); // Asegúrate de tener el método get para la imagen
+
 		getReferenciaVentana().getImagenComic().setImage(null);
-		getReferenciaVentana().getNombreEmpresaTextField().setText("");
 		if ("modificar".equals(TIPO_ACCION)) {
 			AccionControlUI.mostrarOpcion(TIPO_ACCION);
 		}
@@ -543,36 +546,32 @@ public class AccionFuncionesComunes {
 	 */
 	private static void rellenarTablaImport(ComicGradeo comic, boolean esClonar) {
 		Platform.runLater(() -> {
+			String idComic = "A" + 0 + "" + (ListasComicsDAO.comicsImportados.size() + 1);
+			String tituloComic = Utilidades.defaultIfNullOrEmpty(comic.getTituloComic(), "Vacio");
+			String codigoComic = Utilidades.defaultIfNullOrEmpty(comic.getCodigoComic(), "0");
+			String numeroComic = Utilidades.defaultIfNullOrEmpty(comic.getNumeroComic(), "0");
+			String fechaGradeo = Utilidades.defaultIfNullOrEmpty(comic.getFechaGradeo(), "2000-01-01");
+			String anioPublicacion = Utilidades.defaultIfNullOrEmpty(comic.getAnioPublicacion(), "2000");
+			String editorComic = Utilidades.defaultIfNullOrEmpty(comic.getEditorComic(), "Vacio");
+			String gradeoComic = Utilidades.defaultIfNullOrEmpty(comic.getGradeoComic(), "Vacio");
+			String keyComentarios = Utilidades.defaultIfNullOrEmpty(comic.getKeyComentarios(), "Vacio");
+			String artistaComic = Utilidades.defaultIfNullOrEmpty(comic.getArtistaComic(), "Vacio");
+			String guionistaComic = Utilidades.defaultIfNullOrEmpty(comic.getGuionistaComic(), "Vacio");
+			String varianteComic = Utilidades.defaultIfNullOrEmpty(comic.getVarianteComic(), "Vacio");
+			String direccionImagenComic = Utilidades.defaultIfNullOrEmpty(comic.getDireccionImagenComic(), "Vacio");
+			String urlReferenciaComic = Utilidades.defaultIfNullOrEmpty(comic.getUrlReferenciaComic(), "Vacio");
 
-			String numComicStr = comic.getNumComic();
-			String nombreCorregido = Utilidades.eliminarParentesis(comic.getNomComic());
-			// Variables relacionadas con la importación de cómics
-			String id = "A" + 0 + "" + (ListasComicsDAO.comicsImportados.size() + 1);
-			String titulo = Utilidades.defaultIfNullOrEmpty(DatabaseManagerDAO.corregirPatrones(nombreCorregido),
-					"Vacio");
-			String anioComic = Utilidades.defaultIfNullOrEmpty(comic.getAnioComic(), "0");
-			String codigo = Utilidades.defaultIfNullOrEmpty(comic.getCodComic(), "0");
-			String edicion = Utilidades.defaultIfNullOrEmpty(comic.getEdicionComic(), "0");
-			String numero = Utilidades.defaultIfNullOrEmpty(numComicStr, "0");
-			String coleccion = Utilidades
-					.defaultIfNullOrEmpty(DatabaseManagerDAO.corregirNombre(comic.getColeccionComic()), "Vacio");
-			String gradeo = Utilidades.defaultIfNullOrEmpty(DatabaseManagerDAO.corregirNombre(comic.getGradeoComic()),
-					"Vacio");
-			String empresa = Utilidades.defaultIfNullOrEmpty(DatabaseManagerDAO.corregirNombre(comic.getEmpresaComic()),
-					"Vacio");
-			String urlReferencia = Utilidades.defaultIfNullOrEmpty(comic.getUrlReferenciaComic(), "Vacio");
 			// Variables relacionadas con la imagen del cómic
-			String imagen = "";
-			if (!esClonar) {
-				imagen = descargarImagenComic(comic);
-			} else {
-				imagen = comic.getDireccionImagenComic();
-			}
+			String imagen = esClonar ? direccionImagenComic : descargarImagenComic(comic);
 
-			ComicGradeo comicImport = new ComicGradeo.ComicGradeoBuilder(id, titulo).codComic(codigo).numComic(numero)
-					.anioComic(anioComic).coleccionComic(coleccion).edicionComic(edicion).empresaComic(empresa)
-					.gradeoComic(gradeo).urlReferenciaComic(urlReferencia).direccionImagenComic(imagen).build();
+			// Construcción del objeto ComicGradeo usando el builder
+			ComicGradeo comicImport = new ComicGradeo.ComicGradeoBuilder(idComic, tituloComic).codigoComic(codigoComic)
+					.numeroComic(numeroComic).fechaGradeo(fechaGradeo).anioPublicacion(anioPublicacion)
+					.editorComic(editorComic).gradeoComic(gradeoComic).keyComentarios(keyComentarios)
+					.artistaComic(artistaComic).guionistaComic(guionistaComic).varianteComic(varianteComic)
+					.direccionImagenComic(imagen).urlReferenciaComic(urlReferenciaComic).build();
 
+			// Añadir el cómic a la lista e actualizar la tabla
 			ListasComicsDAO.comicsImportados.add(comicImport);
 			FuncionesTableView.nombreColumnas();
 			FuncionesTableView.tablaBBDD(ListasComicsDAO.comicsImportados);
@@ -730,7 +729,7 @@ public class AccionFuncionesComunes {
 
 	private static void processComic(ComicGradeo comic, String tipoUpdate) {
 
-		if (tipoUpdate.isEmpty() && !comic.getNomComic().isEmpty()) {
+		if (tipoUpdate.isEmpty() && !comic.getTituloComic().isEmpty()) {
 
 			AccionFuncionesComunes.procesarComicPorCodigo(comic, false);
 
@@ -748,8 +747,8 @@ public class AccionFuncionesComunes {
 		if (comic.getUrlReferenciaComic().isEmpty() || comic.getUrlReferenciaComic().equalsIgnoreCase("vacio")) {
 
 			if (tipoUpdate.isEmpty()) {
-				codigoFaltante.append("Falta comic con código: ").append(comic.getNomComic()).append("\n");
-				textoBuilder.append("ComicGradeo no capturado: ").append(comic.getNomComic()).append("\n");
+				codigoFaltante.append("Falta comic con código: ").append(comic.getTituloComic()).append("\n");
+				textoBuilder.append("ComicGradeo no capturado: ").append(comic.getTituloComic()).append("\n");
 			} else {
 				codigoFaltante.append("ID no procesado: ").append(comic.getIdComic()).append("\n");
 				textoBuilder.append("ID no procesado: ").append(comic.getIdComic()).append("\n");
@@ -760,7 +759,7 @@ public class AccionFuncionesComunes {
 		} else {
 
 			if (tipoUpdate.isEmpty()) {
-				textoBuilder.append("Codigo: ").append(comic.getNomComic()).append(" procesado.").append("\n");
+				textoBuilder.append("Codigo: ").append(comic.getTituloComic()).append(" procesado.").append("\n");
 			} else if (tipoUpdate.equalsIgnoreCase("actualizar portadas")) {
 				textoBuilder.append("Portada ComicGradeo ID: ").append(comic.getIdComic()).append(" actualizado.")
 						.append("\n");
@@ -1047,12 +1046,13 @@ public class AccionFuncionesComunes {
 	public static void borrarErrores() {
 
 		if (getReferenciaVentana() != null) {
-			setStyleIfNotNull(getReferenciaVentana().getNombreComicTextField());
+			setStyleIfNotNull(getReferenciaVentana().getTituloComicTextField());
 			setStyleIfNotNull(getReferenciaVentana().getNumeroComicCombobox());
-			setStyleIfNotNull(getReferenciaVentana().getEdicionComicTextField());
-			setStyleIfNotNull(getReferenciaVentana().getColeccionComicTextField());
-			setStyleIfNotNull(getReferenciaVentana().getGradeoComicTextField());
-			setStyleIfNotNull(getReferenciaVentana().getAnioComicTextField());
+			setStyleIfNotNull(getReferenciaVentana().getNombreEditorTextField());
+			setStyleIfNotNull(getReferenciaVentana().getArtistaComicTextField());
+			setStyleIfNotNull(getReferenciaVentana().getGuionistaComicTextField());
+			setStyleIfNotNull(getReferenciaVentana().getVarianteTextField());
+			setStyleIfNotNull(getReferenciaVentana().getFechaGradeoTextField());
 		}
 	}
 

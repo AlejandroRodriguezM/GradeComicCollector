@@ -71,6 +71,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -92,6 +93,8 @@ public class Utilidades {
 
 	private static boolean fileChooserOpen = false;
 
+    private static final DateTimeFormatter SQLITE_DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	
 	/**
 	 * Sistema operativo actual.
 	 */
@@ -119,7 +122,7 @@ public class Utilidades {
 	private static AccionReferencias referenciaVentanaPrincipal = getReferenciaVentanaPrincipal();
 
 	public static final String DB_FOLDER = System.getProperty("user.home") + File.separator + "AppData" + File.separator
-			+ "Roaming" + File.separator + "gradeo" + File.separator;
+			+ "Roaming" + File.separator + "gradeoComics" + File.separator;
 
 	/**
 	 * Verifica si el sistema operativo es Windows.
@@ -378,26 +381,48 @@ public class Utilidades {
 	public String obtenerNombreCompleto(ComicGradeo datos) {
 		String userDir = System.getProperty("user.home");
 		String documentsPath = userDir + File.separator + "Documents";
-		String defaultImagePath = documentsPath + File.separator + "album_comics" + File.separator
+		String defaultImagePath = documentsPath + File.separator + "gradeo_comic" + File.separator
 				+ ConectManager.DB_NAME + File.separator + "portadas" + File.separator;
 		return defaultImagePath + crearNuevoNombre(datos);
 	}
 
-	/**
-	 * Crea un nuevo nombre de archivo para un cómic con información específica.
-	 *
-	 * @param datos Los datos del cómic.
-	 * @return El nuevo nombre de archivo del cómic con formato para archivo.
-	 */
 	public String crearNuevoNombre(ComicGradeo datos) {
-		String nombreComic = datos.getNomComic().replace(" ", "_").replace(":", "_").replace("-", "_");
-		String numeroComic = datos.getNumComic();
-		String editorialComic = datos.getEdicionComic().replace(" ", "_").replace(",", "_").replace("-", "_")
-				.replace(":", "_");
-		String nombreCompleto = nombreComic + "_" + numeroComic + "_" + editorialComic;
-		String extension = ".jpg";
-		return nombreCompleto + extension;
+	    // Obtener los valores y reemplazar caracteres no válidos
+	    String nombreComic = sanitizeString(datos.getTituloComic()); // Cambiado a getTituloComic() según los getters proporcionados
+	    String numeroComic = sanitizeString(datos.getNumeroComic()); // Cambiado a getNumeroComic() según los getters proporcionados
+	    String editorialComic = sanitizeString(datos.getEditorComic()); // Cambiado a getEditorComic() según los getters proporcionados
+
+	    // Construir el nombre completo
+	    String nombreCompleto = String.join("_", nombreComic, numeroComic, editorialComic);
+	    String extension = ".jpg";
+
+	    return nombreCompleto + extension;
 	}
+
+	/**
+	 * Reemplaza caracteres no válidos para nombres de archivos.
+	 *
+	 * @param input Cadena de entrada a limpiar.
+	 * @return Cadena de entrada limpia.
+	 */
+	private String sanitizeString(String input) {
+	    if (input == null) {
+	        return "";
+	    }
+	    return input.replace(" ", "_")
+	                .replace(":", "_")
+	                .replace("-", "_")
+	                .replace(",", "_")
+	                .replace("\\", "_")
+	                .replace("/", "_")
+	                .replace("?", "_")
+	                .replace("*", "_")
+	                .replace("\"", "_")
+	                .replace("<", "_")
+	                .replace(">", "_")
+	                .replace("|", "_");
+	}
+
 
 	/**
 	 * Obtiene el nombre de archivo de una ruta completa.
@@ -686,7 +711,7 @@ public class Utilidades {
 	public static String obtenerCarpetaConfiguracion() {
 		String userDir = System.getProperty("user.home");
 		String ubicacion = userDir + File.separator + "AppData" + File.separator + "Roaming";
-		String direccion = ubicacion + File.separator + "gradeo";
+		String direccion = ubicacion + File.separator + "gradeoComics";
 
 		File directorio = new File(direccion);
 		if (!directorio.exists()) {
@@ -2207,10 +2232,9 @@ public class Utilidades {
 
 	public static void crearDBPRedeterminada() {
 
-		String dbName = "gradeo_predeterminada";
+		String dbName = "gradeoComic_predeterminada";
 		Ventanas nav = new Ventanas();
 		if (!comprobarDB()) {
-//			FuncionesFicheros.guardarDatosBaseLocal((""), null, null);
 			if (nav.alertaCreacionDB()) {
 				SQLiteManager.createTable(dbName);
 				FuncionesFicheros.guardarDatosBaseLocal((dbName + ".db"), null, null);
@@ -2395,6 +2419,30 @@ public class Utilidades {
             return (200 <= responseCode && responseCode <= 299);
         } catch (IOException e) {
             return false; // Si ocurre una excepción, la URL no es válida
+        }
+    }
+    
+    public static String parseDate(DatePicker datePicker) {
+        LocalDate date = datePicker.getValue();
+        if (date != null) {
+            return date.format(SQLITE_DATE_FORMATTER);
+        } else {
+            return "";
+        }
+    }
+    
+    public static LocalDate parseStringToDate(String dateString) {
+        try {
+            return LocalDate.parse(dateString, SQLITE_DATE_FORMATTER);
+        } catch (DateTimeParseException e) {
+            return null;
+        }
+    }
+    
+    public static void setDatePickerValue(DatePicker datePicker, String dateString) {
+        LocalDate date = parseStringToDate(dateString);
+        if (date != null) {
+            datePicker.setValue(date);
         }
     }
 

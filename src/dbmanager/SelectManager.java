@@ -100,7 +100,7 @@ public class SelectManager {
 		}
 
 		try (Connection conn = ConectManager.conexion();
-				PreparedStatement preparedStatement = conn.prepareStatement(SENTENCIA_CONTAR_CARTAS_POR_ID)) {
+				PreparedStatement preparedStatement = conn.prepareStatement(SENTENCIA_CONTAR_COMICS_POR_ID)) {
 
 			preparedStatement.setString(1, identificador.trim());
 
@@ -208,12 +208,11 @@ public class SelectManager {
 		String sentenciaSQL = "SELECT * FROM comicsGbbdd WHERE " + "numeroComic = '" + datoSeleccionado + "' OR "
 				+ "tituloComic LIKE '%" + datoSeleccionado + "%' OR " + "codigoComic = '" + datoSeleccionado + "' OR "
 				+ "anioPublicacion = '" + datoSeleccionado + "' OR " + "editorComic LIKE '%" + datoSeleccionado
-				+ "%' OR " + "tipoVariante LIKE '%" + datoSeleccionado + "%' OR " + "gradeoComic LIKE '%"
-				+ datoSeleccionado + "%' OR " + "keyComentarios LIKE '%" + datoSeleccionado + "%' OR "
-				+ "artistaComic LIKE '%" + datoSeleccionado + "%' OR " + "guionistaComic LIKE '%" + datoSeleccionado
-				+ "%' OR " + "varianteComic LIKE '%" + datoSeleccionado + "%' OR " + "direccionImagenComic LIKE '%"
-				+ datoSeleccionado + "%' OR " + "urlReferenciaComic LIKE '%" + datoSeleccionado + "%' "
-				+ "ORDER BY tituloComic ASC, numeroComic ASC";
+				+ "%' OR " + "gradeoComic LIKE '%" + datoSeleccionado + "%' OR " + "keyComentarios LIKE '%"
+				+ datoSeleccionado + "%' OR " + "artistaComic LIKE '%" + datoSeleccionado + "%' OR "
+				+ "guionistaComic LIKE '%" + datoSeleccionado + "%' OR " + "varianteComic LIKE '%" + datoSeleccionado
+				+ "%' OR " + "direccionImagenComic LIKE '%" + datoSeleccionado + "%' OR " + "urlReferenciaComic LIKE '%"
+				+ datoSeleccionado + "%' " + "ORDER BY tituloComic ASC, numeroComic ASC";
 
 		return verLibreria(sentenciaSQL, false);
 	}

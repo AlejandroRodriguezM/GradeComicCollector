@@ -160,9 +160,15 @@ public class FuncionesTableView {
 
 	private static String generateTooltipMessage(ComicGradeo comic) {
 		StringBuilder mensajeBuilder = new StringBuilder();
-		mensajeBuilder.append("Nombre: ").append(comic.getNomComic()).append("\nNumero: ").append(comic.getNumComic())
-				.append(comic.getEdicionComic()).append("\nEdicion: ").append(comic.getColeccionComic())
-				.append("\nColeccion: ").append(comic.getEmpresaComic()).append("\nEmpresa: ");
+
+		mensajeBuilder.append("Nombre: ").append(comic.getTituloComic()).append("\n").append("Número: ")
+				.append(comic.getNumeroComic()).append("\n").append("Edición: ").append(comic.getEditorComic())
+				.append("\n").append("Colección: ").append(comic.getAnioPublicacion()).append("\n").append("Gradeo: ")
+				.append(comic.getGradeoComic()).append("\n").append("Comentarios: ").append(comic.getKeyComentarios())
+				.append("\n").append("Artista: ").append(comic.getArtistaComic()).append("\n").append("Guionista: ")
+				.append(comic.getGuionistaComic()).append("\n").append("Variante: ").append(comic.getVarianteComic())
+				.append("\n").append("Dirección Imagen: ").append(comic.getDireccionImagenComic()).append("\n")
+				.append("URL Referencia: ").append(comic.getUrlReferenciaComic()).append("\n");
 
 		return mensajeBuilder.toString();
 	}
@@ -312,26 +318,29 @@ public class FuncionesTableView {
 
 		switch (property) {
 
-		case "Nombre":
-			property = "nomComic";
+		case "Titulo":
+			property = "tituloComic";
 			break;
 		case "Numero":
-			property = "numComic";
+			property = "numeroComic";
 			break;
-		case "Edicion":
-			property = "edicionComic";
+		case "Editor":
+			property = "editorComic";
 			break;
 		case "Referencia":
 			property = "urlReferenciaComic";
 			break;
-		case "Coleccion":
-			property = "coleccionComic";
+		case "Dibujante":
+			property = "artistaComic";
+			break;
+		case "Variante":
+			property = "varianteComic";
+			break;
+		case "Guionista":
+			property = "guionistaComic";
 			break;
 		case "ID":
 			property = "idComic";
-			break;
-		case "Empresa":
-			property = "empresaComic";
 			break;
 		case "Certificacion":
 			property = "gradeoComic";

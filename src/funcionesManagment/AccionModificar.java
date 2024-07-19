@@ -23,6 +23,7 @@ import funcionesInterfaz.FuncionesTableView;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Control;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -47,20 +48,6 @@ public class AccionModificar {
 	 * Instancia de la clase Ventanas para la navegación.
 	 */
 	private static Ventanas nav = new Ventanas();
-
-	/**
-	 * Oculta y deshabilita varios campos y elementos en la interfaz gráfica.
-	 */
-	public void ocultarCamposMod() {
-//		List<Node> elementos = Arrays.asList(getReferenciaVentana().getUrlReferencia(),
-//				getReferenciaVentana().getLabel_id_mod(), getReferenciaVentana().getIdComicTratar(),
-//				getReferenciaVentana().getPrecioComic(), getReferenciaVentana().getDireccionImagen(),
-//				getReferenciaVentana().getLabel_portada(), getReferenciaVentana().getLabel_precio(),
-//				getReferenciaVentana().getLabel_referencia(), getReferenciaVentana().getBotonModificarComic(),
-//				getReferenciaVentana().getCodigoComicTratar());
-//
-//		Utilidades.cambiarVisibilidad(elementos, true);
-	}
 
 	public static void venderComic() throws SQLException {
 
@@ -114,7 +101,6 @@ public class AccionModificar {
 				FuncionesTableView.tablaBBDD(listaComics);
 			} else {
 				listaComics = ComicManagerDAO.verLibreria(sentenciaSQL);
-//				ComicManagerDAO.borrarComic(idComic);
 				ListasComicsDAO.reiniciarListaComics();
 				ListasComicsDAO.listasAutoCompletado();
 				FuncionesTableView.nombreColumnas(); // Llamada a funcion
@@ -135,12 +121,19 @@ public class AccionModificar {
 		List<Control> allControls = getReferenciaVentana().getControlAccion();
 		List<String> valorControles = new ArrayList<>();
 		for (Control control : allControls) {
-		    if (control instanceof TextField) {
-		        TextField textField = (TextField) control;
-		        String prompt = textField.getPromptText(); // Usando el prompt como identificador
-		        String value = textField.getText();
-		        valorControles.add(value);
-		    }
+			if (control instanceof TextField) {
+				TextField textField = (TextField) control;
+				String value = textField.getText();
+				valorControles.add(value);
+			} else if (control instanceof DatePicker) {
+				DatePicker datePicker = (DatePicker) control;
+				String value = datePicker.getValue() != null ? datePicker.getValue().toString() : "";
+				valorControles.add(value);
+			} else if (control instanceof TextArea) {
+				TextArea textArea = (TextArea) control;
+				String value = textArea.getText();
+				valorControles.add(value);
+			}
 		}
 
 		ComicGradeo datos = AccionControlUI.camposComic(valorControles, true);
@@ -182,21 +175,36 @@ public class AccionModificar {
 
 	public void mostrarElementosModificar(List<Node> elementosAMostrarYHabilitar) {
 
-		elementosAMostrarYHabilitar.addAll(Arrays.asList(referenciaVentana.getLabelAnio(),
-				referenciaVentana.getLabelEmpresa(), referenciaVentana.getLabelCodigo(),
-				referenciaVentana.getLabelIdMod(), referenciaVentana.getLabelPortada(),
-				referenciaVentana.getLabelReferencia(), referenciaVentana.getLabelGradeo()));
+		elementosAMostrarYHabilitar.addAll(Arrays.asList(referenciaVentana.getLabelAnio(), // Etiqueta para el año
+				referenciaVentana.getLabelCodigo(), // Etiqueta para el código
+				referenciaVentana.getLabelArtista(), // Etiqueta para el artista
+				referenciaVentana.getLabelGuionista(), // Etiqueta para el guionista
+				referenciaVentana.getLabelVariante(), // Etiqueta para la variante
+				referenciaVentana.getLabelfechaG(), // Etiqueta para la fecha de gradeo
+				referenciaVentana.getLabelfechaP(), // Etiqueta para la fecha de publicación
+				referenciaVentana.getLabelEditor(), // Etiqueta para el editor
+				referenciaVentana.getLabelKeyComic(), // Etiqueta para los comentarios clave
+				referenciaVentana.getLabelNombre(), // Etiqueta para el nombre
+				referenciaVentana.getLabelIdMod(), // Etiqueta para el ID de modificación
+				referenciaVentana.getLabelPortada(), // Etiqueta para la portada
+				referenciaVentana.getLabelGradeo(), // Etiqueta para el gradeo
+				referenciaVentana.getLabelReferencia() // Etiqueta para la referencia
+		));
 
 		elementosAMostrarYHabilitar.addAll(Arrays.asList(referenciaVentana.getNumeroComicCombobox(),
 				getReferenciaVentana().getRootVBox(), getReferenciaVentana().getBotonSubidaPortada(),
 				getReferenciaVentana().getBotonbbdd(), getReferenciaVentana().getTablaBBDD(),
 				getReferenciaVentana().getBotonParametroComic(), getReferenciaVentana().getBotonEliminar()));
 
-		elementosAMostrarYHabilitar.addAll(Arrays.asList(referenciaVentana.getGradeoComicTextField(),
-				referenciaVentana.getNombreEmpresaTextField(), referenciaVentana.getIdComicTratarTextField(),
-				referenciaVentana.getDireccionImagenTextField(), referenciaVentana.getUrlReferenciaTextField(),
-				referenciaVentana.getGradeoComicTextField(), referenciaVentana.getCodigoComicTextField(),
-				referenciaVentana.getAnioComicTextField()));
+		elementosAMostrarYHabilitar.addAll(Arrays.asList(referenciaVentana.getTituloComicTextField(),
+				referenciaVentana.getFechaGradeoTextField(), referenciaVentana.getNombreEditorTextField(),
+				referenciaVentana.getGradeoComicTextField(), referenciaVentana.getBusquedaGeneralTextField(),
+				referenciaVentana.getNumeroComicTextField(), referenciaVentana.getCodigoComicTratarTextField(),
+				referenciaVentana.getDireccionImagenTextField(), referenciaVentana.getIdComicTratarTextField(),
+				referenciaVentana.getUrlReferenciaTextField(), referenciaVentana.getCodigoComicTextField(),
+				referenciaVentana.getArtistaComicTextField(), referenciaVentana.getGuionistaComicTextField(),
+				referenciaVentana.getVarianteTextField(), referenciaVentana.getKeyComicData(),
+				referenciaVentana.getNombreEditorTextField(), referenciaVentana.getDataPickFechaP()));
 
 		elementosAMostrarYHabilitar.addAll(Arrays.asList(referenciaVentana.getBotonSubidaPortada(),
 				getReferenciaVentana().getBotonModificarComic()));
@@ -248,7 +256,7 @@ public class AccionModificar {
 			}
 		}
 	}
-	
+
 	public static void eliminarComic() {
 
 		String idComic = getReferenciaVentana().getIdComicTratarTextField().getText();

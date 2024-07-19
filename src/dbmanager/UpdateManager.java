@@ -9,10 +9,22 @@ import funcionesAuxiliares.Utilidades;
 
 public class UpdateManager {
 
-	private static final String UPDATE_CARTA = "UPDATE albumbbdd SET " + "nomComic = ?, " + "codComic = ?, "
-			+ "numComic = ?, " + "anioComic = ?, " + "coleccionComic = ?, " + "edicionComic = ?, "
-			+ "empresaComic = ?, " + "gradeoComic = ?, " + "urlReferenciaComic = ?, " + "direccionImagenComic = ? "
-			+ "WHERE idComic = ?";
+	private static final String UPDATE_COMIC = "UPDATE comicsGbbdd SET "
+	        + "tituloComic = ?, "
+	        + "codigoComic = ?, "
+	        + "numeroComic = ?, "
+	        + "fechaGradeo = ?, "
+	        + "anioPublicacion = ?, "
+	        + "editorComic = ?, "
+	        + "gradeoComic = ?, "
+	        + "keyComentarios = ?, "
+	        + "artistaComic = ?, "
+	        + "guionistaComic = ?, "
+	        + "varianteComic = ?, "
+	        + "direccionImagenComic = ?, "
+	        + "urlReferenciaComic = ? "
+	        + "WHERE idComic = ?";
+
 
 	/**
 	 * Realiza acciones específicas en la base de datos para un comic según la
@@ -27,10 +39,10 @@ public class UpdateManager {
 
 		switch (operacion.toLowerCase()) {
 		case "modificar":
-			sentenciaSQL = UPDATE_CARTA;
+			sentenciaSQL = UPDATE_COMIC;
 			break;
 		case "portada":
-			sentenciaSQL = UPDATE_CARTA;
+			sentenciaSQL = UPDATE_COMIC;
 			break;
 		default:
 			// Manejar un caso no válido si es necesario
@@ -40,6 +52,7 @@ public class UpdateManager {
 	}
 
 	public static void modificarComic(ComicGradeo datos, String sentenciaSQL) {
+		
 		// Comprobar si el identificador de la comic es válido
 		if (SelectManager.comprobarIdentificadorComic(datos.getIdComic())) {
 			// Usar try-with-resources para asegurar el cierre de recursos

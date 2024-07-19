@@ -136,7 +136,7 @@ public class OpcionesDatosController implements Initializable {
 	private static AlarmaList alarmaList = new AlarmaList();
 
 	private static final String DB_FOLDER = System.getProperty("user.home") + File.separator + "AppData"
-			+ File.separator + "Roaming" + File.separator + "gradeo" + File.separator;
+			+ File.separator + "Roaming" + File.separator + "gradeoComics" + File.separator;
 
 	/**
 	 * Inicializa el controlador cuando se carga la vista.
@@ -210,7 +210,7 @@ public class OpcionesDatosController implements Initializable {
 	void abrirUbicacion(ActionEvent event) {
 		String userHome = System.getProperty("user.home");
 		String ubicacion = userHome + File.separator + "AppData" + File.separator + "Roaming" + File.separator
-				+ "libreria";
+				+ "gradeoComics";
 
 		File carpeta = new File(ubicacion);
 
@@ -347,7 +347,6 @@ public class OpcionesDatosController implements Initializable {
 			String ubicacion = userHome + File.separator + "AppData" + File.separator + "Roaming";
 			String ficheroLocal = ubicacion + File.separator + "gradeoComics" + File.separator + "configuracion_local.conf";
 
-			// Verificar y eliminar los archivos dentro de la carpeta "libreria"
 			File ficheroConfiguracionLocal = new File(ficheroLocal);
 
 			ficheroConfiguracionLocal.delete();

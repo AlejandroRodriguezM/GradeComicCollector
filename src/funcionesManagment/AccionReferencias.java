@@ -112,7 +112,6 @@ public class AccionReferencias {
 	private TextField artistaComicTextField;
 	private TextField guionistaComicTextField;
 	private TextField varianteTextField;
-	private TextField coleccionComicTextField;
 	private TextField gradeoComicTextField;
 	private TextField idComicTratarTextField;
 	private TextField direccionImagenTextField;
@@ -701,13 +700,6 @@ public class AccionReferencias {
 	 */
 	public TextField getVarianteTextField() {
 		return varianteTextField;
-	}
-
-	/**
-	 * @return the coleccionComicTextField
-	 */
-	public TextField getColeccionComicTextField() {
-		return coleccionComicTextField;
 	}
 
 	/**
@@ -1555,13 +1547,6 @@ public class AccionReferencias {
 	 */
 	public void setVarianteTextField(TextField varianteTextField) {
 		this.varianteTextField = varianteTextField;
-	}
-
-	/**
-	 * @param coleccionComicTextField the coleccionComicTextField to set
-	 */
-	public void setColeccionComicTextField(TextField coleccionComicTextField) {
-		this.coleccionComicTextField = coleccionComicTextField;
 	}
 
 	/**

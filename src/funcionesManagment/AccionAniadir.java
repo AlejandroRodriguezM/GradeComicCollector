@@ -27,8 +27,6 @@ public class AccionAniadir {
 
 	private static AccionReferencias referenciaVentana = getReferenciaVentana();
 
-	private static AccionControlUI accionRellenoDatos = new AccionControlUI();
-
 	/**
 	 * Instancia de la clase Ventanas para la navegación.
 	 */
@@ -74,7 +72,7 @@ public class AccionAniadir {
 	public static void guardarContenidoLista(boolean esLista, ComicGradeo comic) {
 
 		if (!ListasComicsDAO.comicsImportados.isEmpty() && nav.alertaInsertar()) {
-			Collections.sort(ListasComicsDAO.comicsImportados, Comparator.comparing(ComicGradeo::getNomComic));
+			Collections.sort(ListasComicsDAO.comicsImportados, Comparator.comparing(ComicGradeo::getTituloComic));
 			String mensajePront = "";
 			if (esLista) {
 				for (ComicGradeo c : ListasComicsDAO.comicsImportados) {
@@ -85,6 +83,7 @@ public class AccionAniadir {
 				ListasComicsDAO.comicsImportados.clear();
 				mensajePront = "Has introducido las comics correctamente\n\n";
 			} else {
+				
 				ComicManagerDAO.insertarDatos(comic, true);
 
 				ListasComicsDAO.comicsImportados.removeIf(c -> c.getIdComic().equals(comic.getIdComic()));
@@ -109,15 +108,31 @@ public class AccionAniadir {
 
 	public void mostrarElementosAniadir(List<Node> elementosAMostrarYHabilitar) {
 
-		elementosAMostrarYHabilitar.addAll(Arrays.asList(referenciaVentana.getLabelGradeo(),
-				referenciaVentana.getLabelEmpresa(), referenciaVentana.getLabelIdMod(),
-				referenciaVentana.getLabelPortada(), referenciaVentana.getLabelReferencia(),
-				referenciaVentana.getLabelCodigo(), referenciaVentana.getLabelAnio()));
+		elementosAMostrarYHabilitar.addAll(Arrays.asList(referenciaVentana.getLabelAnio(), // Etiqueta para el año
+				referenciaVentana.getLabelCodigo(), // Etiqueta para el código
+				referenciaVentana.getLabelArtista(), // Etiqueta para el artista
+				referenciaVentana.getLabelGuionista(), // Etiqueta para el guionista
+				referenciaVentana.getLabelVariante(), // Etiqueta para la variante
+				referenciaVentana.getLabelfechaG(), // Etiqueta para la fecha de gradeo
+				referenciaVentana.getLabelfechaP(), // Etiqueta para la fecha de publicación
+				referenciaVentana.getLabelEditor(), // Etiqueta para el editor
+				referenciaVentana.getLabelKeyComic(), // Etiqueta para los comentarios clave
+				referenciaVentana.getLabelNombre(), // Etiqueta para el nombre
+				referenciaVentana.getLabelIdMod(), // Etiqueta para el ID de modificación
+				referenciaVentana.getLabelPortada(), // Etiqueta para la portada
+				referenciaVentana.getLabelGradeo(), // Etiqueta para el gradeo
+				referenciaVentana.getLabelReferencia() // Etiqueta para la referencia
+		));
 
-		elementosAMostrarYHabilitar.addAll(Arrays.asList(referenciaVentana.getGradeoComicTextField(),
-				referenciaVentana.getNombreEmpresaTextField(), referenciaVentana.getIdComicTratarTextField(),
-				referenciaVentana.getDireccionImagenTextField(), referenciaVentana.getUrlReferenciaTextField(),
-				referenciaVentana.getAnioComicTextField(), referenciaVentana.getCodigoComicTextField()));
+		elementosAMostrarYHabilitar.addAll(Arrays.asList(referenciaVentana.getTituloComicTextField(),
+				referenciaVentana.getFechaGradeoTextField(), referenciaVentana.getNombreEditorTextField(),
+				referenciaVentana.getGradeoComicTextField(), referenciaVentana.getBusquedaGeneralTextField(),
+				referenciaVentana.getNumeroComicTextField(), referenciaVentana.getCodigoComicTratarTextField(),
+				referenciaVentana.getDireccionImagenTextField(), referenciaVentana.getIdComicTratarTextField(),
+				referenciaVentana.getUrlReferenciaTextField(), referenciaVentana.getCodigoComicTextField(),
+				referenciaVentana.getArtistaComicTextField(), referenciaVentana.getGuionistaComicTextField(),
+				referenciaVentana.getVarianteTextField(), referenciaVentana.getKeyComicData(),
+				referenciaVentana.getNombreEditorTextField(), referenciaVentana.getDataPickFechaP()));
 
 		elementosAMostrarYHabilitar.addAll(Arrays.asList(referenciaVentana.getBotonSubidaPortada(),
 				referenciaVentana.getBotonBusquedaAvanzada(), referenciaVentana.getBotonGuardarCambioComic(),

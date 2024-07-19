@@ -197,7 +197,8 @@ public class FuncionesExcel {
 	 * @return Una tarea que realiza la exportación y devuelve true si se realiza
 	 *         con éxito, o false si ocurre un error.
 	 */
-	public Task<Boolean> crearExcelTask(List<ComicGradeo> listaComics, String tipoBusqueda, SimpleDateFormat dateFormat) {
+	public Task<Boolean> crearExcelTask(List<ComicGradeo> listaComics, String tipoBusqueda,
+			SimpleDateFormat dateFormat) {
 		File[] directorioImagenes = { null };
 		File[] directorioFichero = { null };
 
@@ -211,7 +212,7 @@ public class FuncionesExcel {
 
 			String userDir = System.getProperty("user.home");
 			String ubicacion = userDir + File.separator + "AppData" + File.separator + "Roaming";
-			String direccion = ubicacion + File.separator + "gradeado" + File.separator + Utilidades.nombreDB()
+			String direccion = ubicacion + File.separator + "gradeadoComics" + File.separator + Utilidades.nombreDB()
 					+ File.separator + "backups" + File.separator + nombreCarpeta;
 
 			try {
@@ -305,8 +306,22 @@ public class FuncionesExcel {
 	}
 
 	private void crearEncabezados(Sheet hoja) {
-		String[] encabezados = { "idComic", "nomComic", "codComic", "numComic", "anioComic", "coleccionComic",
-				"edicionComic", "empresaComic", "gradeoComic", "urlReferenciaComic", "direccionImagenComic" };
+		String[] encabezados = { "idComic", // ID del cómic
+				"tituloComic", // Título del cómic
+				"codigoComic", // Código del cómic
+				"numeroComic", // Número del cómic
+				"fechaGradeo", // Fecha de grado
+				"anioPublicacion", // Año de publicación
+				"editorComic", // Editor del cómic
+				"tipoVariante", // Tipo de variante
+				"gradeoComic", // Grado del cómic
+				"keyComentarios", // Comentarios
+				"artistaComic", // Artista del cómic
+				"guionistaComic", // Guionista del cómic
+				"varianteComic", // Variante del cómic
+				"direccionImagenComic", // Dirección de la imagen
+				"urlReferenciaComic" // URL de referencia
+		};
 
 		Row fila = hoja.createRow(0);
 		for (int i = 0; i < encabezados.length; i++) {
@@ -345,17 +360,20 @@ public class FuncionesExcel {
 	}
 
 	private void llenarFilaConDatos(ComicGradeo comic, Row fila) {
-	    fila.createCell(0).setCellValue(comic.getIdComic());
-	    fila.createCell(1).setCellValue(comic.getNomComic());
-	    fila.createCell(2).setCellValue(comic.getCodComic());               // Nueva columna para 'codComic'
-	    fila.createCell(3).setCellValue(comic.getNumComic());
-	    fila.createCell(4).setCellValue(comic.getAnioComic());              // Nueva columna para 'anioComic'
-	    fila.createCell(5).setCellValue(comic.getColeccionComic());
-	    fila.createCell(6).setCellValue(comic.getEdicionComic());           // Nueva columna para 'edicionComic'
-	    fila.createCell(7).setCellValue(comic.getEmpresaComic());           // Nueva columna para 'empresaComic'
-	    fila.createCell(8).setCellValue(comic.getGradeoComic());            // Nueva columna para 'gradeoComic'
-	    fila.createCell(9).setCellValue(comic.getUrlReferenciaComic());
-	    fila.createCell(10).setCellValue(comic.getDireccionImagenComic());
+		fila.createCell(0).setCellValue(comic.getIdComic());
+		fila.createCell(1).setCellValue(comic.getTituloComic());
+		fila.createCell(2).setCellValue(comic.getCodigoComic());
+		fila.createCell(3).setCellValue(comic.getNumeroComic());
+		fila.createCell(4).setCellValue(comic.getFechaGradeo());
+		fila.createCell(5).setCellValue(comic.getAnioPublicacion());
+		fila.createCell(6).setCellValue(comic.getEditorComic());
+		fila.createCell(7).setCellValue(comic.getGradeoComic());
+		fila.createCell(8).setCellValue(comic.getKeyComentarios());
+		fila.createCell(9).setCellValue(comic.getArtistaComic());
+		fila.createCell(10).setCellValue(comic.getGuionistaComic());
+		fila.createCell(11).setCellValue(comic.getVarianteComic());
+		fila.createCell(12).setCellValue(comic.getDireccionImagenComic());
+		fila.createCell(13).setCellValue(comic.getUrlReferenciaComic());
 	}
 
 	private void actualizarProgreso(AtomicReference<CargaComicsController> cargaComicsControllerRef) {
@@ -483,8 +501,8 @@ public class FuncionesExcel {
 		}
 	}
 
-	public static void cargaComics(ComicGradeo comicNuevo, AtomicReference<CargaComicsController> cargaComicsControllerRef,
-			File directorio, boolean esImportado) {
+	public static void cargaComics(ComicGradeo comicNuevo,
+			AtomicReference<CargaComicsController> cargaComicsControllerRef, File directorio, boolean esImportado) {
 		// Verificar si el cómic es nulo
 		if (comicNuevo == null || cargaComicsControllerRef == null) {
 			return;
@@ -522,7 +540,26 @@ public class FuncionesExcel {
 	}
 
 	private static String buildComicInfo(ComicGradeo comic) {
-		return "Comic: " + comic.getNomComic() + " - " + comic.getNumComic() + " - " + comic.getColeccionComic() + "\n";
+		// Construye la información del cómic en un formato más detallado y legible
+		StringBuilder info = new StringBuilder();
+
+		// Añade el nombre del cómic
+		info.append("Nombre del Cómic: ").append(comic.getTituloComic()).append("\n");
+
+		// Añade el código del cómic
+		info.append("Código: ").append(comic.getCodigoComic()).append("\n");
+
+		// Añade el número del cómic
+		info.append("Número: ").append(comic.getNumeroComic()).append("\n");
+
+		// Añade el año de publicación
+		info.append("Año de Publicación: ").append(comic.getAnioPublicacion()).append("\n");
+
+		// Añade el grado del cómic
+		info.append("Gradeo: ").append(comic.getGradeoComic()).append("\n");
+
+		// Devuelve la cadena construida
+		return info.toString();
 	}
 
 	private static double calculateProgress() {
@@ -608,9 +645,21 @@ public class FuncionesExcel {
 
 	private static void checkCSVColumns(String filePath) throws IOException {
 		// Columnas esperadas
-		String[] expectedColumns = { "idComic", "nomComic", "numComic", "editorialComic", "coleccionComic",
-				"rarezaComic", "esFoilComic", "gradeoComic", "estadoComic", "precioComic", "urlReferenciaComic",
-				"direccionImagenComic", "normasComic" };
+		String[] expectedColumns = { "idComic", // ID del cómic
+				"tituloComic", // Título del cómic
+				"codigoComic", // Código del cómic
+				"numeroComic", // Número del cómic
+				"fechaGradeo", // Fecha de gradeo
+				"anioPublicacion", // Año de publicación
+				"editorComic", // Editor del cómic
+				"gradeoComic", // Gradeo del cómic
+				"keyComentarios", // Comentarios clave
+				"artistaComic", // Artista del cómic
+				"guionistaComic", // Guionista del cómic
+				"varianteComic", // Variante del cómic
+				"direccionImagenComic", // Dirección de la imagen
+				"urlReferenciaComic" // URL de referencia
+		};
 
 		try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
 			String line;

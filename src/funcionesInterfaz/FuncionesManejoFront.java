@@ -358,19 +358,31 @@ public class FuncionesManejoFront {
 				referenciaVentana.getBotonEliminarImportadoListaComic(),
 				referenciaVentana.getBotonGuardarListaComics());
 
-		disableControls(estadoAccion, referenciaVentana.getNombreComicCombobox(),
-				referenciaVentana.getNumeroComicCombobox(), referenciaVentana.getNombreEdicionCombobox(),
-				referenciaVentana.getNombreColeccionCombobox(), referenciaVentana.getNombreGradeoCombobox(),
-				referenciaVentana.getNumeroComicCombobox(), referenciaVentana.getNombreTiendaCombobox(),
-				referenciaVentana.getNombreEmpresaCombobox());
+		disableControls(estadoAccion, referenciaVentana.getTituloComicCombobox(),
+				referenciaVentana.getNumeroComicCombobox(), referenciaVentana.getNombreVarianteCombobox(),
+				referenciaVentana.getNombreEditorCombobox(), referenciaVentana.getNombreGradeoCombobox(),
+				referenciaVentana.getNombreTiendaCombobox(), referenciaVentana.getNombreArtistaCombobox(),
+				referenciaVentana.getNombreGuionistaCombobox());
 
-		disableTextFields(estadoAccion, referenciaVentana.getNombreComicTextField(),
-				referenciaVentana.getEdicionComicTextField(), referenciaVentana.getColeccionComicTextField(),
-				referenciaVentana.getGradeoComicTextField(), referenciaVentana.getBusquedaGeneralTextField(),
-				referenciaVentana.getNumeroComicCombobox(), referenciaVentana.getCodigoComicTratarTextField(),
-				referenciaVentana.getDireccionImagenTextField(), referenciaVentana.getIdComicTratarTextField(),
-				referenciaVentana.getUrlReferenciaTextField(), referenciaVentana.getNombreEmpresaTextField(),
-				referenciaVentana.getCodigoComicTextField(), referenciaVentana.getAnioComicTextField());
+		disableTextFields(estadoAccion, referenciaVentana.getTituloComicTextField(), // Título del cómic
+				referenciaVentana.getFechaGradeoTextField(), // Fecha de gradeo
+				referenciaVentana.getNombreEditorTextField(), // Nombre del editor
+				referenciaVentana.getGradeoComicTextField(), // Gradeo del cómic
+				referenciaVentana.getBusquedaGeneralTextField(), // Campo de búsqueda general
+				referenciaVentana.getNumeroComicTextField(), // Número del cómic
+				referenciaVentana.getCodigoComicTratarTextField(), // Código del cómic a tratar
+				referenciaVentana.getDireccionImagenTextField(), // Dirección de la imagen
+				referenciaVentana.getIdComicTratarTextField(), // ID del cómic a tratar
+				referenciaVentana.getUrlReferenciaTextField(), // URL de referencia
+				referenciaVentana.getCodigoComicTextField(), // Código del cómic
+				referenciaVentana.getArtistaComicTextField(), // Artista del cómic
+				referenciaVentana.getGuionistaComicTextField(), // Guionista del cómic
+				referenciaVentana.getVarianteTextField(), // Variante del cómic
+				referenciaVentana.getKeyComicData(), // Área de texto para comentarios clave
+				referenciaVentana.getNombreEditorTextField(), // Nombre del editor (duplicado aquí, posiblemente un
+																// error en el código anterior)
+				referenciaVentana.getDataPickFechaP() // Año de publicación
+		);
 
 		if (referenciaVentana.getBotonModificar() != null) {
 			// Limpiar elementos adicionales de la interfaz
@@ -381,7 +393,7 @@ public class FuncionesManejoFront {
 			referenciaVentana.getTablaBBDD().setDisable(estadoAccion);
 		}
 
-		if (referenciaVentana.getNombreComicTextField() != null) {
+		if (referenciaVentana.getTituloComicTextField() != null) {
 			List<Node> elementos = Arrays.asList(getReferenciaVentana().getBotonBusquedaCodigo(),
 					getReferenciaVentana().getBusquedaCodigoTextField(),
 					getReferenciaVentana().getNombreTiendaCombobox());
