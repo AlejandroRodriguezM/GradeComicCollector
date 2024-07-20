@@ -370,11 +370,7 @@ public class AccionFuncionesComunes {
 		String codigoNuevoComicGradeo = codigoNuevaImagen();
 		String urlFinal = carpetaPortadas(Utilidades.nombreDB()) + File.separator + codigoNuevoComicGradeo + ".jpg";
 		String imagen = "";
-		if (tipoTienda.equalsIgnoreCase("psa")) {
-			String scriptPath = FuncionesFicheros.rutaDestinoRecursos + File.separator + "scrapImagenesPSA.js";
-			String urlReferencia = comicOriginal.getUrlReferenciaComic();
-			imagen = FuncionesScrapeoComunes.getImagenFromPuppeteer(urlReferencia, scriptPath);
-		} else if (tipoTienda.equalsIgnoreCase("cgc")) {
+		if (tipoTienda.equalsIgnoreCase("CGC")) {
 			String scriptPath = FuncionesFicheros.rutaDestinoRecursos + File.separator + "scrapImagenesCGC.js";
 			String urlReferencia = comicOriginal.getUrlReferenciaComic();
 			imagen = FuncionesScrapeoComunes.getImagenFromPuppeteer(urlReferencia, scriptPath);
@@ -544,7 +540,7 @@ public class AccionFuncionesComunes {
 			String urlReferenciaComic = Utilidades.defaultIfNullOrEmpty(comic.getUrlReferenciaComic(), "Vacio");
 
 			System.out.println(comic.toString());
-			
+
 			// Variables relacionadas con la imagen del cómic
 			String imagen = esClonar ? direccionImagenComic : descargarImagenComic(comic);
 
