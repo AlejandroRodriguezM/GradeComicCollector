@@ -92,7 +92,7 @@ public class FuncionesComboBox {
 			default:
 				break;
 			}
-			
+
 		}
 		return comic;
 	}
@@ -165,7 +165,7 @@ public class FuncionesComboBox {
 				comboboxes.get(i).hide();
 
 				List<String> itemsActuales = ListasComicsDAO.listaOrdenada.get(i);
-				
+
 				if (itemsActuales != null && !itemsActuales.isEmpty()) {
 
 					ObservableList<String> itemsObservable = FXCollections.observableArrayList(itemsActuales);
@@ -573,7 +573,7 @@ public class FuncionesComboBox {
 	 * @param comboboxes La lista de ComboBoxes a rellenar.
 	 */
 	public static void rellenarComboBoxEstaticos(List<ComboBox<String>> comboboxes) {
-		String[] valores = { "PSA", "OnlyGraded", "CGG", "CGC", "ACE" };
+		String[] valores = { "CGG" };
 		String[] ids = { "comboBoxTienda" };
 
 		// Verificar que la lista de ComboBox tenga al menos el mismo tamaño que los

@@ -519,7 +519,7 @@ public class Ventanas {
 
 				ventanaAbierta(cargaComics);
 				ventanaCerrada = false; // Marcar la ventana como cerrada
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/ventanas/PantallaCargaComics.fxml"));
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/ventanas/PantallaCargaComic.fxml"));
 				Parent root = loader.load();
 
 				CargaComicsController cargaComicsController = loader.getController();

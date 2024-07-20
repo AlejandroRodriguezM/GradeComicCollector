@@ -190,13 +190,13 @@
     -fx-background-color: #c9302c;
 }
 
-.button#botonParametrocomic {
+.button#botonParametroComic {
     -fx-font-size: 10.0px;
     -fx-background-color: #92C5FC;
     -fx-border-color: #92C5FC;
 }
 
-.button#botonParametrocomic:hover {
+.button#botonParametroComic:hover {
     -fx-font-size: 10.0px;
     -fx-background-color: #00A9FF;
 }
@@ -282,7 +282,7 @@
 
 .button#botonGuardarCambioComic { 
     -fx-border-width: 5px;
--fx-font-size: 10.0px;
+    -fx-font-size: 10.0px;
     -fx-background-color: #93C572;
 }
 

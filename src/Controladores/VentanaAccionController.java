@@ -65,12 +65,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import webScrap.WebScrapACE;
 import webScrap.WebScrapCGC;
-import webScrap.WebScrapCGG;
 import webScrap.WebScrapNodeJSInstall;
-import webScrap.WebScrapOG;
-import webScrap.WebScrapPSA;
 
 /**
  * Clase controladora para la ventana de acciones, que gestiona la interfaz de
@@ -785,53 +781,55 @@ public class VentanaAccionController implements Initializable {
 	 */
 	@FXML
 	public void busquedaPorCodigo(ActionEvent event) throws IOException, URISyntaxException {
-		enviarReferencias();
-		if (Utilidades.isInternetAvailable()) {
+//		enviarReferencias();
+//		if (Utilidades.isInternetAvailable()) {
 			String valorCodigo = busquedaCodigo.getText();
-			String tipoTienda = comboBoxTienda.getValue();
-			if (valorCodigo.isEmpty() || tipoTienda.isEmpty()) {
-				return;
-			}
-			nav.cerrarMenuOpciones();
-			AccionControlUI.borrarDatosGraficos();
-
-			AccionFuncionesComunes.cargarRuning();
-
-			// Aquí se asigna el CompletableFuture, este es un ejemplo de cómo podría ser
-			// asignado:
-			CompletableFuture<List<String>> future = CompletableFuture.supplyAsync(() -> {
-				// Lógica para obtener los enlaces, esto es solo un ejemplo
-				return obtenerEnlaces(valorCodigo);
-			});
-
-			// Si el future es null, entonces es necesario inicializarlo apropiadamente
-			// antes de usarlo
-			if (future != null) {
-				future.thenAccept(enlaces -> {
-
-					File fichero;
-					try {
-						fichero = createTempFile(enlaces);
-
-						if (fichero != null) {
-							enviarReferencias();
-							rellenarCombosEstaticos();
-							if (WebScrapNodeJSInstall.checkNodeJSVersion()) {
-								AccionFuncionesComunes.busquedaPorCodigoImportacion(fichero, tipoTienda);
-							}
-						}
-
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				});
-
-				future.exceptionally(ex -> {
-					ex.printStackTrace();
-					return null; // Manejar errores aquí según sea necesario
-				});
-			}
-		}
+//			String tipoTienda = comboBoxTienda.getValue();
+//			if (valorCodigo.isEmpty() || tipoTienda.isEmpty()) {
+//				return;
+//			}
+//			nav.cerrarMenuOpciones();
+//			AccionControlUI.borrarDatosGraficos();
+//
+//			AccionFuncionesComunes.cargarRuning();
+//
+//			// Aquí se asigna el CompletableFuture, este es un ejemplo de cómo podría ser
+//			// asignado:
+//			CompletableFuture<List<String>> future = CompletableFuture.supplyAsync(() -> {
+//				// Lógica para obtener los enlaces, esto es solo un ejemplo
+//				return obtenerEnlaces(valorCodigo);
+//			});
+//
+//			// Si el future es null, entonces es necesario inicializarlo apropiadamente
+//			// antes de usarlo
+//			if (future != null) {
+//				future.thenAccept(enlaces -> {
+//
+//					File fichero;
+//					try {
+//						fichero = createTempFile(enlaces);
+//
+//						if (fichero != null) {
+//							enviarReferencias();
+//							rellenarCombosEstaticos();
+//							if (WebScrapNodeJSInstall.checkNodeJSVersion()) {
+//								AccionFuncionesComunes.busquedaPorCodigoImportacion(fichero, tipoTienda);
+//							}
+//						}
+//
+//					} catch (IOException e) {
+//						e.printStackTrace();
+//					}
+//				});
+//
+//				future.exceptionally(ex -> {
+//					ex.printStackTrace();
+//					return null; // Manejar errores aquí según sea necesario
+//				});
+//			}
+//		}
+		
+		WebScrapCGC.abrirWeb(valorCodigo);
 	}
 
 	// Ejemplo de método para obtener los enlaces

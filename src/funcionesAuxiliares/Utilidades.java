@@ -2445,6 +2445,19 @@ public class Utilidades {
             datePicker.setValue(date);
         }
     }
+    
+	public static void abrirEnlace(String url) {
+		if (Utilidades.isWindows()) {
+			Utilidades.accesoWebWindows(url); // Llamada a funcion
+		} else {
+			if (Utilidades.isUnix()) {
+				Utilidades.accesoWebLinux(url); // Llamada a funcion
+			} else {
+				Utilidades.accesoWebMac(url);
+
+			}
+		}
+	}
 
 	public static AccionReferencias getReferenciaVentana() {
 		return referenciaVentana;

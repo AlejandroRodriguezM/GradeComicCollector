@@ -310,13 +310,13 @@ public class FuncionesScrapeoComunes {
 	}
 
 	public static String extraerImagen(ComicGradeo carta) {
-		String argument = "cardtrader+" + carta.getNomCarta().replace(" ", "+") + "+" + carta.getNumCarta() + "+"
-				+ carta.getColeccionCarta().replace(" ", "+");
-		String urlCarta = searchWebImagen(argument);
-		if (urlCarta.contains("/cards/")) {
-			System.out.println(urlCarta);
-			return extraerDatosImagen(urlCarta);
-		}
+//		String argument = "cardtrader+" + carta.getNomCarta().replace(" ", "+") + "+" + carta.getNumCarta() + "+"
+//				+ carta.getColeccionCarta().replace(" ", "+");
+//		String urlCarta = searchWebImagen(argument);
+//		if (urlCarta.contains("/cards/")) {
+//			System.out.println(urlCarta);
+//			return extraerDatosImagen(urlCarta);
+//		}
 		return "";
 	}
 

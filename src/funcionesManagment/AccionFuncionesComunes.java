@@ -26,7 +26,6 @@ import alarmas.AlarmaList;
 import comicManagement.ComicGradeo;
 import dbmanager.ComicManagerDAO;
 import dbmanager.DatabaseManagerDAO;
-import dbmanager.ListasCartasDAO;
 import dbmanager.ListasComicsDAO;
 import dbmanager.UpdateManager;
 import ficherosFunciones.FuncionesFicheros;
@@ -43,11 +42,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import webScrap.FuncionesScrapeoComunes;
-import webScrap.WebScrapACE;
 import webScrap.WebScrapCGC;
-import webScrap.WebScrapCGG;
-import webScrap.WebScrapOG;
-import webScrap.WebScrapPSA;
 
 public class AccionFuncionesComunes {
 
@@ -580,18 +575,9 @@ public class AccionFuncionesComunes {
 
 	public static List<ComicGradeo> obtenerComicInfo(String finalValorCodigo, boolean esImport, String tipoTienda) {
 		List<ComicGradeo> comicInfo = new ArrayList<>();
-		if (esImport) {
-			if (tipoTienda.equalsIgnoreCase("PSA")) {
-				comicInfo.add(WebScrapPSA.extraerDatosMTG(finalValorCodigo));
-			} else if (tipoTienda.equalsIgnoreCase("OnlyGraded")) {
-				comicInfo.add(WebScrapOG.devolverComicBuscada(finalValorCodigo));
-			} else if (tipoTienda.equalsIgnoreCase("CGC")) {
-				comicInfo.add(WebScrapCGC.devolverComicBuscada(finalValorCodigo));
-			} else if (tipoTienda.equalsIgnoreCase("CGG")) {
-				comicInfo.add(WebScrapCGG.devolverComicBuscada(finalValorCodigo));
-			} else if (tipoTienda.equalsIgnoreCase("ACE")) {
-				comicInfo.add(WebScrapACE.devolverComicBuscada(finalValorCodigo));
-			}
+
+		if (esImport && tipoTienda.equalsIgnoreCase("CGC")) {
+			WebScrapCGC.abrirWeb(finalValorCodigo);
 		}
 
 		// Convertir la lista a un Set para eliminar duplicados

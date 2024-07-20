@@ -73,7 +73,7 @@
             <Font size="13.0" />
          </font></Button>
       <Button fx:id="botonEliminar" layoutX="623.0" layoutY="260.0" mnemonicParsing="false" onAction="#eliminarDatos" prefHeight="73.0" prefWidth="90.0" stylesheets="@../style/genericos_style.css" text="Eliminar Comic" textAlignment="CENTER" visible="false" />
-      <Button fx:id="botonbbdd" disable="true" layoutX="248.0" layoutY="29.0" mnemonicParsing="false" onAction="#verTodabbdd" prefHeight="35.0" prefWidth="57.0" stylesheets="@../style/genericos_style.css" text="Ver todo" visible="false" />
+      <Button fx:id="botonbbdd" disable="true" layoutX="248.0" layoutY="28.0" mnemonicParsing="false" onAction="#verTodabbdd" prefHeight="35.0" prefWidth="57.0" stylesheets="@../style/genericos_style.css" text="Ver todo" visible="false" />
       <TextField fx:id="textFieldIdComic" layoutX="56.0" layoutY="28.0" prefHeight="21.0" prefWidth="125.0" promptText="ID comic">
          <font>
             <Font size="10.0" />
@@ -104,12 +104,12 @@
       </VBox>
       <MenuBar fx:id="menuNavegacion" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="838.0">
          <menus>
-            <Menu fx:id="navegacionOpciones" mnemonicParsing="false" text="Archivo">
+            <Menu fx:id="navegacionOpciones" disable="true" mnemonicParsing="false" text="Archivo" visible="false">
                <items>
                   <MenuItem fx:id="menuImportarFichero" mnemonicParsing="false" onAction="#importarFicheroCodigoBarras" text="Importar fichero" />
                </items>
             </Menu>
-            <Menu fx:id="navegacionEstadistica" mnemonicParsing="false" text="Estadistica">
+            <Menu fx:id="navegacionEstadistica" disable="true" mnemonicParsing="false" text="Estadistica" visible="false">
                <items>
                   <MenuItem fx:id="navegacionMostrarEstadistica" mnemonicParsing="false" text="Descargar estadistica global" />
                </items>
@@ -118,7 +118,7 @@
       </MenuBar>
       <Button fx:id="botonGuardarComic" alignment="CENTER" layoutX="739.0" layoutY="262.0" mnemonicParsing="false" onAction="#guardarComicImportados" prefHeight="33.0" prefWidth="90.0" stylesheets="@../style/genericos_style.css" text="Añadir Comic" textAlignment="CENTER" visible="false" wrapText="true" />
       <Button fx:id="botonEliminarImportadoComic" layoutX="640.0" layoutY="262.0" mnemonicParsing="false" onAction="#eliminarComicSeleccionado" prefHeight="33.0" prefWidth="90.0" stylesheets="@../style/genericos_style.css" text="Eliminar Comic" visible="false" wrapText="true" />
-      <Button fx:id="botonGuardarCambioComic" layoutX="248.0" layoutY="29.0" mnemonicParsing="false" onAction="#guardarDatos" prefHeight="35.0" prefWidth="81.0" stylesheets="@../style/genericos_style.css" text="Guardar Comic" visible="false" />
+      <Button fx:id="botonGuardarCambioComic" layoutX="248.0" layoutY="28.0" mnemonicParsing="false" onAction="#guardarDatos" prefHeight="35.0" prefWidth="81.0" stylesheets="@../style/genericos_style.css" text="Guardar Comic" visible="false" />
       <ImageView fx:id="cargaImagen" fitHeight="308.0" fitWidth="199.0" layoutX="391.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="imagencomic" fitHeight="308.0" fitWidth="199.0" layoutX="391.0" layoutY="29.0" onMouseClicked="#ampliarImagen" pickOnBounds="true" />
       <Button fx:id="botonSubidaPortada" layoutX="186.0" layoutY="242.0" mnemonicParsing="false" onAction="#nuevaPortada" prefHeight="25.0" prefWidth="25.0" stylesheets="@../style/boton_subida_style.css" />
