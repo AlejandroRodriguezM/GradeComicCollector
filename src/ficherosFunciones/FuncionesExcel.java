@@ -544,15 +544,6 @@ public class FuncionesExcel {
 		// Añade el nombre del cómic
 		info.append("Nombre del Cómic: ").append(comic.getTituloComic()).append("\n");
 
-		// Añade el código del cómic
-		info.append("Código: ").append(comic.getCodigoComic()).append("\n");
-
-		// Añade el número del cómic
-		info.append("Número: ").append(comic.getNumeroComic()).append("\n");
-
-		// Añade el grado del cómic
-		info.append("Gradeo: ").append(comic.getGradeoComic()).append("\n");
-
 		// Devuelve la cadena construida
 		return info.toString();
 	}
