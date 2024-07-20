@@ -18,14 +18,14 @@ public class ComicGradeoFichero {
 		String[] data = lineText.split(";");
 
 		// Verificar si hay suficientes elementos en el array 'data'
-		if (data.length >= 15) { // Ajusta este valor según la cantidad de campos esperados
+		if (data.length >= 13) { // Ajusta este valor según la cantidad de campos esperados
 			String idComic = data[0];
 			String tituloComic = data[1];
 			String codigoComic = data[2];
 			String numeroComic = data[3];
 			String fechaGradeo = data[4];
 			String editorComic = data[5];
-			String gradeoComic = comprobarGradeo(data[6]);
+			String gradeoComic = data[6];
 			String keyComentarios = data[7];
 			String artistaComic = data[8];
 			String guionistaComic = data[9];
@@ -89,17 +89,6 @@ public class ComicGradeoFichero {
 
 		// Retornar el precio limpiado con el símbolo monetario
 		return symbol + precioStr;
-	}
-
-	public static String comprobarGradeo(String valorGradeo) {
-		String[] valores = { "NM (Noir Medium)", "SM (Standard Medium)", "LM (Light Medium)", "FL (Fine Light)",
-				"VF (Very Fine)" };
-		for (String gradeo : valores) {
-			if (valorGradeo.equalsIgnoreCase(gradeo)) {
-				return valorGradeo;
-			}
-		}
-		return "NM (Noir Medium)";
 	}
 
 }

@@ -637,47 +637,11 @@ public class MenuPrincipalController implements Initializable {
 		}
 	}
 
-	/**
-	 * Funcion que al pulsar el boton de 'botonVentas' se muestran aquellos comics
-	 * que han sido vendidos
-	 *
-	 * @param event
-	 * @throws SQLException
-	 */
-	@FXML
-	void comicsComprados(ActionEvent event) {
-		enviarReferencias();
-		imprimirComicsEstado(TipoBusqueda.COMPLETA);
-	}
-
-	@FXML
-	void comicsGuardados(ActionEvent event) {
-		enviarReferencias();
-		imprimirComicsEstado(null);
-
-	}
-
 	@FXML
 	void verOpcionesAvanzadas(ActionEvent event) {
 		enviarReferencias();
 		nav.verOpcionesAvanzadas();
 
-	}
-
-	private void imprimirComicsEstado(TipoBusqueda tipoBusqueda) {
-		enviarReferencias();
-		limpiezaDeDatos();
-		limpiarComboBox();
-		ListasComicsDAO.reiniciarListaComics();
-		FuncionesTableView.nombreColumnas();
-		FuncionesTableView.actualizarBusquedaRaw();
-		List<ComicGradeo> listaComics;
-
-		String sentenciaSQL = DBUtilidades.construirSentenciaSQL(tipoBusqueda);
-
-		listaComics = SelectManager.verLibreria(sentenciaSQL, false);
-
-		FuncionesTableView.tablaBBDD(listaComics);
 	}
 
 	////////////////////////////

@@ -715,11 +715,11 @@ public class AccionFuncionesComunes {
 	private static void mensajesCargaComics(ComicGradeo comic, String tipoUpdate) {
 		StringBuilder textoBuilder = new StringBuilder();
 
-		if (comic.getUrlReferenciaComic().isEmpty() || comic.getUrlReferenciaComic().equalsIgnoreCase("vacio")) {
+		if (comic.getTituloComic().isEmpty() || comic.getTituloComic().equalsIgnoreCase("vacio")) {
 
 			if (tipoUpdate.isEmpty()) {
-				codigoFaltante.append("Falta comic con código: ").append(comic.getTituloComic()).append("\n");
-				textoBuilder.append("ComicGradeo no capturado: ").append(comic.getTituloComic()).append("\n");
+				codigoFaltante.append("URL no valida: ").append(comic.getUrlReferenciaComic()).append("\n");
+				textoBuilder.append("URL no valida: ").append(comic.getUrlReferenciaComic()).append("\n");
 			} else {
 				codigoFaltante.append("ID no procesado: ").append(comic.getIdComic()).append("\n");
 				textoBuilder.append("ID no procesado: ").append(comic.getIdComic()).append("\n");

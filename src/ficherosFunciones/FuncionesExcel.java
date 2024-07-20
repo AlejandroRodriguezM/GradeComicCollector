@@ -306,13 +306,13 @@ public class FuncionesExcel {
 	}
 
 	private void crearEncabezados(Sheet hoja) {
-		String[] encabezados = { "idComic", // ID del cómic
+		String[] encabezados = { 
+				"idComic", // ID del cómic
 				"tituloComic", // Título del cómic
 				"codigoComic", // Código del cómic
 				"numeroComic", // Número del cómic
 				"fechaGradeo", // Fecha de grado
 				"editorComic", // Editor del cómic
-				"tipoVariante", // Tipo de variante
 				"gradeoComic", // Grado del cómic
 				"keyComentarios", // Comentarios
 				"artistaComic", // Artista del cómic
@@ -640,7 +640,8 @@ public class FuncionesExcel {
 
 	private static void checkCSVColumns(String filePath) throws IOException {
 		// Columnas esperadas
-		String[] expectedColumns = { "idComic", // ID del cómic
+		String[] expectedColumns = { 
+				"idComic", // ID del cómic
 				"tituloComic", // Título del cómic
 				"codigoComic", // Código del cómic
 				"numeroComic", // Número del cómic
