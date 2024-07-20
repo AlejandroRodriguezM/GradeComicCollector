@@ -13,66 +13,57 @@ import funcionesAuxiliares.Utilidades;
 
 public class WebScrapCGC {
 
-//	public static ComicGradeo extraerDatosMTG(String codigoCarta) {
-//		String scriptPath = FuncionesFicheros.rutaDestinoRecursos + File.separator + "scrapCGC.js";
-//		List<String> data = FuncionesScrapeoComunes.getCartaFromPuppeteer(codigoCarta, scriptPath);
-//
-//		String nombre = "";
-//		String codigo = "";
-//		String numero = "";
-//		String anio = "";
-//		String coleccion = "";
-//		String edicion = "";
-//		String empresa = "";
-//		String gradeo = "";
-//		String imagen = "";
-//		String referencia = "";
-//
-//		for (String line : data) {
-//			if (line.startsWith("Nombre: ")) {
-//				nombre = line.substring("Nombre: ".length()).trim().replaceAll("\\(.*\\)", "").trim();
-//			} 
-//			else if (line.startsWith("Codigo: ")) {
-//				codigo = line.substring("Codigo: ".length()).trim();
-//			}
-//			else if (line.startsWith("Numero: ")) {
-//				numero = line.substring("Numero: ".length()).trim();
-//			}
-//			else if (line.startsWith("Anio: ")) {
-//				anio = line.substring("Anio: ".length()).trim();
-//			}
-//			else if (line.startsWith("Coleccion: ")) {
-//				coleccion = line.substring("Coleccion: ".length()).trim();
-//			}
-//			else if (line.startsWith("Edicion: ")) {
-//				edicion = line.substring("Normas: ".length()).trim();
-//			}
-//			else if (line.startsWith("Empresa: ")) {
-//				empresa = line.substring("Empresa: ".length()).trim();
-//			}
-//			else if (line.startsWith("Gradeo: ")) {
-//				gradeo = line.substring("Gradeo: ".length()).trim();
-//			}
-//			else if (line.startsWith("Imagen: ")) {
-//				imagen = line.substring("Imagen: ".length()).trim();
-//			}
-//			else if (line.startsWith("Referencia: ")) {
-//				referencia = line.substring("Referencia: ".length()).trim();
-//			}
-//		}
-//		return new ComicGradeo.CartaGradeoBuilder("", nombre).codCarta(codigo).numCarta(numero).anioCarta(anio)
-//				.coleccionCarta(coleccion).edicionCarta(edicion).empresaCarta(empresa).gradeoCarta(gradeo)
-//				.urlReferenciaCarta(referencia).direccionImagenCarta(imagen).build();
-//	}
+	public static ComicGradeo extraerDatosMTG(String codigoCarta) {
+		String scriptPath = FuncionesFicheros.rutaDestinoRecursos + File.separator + "scrapCGC.js";
+		List<String> data = FuncionesScrapeoComunes.getCartaFromPuppeteer(codigoCarta, scriptPath);
 
-	public static void abrirWeb(String codigo) {
+		String certNumber = "";
+		String titulo = "";
+		String numero = "";
+		String editor = "";
+		String fechaG = "";
+		String grade = "";
+		String referencia = "";
+		String dibujante = "";
+		String variante = "";
+		String key = "";
+		String guionista = "";
+		String imageUrl = "";
 
-		String url = "https://www.cgccomics.com/certlookup/" + codigo;
-		Utilidades.abrirEnlace(url);
-
+		for (String line : data) {
+			if (line.startsWith("Titulo: ")) {
+				titulo = line.substring("Titulo: ".length()).trim();
+			} else if (line.startsWith("Certificado: ")) {
+				certNumber = line.substring("Certificado: ".length()).trim();
+			} else if (line.startsWith("Numero: ")) {
+				numero = line.substring("Numero: ".length()).trim();
+			} else if (line.startsWith("Editor: ")) {
+				editor = line.substring("Editor: ".length()).trim();
+			} else if (line.startsWith("FechaG: ")) {
+				fechaG = line.substring("FechaG: ".length()).trim();
+			} else if (line.startsWith("Grade: ")) {
+				grade = line.substring("Grade: ".length()).trim();
+			} else if (line.startsWith("Referencia: ")) {
+				referencia = line.substring("Referencia: ".length()).trim();
+			} else if (line.startsWith("Dibujante: ")) {
+				dibujante = line.substring("Dibujante: ".length()).trim();
+			} else if (line.startsWith("Variante: ")) {
+				variante = line.substring("Variante: ".length()).trim();
+			} else if (line.startsWith("Guionista: ")) {
+				guionista = line.substring("Guionista: ".length()).trim();
+			} else if (line.startsWith("Imagen: ")) {
+				imageUrl = line.substring("Imagen: ".length()).trim();
+			} else if (line.startsWith("KeyC: ")) {
+				key = line.substring("KeyC: ".length()).trim();
+			}
+		}
+		return new ComicGradeo.ComicGradeoBuilder("", titulo).codigoComic(certNumber).numeroComic(numero)
+				.fechaGradeo(fechaG).editorComic(editor).gradeoComic(grade).keyComentarios(key).artistaComic(dibujante)
+				.guionistaComic(guionista).varianteComic(variante).direccionImagenComic(imageUrl)
+				.urlReferenciaComic(referencia).build();
 	}
 
-//	public static ComicGradeo devolverCartaBuscada(String urlCarta) {
-//		return extraerDatosMTG(urlCarta);
-//	}
+	public static ComicGradeo devolverCartaBuscada(String urlCarta) {
+		return extraerDatosMTG(urlCarta);
+	}
 }

@@ -42,7 +42,6 @@
 				<Menu fx:id="navegacionComic" mnemonicParsing="false" text="Ventanas">
 					<items>
 						<MenuItem fx:id="menuComicAniadir" mnemonicParsing="false" onAction="#accionComic" text="Añadir comic" />
-						<MenuItem fx:id="menuComicEliminar" mnemonicParsing="false" onAction="#accionComic" text="Eliminar Comic" />
 						<MenuItem fx:id="menuComicModificar" mnemonicParsing="false" onAction="#accionComic" text="Modificar Comic" />
 					</items>
 				</Menu>

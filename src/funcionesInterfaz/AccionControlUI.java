@@ -192,8 +192,6 @@ public class AccionControlUI {
 		referenciaVentana.getNumeroComicTextField().setText(comicTemp.getNumeroComic());
 		Utilidades.setDatePickerValue(referenciaVentana.getDataPickFechaP(),
 				referenciaVentana.getDataPickFechaP().toString());
-		referenciaVentana.getFechaGradeoTextField().setText(comicTemp.getFechaGradeo());
-		referenciaVentana.getFechaGradeoTextField().setText(comicTemp.getAnioPublicacion());
 		referenciaVentana.getNombreEditorTextField().setText(comicTemp.getEditorComic());
 		referenciaVentana.getVarianteTextField().setText(comicTemp.getVarianteComic());
 		referenciaVentana.getGradeoComicTextField().setText(comicTemp.getGradeoComic());
@@ -215,8 +213,6 @@ public class AccionControlUI {
 		referenciaVentana.getNumeroComicTextField().setText(comicTemp.getNumeroComic());
 		Utilidades.setDatePickerValue(referenciaVentana.getDataPickFechaP(),
 				referenciaVentana.getDataPickFechaP().toString());
-		referenciaVentana.getFechaGradeoTextField().setText(comicTemp.getFechaGradeo());
-		referenciaVentana.getFechaGradeoTextField().setText(comicTemp.getAnioPublicacion());
 		referenciaVentana.getNombreEditorTextField().setText(comicTemp.getEditorComic());
 		referenciaVentana.getVarianteTextField().setText(comicTemp.getVarianteComic());
 		referenciaVentana.getGradeoComicTextField().setText(comicTemp.getGradeoComic());
@@ -287,17 +283,16 @@ public class AccionControlUI {
 				|| c.getGradeoComic().equalsIgnoreCase("vacio") || c.getUrlReferenciaComic() == null
 				|| c.getUrlReferenciaComic().isEmpty() || c.getUrlReferenciaComic().equalsIgnoreCase("vacio")
 				|| c.getFechaGradeo() == null || c.getFechaGradeo().isEmpty()
-				|| c.getFechaGradeo().equalsIgnoreCase("vacio") || c.getAnioPublicacion() == null
-				|| c.getAnioPublicacion().isEmpty() || c.getAnioPublicacion().equalsIgnoreCase("vacio")
-				|| c.getDireccionImagenComic() == null || c.getDireccionImagenComic().isEmpty()
-				|| c.getDireccionImagenComic().equalsIgnoreCase("vacio") || c.getCodigoComic() == null
-				|| c.getCodigoComic().isEmpty() || c.getCodigoComic().equalsIgnoreCase("vacio")
-				|| c.getKeyComentarios() == null || c.getKeyComentarios().isEmpty()
-				|| c.getKeyComentarios().equalsIgnoreCase("vacio") || c.getArtistaComic() == null
-				|| c.getArtistaComic().isEmpty() || c.getArtistaComic().equalsIgnoreCase("vacio")
-				|| c.getGuionistaComic() == null || c.getGuionistaComic().isEmpty()
-				|| c.getGuionistaComic().equalsIgnoreCase("vacio") || c.getVarianteComic() == null
-				|| c.getVarianteComic().isEmpty() || c.getVarianteComic().equalsIgnoreCase("vacio")) {
+				|| c.getFechaGradeo().equalsIgnoreCase("vacio") || c.getDireccionImagenComic() == null
+				|| c.getDireccionImagenComic().isEmpty() || c.getDireccionImagenComic().equalsIgnoreCase("vacio")
+				|| c.getCodigoComic() == null || c.getCodigoComic().isEmpty()
+				|| c.getCodigoComic().equalsIgnoreCase("vacio") || c.getKeyComentarios() == null
+				|| c.getKeyComentarios().isEmpty() || c.getKeyComentarios().equalsIgnoreCase("vacio")
+				|| c.getArtistaComic() == null || c.getArtistaComic().isEmpty()
+				|| c.getArtistaComic().equalsIgnoreCase("vacio") || c.getGuionistaComic() == null
+				|| c.getGuionistaComic().isEmpty() || c.getGuionistaComic().equalsIgnoreCase("vacio")
+				|| c.getVarianteComic() == null || c.getVarianteComic().isEmpty()
+				|| c.getVarianteComic().equalsIgnoreCase("vacio")) {
 
 			String mensajePront = "Revisa la lista, algunos campos están mal rellenados.";
 			AlarmaList.mostrarMensajePront(mensajePront, false, referenciaVentana.getProntInfoTextArea());
@@ -305,64 +300,6 @@ public class AccionControlUI {
 		}
 
 		return true;
-	}
-
-	public static boolean isValidPrecio(String precioStr) {
-		// Verificar si el precio es válido (no vacío, no solo un símbolo, no solo el
-		// número 0)
-		if (precioStr == null || precioStr.isEmpty()) {
-			return false;
-		}
-
-		// Formatear el precio
-		String formattedPrecio = parsePrecio(precioStr);
-
-		System.out.println(formattedPrecio);
-
-		// Verificar si el precio es "€0.0", "€0", "$0.0", "$0" o solo el símbolo de la
-		// moneda
-		if (formattedPrecio.equalsIgnoreCase("€0.0") || formattedPrecio.equalsIgnoreCase("€0")
-				|| formattedPrecio.equalsIgnoreCase("$0.0") || formattedPrecio.equalsIgnoreCase("$0")
-				|| formattedPrecio.equals("€") || formattedPrecio.equals("$")) {
-			return false;
-		}
-
-		// Verificar si el precio consiste solo en un símbolo
-		if (formattedPrecio.length() == 1) {
-			return false;
-		}
-
-		// Verificar si el precio consiste solo en el número 0
-		if (formattedPrecio.equals("0.0") || formattedPrecio.equals("0,0")) {
-			return false;
-		}
-
-		return true;
-	}
-
-	public static String parsePrecio(String precioStr) {
-		if (precioStr == null || precioStr.isEmpty()) {
-			return "€0.0";
-		}
-
-		// Crear un formateador decimal que maneje símbolos y formatos específicos
-		DecimalFormatSymbols symbols = new DecimalFormatSymbols();
-		symbols.setDecimalSeparator('.');
-		symbols.setGroupingSeparator(',');
-		DecimalFormat format = new DecimalFormat("#,##0.00", symbols);
-		format.setParseBigDecimal(true);
-
-		// Encontrar el símbolo de moneda al inicio de la cadena
-		char simbolo = precioStr.charAt(0);
-
-		// Eliminar todos los caracteres que no son dígitos, punto o coma
-		String cleanPrecioStr = precioStr.replaceAll("[^0-9.,]", "");
-
-		// Insertar el símbolo de moneda al inicio del número limpio
-		cleanPrecioStr = simbolo + cleanPrecioStr;
-
-		// Devolver el valor parseado como double
-		return cleanPrecioStr;
 	}
 
 	/**
@@ -387,7 +324,6 @@ public class AccionControlUI {
 		referenciaVentana.getTituloComicTextField().setText("");
 		referenciaVentana.getCodigoComicTextField().setText("");
 		referenciaVentana.getNumeroComicTextField().setText("");
-		referenciaVentana.getFechaGradeoTextField().setText("");
 		referenciaVentana.getNombreEditorTextField().setText("");
 		referenciaVentana.getVarianteTextField().setText("");
 		referenciaVentana.getGradeoComicTextField().setText("");
@@ -610,23 +546,21 @@ public class AccionControlUI {
 		String urlReferenciaComic = "";
 		String idComicTratar = "";
 		String fechaGradeo = "";
-		String anioPublicacion = "";
 		String keyComentarios = "";
 
 		// Si es una acción, algunos campos se asignan en un orden diferente
 		if (esAccion) {
 			fechaGradeo = camposComic.get(2);
-			anioPublicacion = camposComic.get(3);
-			artistaComic = camposComic.get(4);
-			varianteComic = camposComic.get(5);
-			guionistaComic = camposComic.get(6);
-			urlReferenciaComic = camposComic.get(7);
-			direccionImagenComic = camposComic.get(8);
-			keyComentarios = camposComic.get(9);
-			editorComic = camposComic.get(10);
-			gradeoComic = camposComic.get(11);
-			codigoComic = camposComic.get(12);
-			idComicTratar = camposComic.get(13);
+			artistaComic = camposComic.get(3);
+			varianteComic = camposComic.get(4);
+			guionistaComic = camposComic.get(5);
+			urlReferenciaComic = camposComic.get(6);
+			direccionImagenComic = camposComic.get(7);
+			keyComentarios = camposComic.get(8);
+			editorComic = camposComic.get(9);
+			gradeoComic = camposComic.get(10);
+			codigoComic = camposComic.get(11);
+			idComicTratar = camposComic.get(12);
 		}
 
 		// Establecer los valores en el objeto ComicGradeo
@@ -634,7 +568,6 @@ public class AccionControlUI {
 		comicTemp.setNumeroComic(Utilidades.defaultIfNullOrEmpty(numeroComic, ""));
 		comicTemp.setCodigoComic(Utilidades.defaultIfNullOrEmpty(codigoComic, ""));
 		comicTemp.setFechaGradeo(Utilidades.defaultIfNullOrEmpty(fechaGradeo, ""));
-		comicTemp.setAnioPublicacion(Utilidades.defaultIfNullOrEmpty(anioPublicacion, ""));
 		comicTemp.setEditorComic(Utilidades.defaultIfNullOrEmpty(editorComic, ""));
 		comicTemp.setGradeoComic(Utilidades.defaultIfNullOrEmpty(gradeoComic, ""));
 		comicTemp.setKeyComentarios(Utilidades.defaultIfNullOrEmpty(keyComentarios, ""));
@@ -704,7 +637,7 @@ public class AccionControlUI {
 
 		// Crear un nuevo objeto ComicGradeo con los datos actualizados
 		ComicGradeo datos = camposComic(valorControles, true);
-		
+
 		// Crear un objeto ComicGradeo modificado
 		ComicGradeo comicTempModificado = new ComicGradeo();
 
@@ -721,8 +654,6 @@ public class AccionControlUI {
 				.setNumeroComic(Utilidades.defaultIfNullOrEmpty(datos.getNumeroComic(), comicTemp.getNumeroComic()));
 		comicTempModificado
 				.setFechaGradeo(Utilidades.defaultIfNullOrEmpty(datos.getFechaGradeo(), comicTemp.getFechaGradeo()));
-		comicTempModificado.setAnioPublicacion(
-				Utilidades.defaultIfNullOrEmpty(datos.getAnioPublicacion(), comicTemp.getAnioPublicacion()));
 		comicTempModificado
 				.setEditorComic(Utilidades.defaultIfNullOrEmpty(datos.getEditorComic(), comicTemp.getEditorComic()));
 		comicTempModificado

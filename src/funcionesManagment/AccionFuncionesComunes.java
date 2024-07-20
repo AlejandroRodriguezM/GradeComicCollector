@@ -464,7 +464,6 @@ public class AccionFuncionesComunes {
 		// Limpiar campos de texto
 		getReferenciaVentana().getTituloComicTextField().setText("");
 		getReferenciaVentana().getCodigoComicTextField().setText("");
-		getReferenciaVentana().getFechaGradeoTextField().setText("");
 		getReferenciaVentana().getNombreEditorTextField().setText("");
 		getReferenciaVentana().getArtistaComicTextField().setText("");
 		getReferenciaVentana().getGuionistaComicTextField().setText("");
@@ -546,7 +545,6 @@ public class AccionFuncionesComunes {
 			String codigoComic = Utilidades.defaultIfNullOrEmpty(comic.getCodigoComic(), "0");
 			String numeroComic = Utilidades.defaultIfNullOrEmpty(comic.getNumeroComic(), "0");
 			String fechaGradeo = Utilidades.defaultIfNullOrEmpty(comic.getFechaGradeo(), "2000-01-01");
-			String anioPublicacion = Utilidades.defaultIfNullOrEmpty(comic.getAnioPublicacion(), "2000");
 			String editorComic = Utilidades.defaultIfNullOrEmpty(comic.getEditorComic(), "Vacio");
 			String gradeoComic = Utilidades.defaultIfNullOrEmpty(comic.getGradeoComic(), "Vacio");
 			String keyComentarios = Utilidades.defaultIfNullOrEmpty(comic.getKeyComentarios(), "Vacio");
@@ -561,10 +559,10 @@ public class AccionFuncionesComunes {
 
 			// Construcción del objeto ComicGradeo usando el builder
 			ComicGradeo comicImport = new ComicGradeo.ComicGradeoBuilder(idComic, tituloComic).codigoComic(codigoComic)
-					.numeroComic(numeroComic).fechaGradeo(fechaGradeo).anioPublicacion(anioPublicacion)
-					.editorComic(editorComic).gradeoComic(gradeoComic).keyComentarios(keyComentarios)
-					.artistaComic(artistaComic).guionistaComic(guionistaComic).varianteComic(varianteComic)
-					.direccionImagenComic(imagen).urlReferenciaComic(urlReferenciaComic).build();
+					.numeroComic(numeroComic).fechaGradeo(fechaGradeo).editorComic(editorComic).gradeoComic(gradeoComic)
+					.keyComentarios(keyComentarios).artistaComic(artistaComic).guionistaComic(guionistaComic)
+					.varianteComic(varianteComic).direccionImagenComic(imagen).urlReferenciaComic(urlReferenciaComic)
+					.build();
 
 			// Añadir el cómic a la lista e actualizar la tabla
 			ListasComicsDAO.comicsImportados.add(comicImport);
@@ -577,7 +575,7 @@ public class AccionFuncionesComunes {
 		List<ComicGradeo> comicInfo = new ArrayList<>();
 
 		if (esImport && tipoTienda.equalsIgnoreCase("CGC")) {
-			WebScrapCGC.abrirWeb(finalValorCodigo);
+			WebScrapCGC.extraerDatosMTG(finalValorCodigo);
 		}
 
 		// Convertir la lista a un Set para eliminar duplicados
@@ -1038,7 +1036,6 @@ public class AccionFuncionesComunes {
 			setStyleIfNotNull(getReferenciaVentana().getArtistaComicTextField());
 			setStyleIfNotNull(getReferenciaVentana().getGuionistaComicTextField());
 			setStyleIfNotNull(getReferenciaVentana().getVarianteTextField());
-			setStyleIfNotNull(getReferenciaVentana().getFechaGradeoTextField());
 		}
 	}
 

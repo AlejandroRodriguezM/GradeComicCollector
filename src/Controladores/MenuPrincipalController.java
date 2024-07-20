@@ -189,9 +189,6 @@ public class MenuPrincipalController implements Initializable {
 	private MenuItem menuComicAniadir;
 
 	@FXML
-	private MenuItem menuComicEliminar;
-
-	@FXML
 	private MenuItem menuComicModificar;
 
 	@FXML
@@ -278,7 +275,6 @@ public class MenuPrincipalController implements Initializable {
 		referenciaVentana.setMenuArchivoImportar(menuArchivoImportar);
 		referenciaVentana.setMenuArchivoSobreMi(menuArchivoSobreMi);
 		referenciaVentana.setMenuComicAniadir(menuComicAniadir);
-		referenciaVentana.setMenuComicEliminar(menuComicEliminar);
 		referenciaVentana.setMenuComicModificar(menuComicModificar);
 		referenciaVentana.setMenuEstadisticaEstadistica(menuEstadisticaEstadistica);
 		referenciaVentana.setMenuArchivoAvanzado(menuArchivoAvanzado);
@@ -374,7 +370,6 @@ public class MenuPrincipalController implements Initializable {
 		menuArchivoCerrar.setGraphic(Utilidades.createIcon("/Icono/Archivo/salir.png", 16, 16));
 
 		menuComicAniadir.setGraphic(Utilidades.createIcon("/Icono/Ventanas/add.png", 16, 16));
-		menuComicEliminar.setGraphic(Utilidades.createIcon("/Icono/Ventanas/delete.png", 16, 16));
 		menuComicModificar.setGraphic(Utilidades.createIcon("/Icono/Ventanas/modify.png", 16, 16));
 
 		menuPrecioTotal.setGraphic(Utilidades.createIcon("/Icono/Estadistica/posesion.png", 16, 16));

@@ -25,19 +25,18 @@ public class DBUtilidades {
 	    ps.setString(2, datos.getCodigoComic()); // código del cómic
 	    ps.setString(3, datos.getNumeroComic()); // número del cómic
 	    ps.setString(4, datos.getFechaGradeo()); // fecha de gradeo
-	    ps.setString(5, datos.getAnioPublicacion()); // año de publicación
-	    ps.setString(6, datos.getEditorComic()); // editor del cómic
-	    ps.setString(7, datos.getGradeoComic()); // gradeo del cómic
-	    ps.setString(8, datos.getKeyComentarios()); // key de comentarios
-	    ps.setString(9, datos.getArtistaComic()); // artista del cómic
-	    ps.setString(10, datos.getGuionistaComic()); // guionista del cómic
-	    ps.setString(11, datos.getVarianteComic()); // variante del cómic
-	    ps.setString(12, datos.getDireccionImagenComic()); // dirección de la imagen
-	    ps.setString(13, datos.getUrlReferenciaComic()); // URL de referencia
+	    ps.setString(5, datos.getEditorComic()); // editor del cómic
+	    ps.setString(6, datos.getGradeoComic()); // gradeo del cómic
+	    ps.setString(7, datos.getKeyComentarios()); // key de comentarios
+	    ps.setString(8, datos.getArtistaComic()); // artista del cómic
+	    ps.setString(9, datos.getGuionistaComic()); // guionista del cómic
+	    ps.setString(10, datos.getVarianteComic()); // variante del cómic
+	    ps.setString(11, datos.getDireccionImagenComic()); // dirección de la imagen
+	    ps.setString(12, datos.getUrlReferenciaComic()); // URL de referencia
 	    
 	    // Establecer el ID si se requiere para actualizaciones
 	    if (includeID) {
-	        ps.setString(14, datos.getIdComic()); // ID del cómic
+	        ps.setString(13, datos.getIdComic()); // ID del cómic
 	    }
 	}
 
@@ -69,7 +68,6 @@ public class DBUtilidades {
 	    connector = agregarCondicion(sql, connector, "codigoComic", comic.getCodigoComic());
 	    connector = agregarCondicion(sql, connector, "numeroComic", comic.getNumeroComic());
 	    connector = agregarCondicion(sql, connector, "fechaGradeo", comic.getFechaGradeo());
-	    connector = agregarCondicion(sql, connector, "anioPublicacion", comic.getAnioPublicacion());
 	    connector = agregarCondicion(sql, connector, "editorComic", comic.getEditorComic());
 	    connector = agregarCondicionLike(sql, connector, "gradeoComic", comic.getGradeoComic());
 	    connector = agregarCondicion(sql, connector, "keyComentarios", comic.getKeyComentarios());
@@ -260,7 +258,6 @@ public class DBUtilidades {
 	        String codigoComic = rs.getString("codigoComic");
 	        String numeroComic = rs.getString("numeroComic");
 	        String fechaGradeo = rs.getString("fechaGradeo");
-	        String anioPublicacion = rs.getString("anioPublicacion");
 	        String editorComic = rs.getString("editorComic");
 	        String gradeoComic = rs.getString("gradeoComic");
 	        String keyComentarios = rs.getString("keyComentarios");
@@ -274,7 +271,6 @@ public class DBUtilidades {
 	                .codigoComic(codigoComic)
 	                .numeroComic(numeroComic)
 	                .fechaGradeo(fechaGradeo)
-	                .anioPublicacion(anioPublicacion)
 	                .editorComic(editorComic)
 	                .gradeoComic(gradeoComic)
 	                .keyComentarios(keyComentarios)

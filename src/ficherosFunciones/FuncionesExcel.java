@@ -311,7 +311,6 @@ public class FuncionesExcel {
 				"codigoComic", // Código del cómic
 				"numeroComic", // Número del cómic
 				"fechaGradeo", // Fecha de grado
-				"anioPublicacion", // Año de publicación
 				"editorComic", // Editor del cómic
 				"tipoVariante", // Tipo de variante
 				"gradeoComic", // Grado del cómic
@@ -365,15 +364,14 @@ public class FuncionesExcel {
 		fila.createCell(2).setCellValue(comic.getCodigoComic());
 		fila.createCell(3).setCellValue(comic.getNumeroComic());
 		fila.createCell(4).setCellValue(comic.getFechaGradeo());
-		fila.createCell(5).setCellValue(comic.getAnioPublicacion());
-		fila.createCell(6).setCellValue(comic.getEditorComic());
-		fila.createCell(7).setCellValue(comic.getGradeoComic());
-		fila.createCell(8).setCellValue(comic.getKeyComentarios());
-		fila.createCell(9).setCellValue(comic.getArtistaComic());
-		fila.createCell(10).setCellValue(comic.getGuionistaComic());
-		fila.createCell(11).setCellValue(comic.getVarianteComic());
-		fila.createCell(12).setCellValue(comic.getDireccionImagenComic());
-		fila.createCell(13).setCellValue(comic.getUrlReferenciaComic());
+		fila.createCell(5).setCellValue(comic.getEditorComic());
+		fila.createCell(6).setCellValue(comic.getGradeoComic());
+		fila.createCell(7).setCellValue(comic.getKeyComentarios());
+		fila.createCell(8).setCellValue(comic.getArtistaComic());
+		fila.createCell(9).setCellValue(comic.getGuionistaComic());
+		fila.createCell(10).setCellValue(comic.getVarianteComic());
+		fila.createCell(11).setCellValue(comic.getDireccionImagenComic());
+		fila.createCell(12).setCellValue(comic.getUrlReferenciaComic());
 	}
 
 	private void actualizarProgreso(AtomicReference<CargaComicsController> cargaComicsControllerRef) {
@@ -552,9 +550,6 @@ public class FuncionesExcel {
 		// Añade el número del cómic
 		info.append("Número: ").append(comic.getNumeroComic()).append("\n");
 
-		// Añade el año de publicación
-		info.append("Año de Publicación: ").append(comic.getAnioPublicacion()).append("\n");
-
 		// Añade el grado del cómic
 		info.append("Gradeo: ").append(comic.getGradeoComic()).append("\n");
 
@@ -650,7 +645,6 @@ public class FuncionesExcel {
 				"codigoComic", // Código del cómic
 				"numeroComic", // Número del cómic
 				"fechaGradeo", // Fecha de gradeo
-				"anioPublicacion", // Año de publicación
 				"editorComic", // Editor del cómic
 				"gradeoComic", // Gradeo del cómic
 				"keyComentarios", // Comentarios clave

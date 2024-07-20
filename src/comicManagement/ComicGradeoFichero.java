@@ -24,15 +24,14 @@ public class ComicGradeoFichero {
 			String codigoComic = data[2];
 			String numeroComic = data[3];
 			String fechaGradeo = data[4];
-			String anioPublicacion = data[5];
-			String editorComic = data[6];
-			String gradeoComic = comprobarGradeo(data[7]);
-			String keyComentarios = data[8];
-			String artistaComic = data[9];
-			String guionistaComic = data[10];
-			String varianteComic = data[11];
-			String direccionImagenComic = data[12];
-			String urlReferenciaComic = data[13];
+			String editorComic = data[5];
+			String gradeoComic = comprobarGradeo(data[6]);
+			String keyComentarios = data[7];
+			String artistaComic = data[8];
+			String guionistaComic = data[9];
+			String varianteComic = data[10];
+			String direccionImagenComic = data[11];
+			String urlReferenciaComic = data[12];
 
 			String nombrePortada = Utilidades.obtenerNombrePortada(false, direccionImagenComic);
 			String imagen = FuncionesExcel.DEFAULT_PORTADA_IMAGE_PATH + File.separator + nombrePortada;
@@ -40,7 +39,7 @@ public class ComicGradeoFichero {
 			urlReferenciaComic = (urlReferenciaComic.isEmpty()) ? "Sin referencia" : urlReferenciaComic;
 
 			return new ComicGradeo.ComicGradeoBuilder(idComic, tituloComic).codigoComic(codigoComic)
-					.numeroComic(numeroComic).fechaGradeo(fechaGradeo).anioPublicacion(anioPublicacion)
+					.numeroComic(numeroComic).fechaGradeo(fechaGradeo)
 					.editorComic(editorComic).gradeoComic(gradeoComic).keyComentarios(keyComentarios)
 					.artistaComic(artistaComic).guionistaComic(guionistaComic).varianteComic(varianteComic)
 					.direccionImagenComic(imagen).urlReferenciaComic(urlReferenciaComic).build();

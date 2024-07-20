@@ -148,11 +148,10 @@ public class FuncionesComboBox {
 
 		ComicGradeo comicTemp = new ComicGradeo.ComicGradeoBuilder("", comic.getTituloComic())
 				.codigoComic(comic.getCodigoComic()).numeroComic(comic.getNumeroComic())
-				.fechaGradeo(comic.getFechaGradeo()).anioPublicacion(comic.getAnioPublicacion())
-				.editorComic(comic.getEditorComic()).gradeoComic(comic.getGradeoComic())
-				.keyComentarios(comic.getKeyComentarios()).artistaComic(comic.getArtistaComic())
-				.guionistaComic(comic.getGuionistaComic()).varianteComic(comic.getVarianteComic())
-				.direccionImagenComic("").urlReferenciaComic("").build();
+				.fechaGradeo(comic.getFechaGradeo()).editorComic(comic.getEditorComic())
+				.gradeoComic(comic.getGradeoComic()).keyComentarios(comic.getKeyComentarios())
+				.artistaComic(comic.getArtistaComic()).guionistaComic(comic.getGuionistaComic())
+				.varianteComic(comic.getVarianteComic()).direccionImagenComic("").urlReferenciaComic("").build();
 
 		String sql = DBUtilidades.datosConcatenados(comicTemp);
 

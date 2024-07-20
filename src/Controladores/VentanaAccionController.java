@@ -65,7 +65,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import webScrap.WebScrapCGC;
 import webScrap.WebScrapNodeJSInstall;
 
 /**
@@ -173,9 +172,6 @@ public class VentanaAccionController implements Initializable {
 	private Label labelFechaG;
 
 	@FXML
-	private Label labelFechaP;
-
-	@FXML
 	private Label labelGradeo;
 
 	@FXML
@@ -242,9 +238,6 @@ public class VentanaAccionController implements Initializable {
 	private TextField textFieldEditorComic;
 
 	@FXML
-	private TextField textFieldFechaG;
-
-	@FXML
 	private TextField textFieldGradeoComic;
 
 	@FXML
@@ -294,7 +287,6 @@ public class VentanaAccionController implements Initializable {
 		referenciaVentana.setCodigoComicTextField(textFieldCodigoComic);
 		referenciaVentana.setNumeroComicTextField(textFieldNumeroComic);
 		referenciaVentana.setDataPickFechaP(dataPickFechaP);
-		referenciaVentana.setFechaGradeoTextField(textFieldFechaG);
 		referenciaVentana.setArtistaComicTextField(textFieldArtistaComic);
 		referenciaVentana.setVarianteTextField(textFieldVarianteComic);
 		referenciaVentana.setGuionistaComicTextField(textFieldGuionistaComic);
@@ -332,7 +324,6 @@ public class VentanaAccionController implements Initializable {
 
 		referenciaVentana.setLabelIdMod(labelId);
 		referenciaVentana.setLabelNombre(labelNombre);
-		referenciaVentana.setLabelfechaP(labelFechaP);
 		referenciaVentana.setLabelfechaG(labelFechaG);
 		referenciaVentana.setLabelArtista(labelArtista);
 		referenciaVentana.setLabelVariante(labelVariante);
@@ -358,15 +349,15 @@ public class VentanaAccionController implements Initializable {
 		referenciaVentana.setNavegacionCerrar(navegacionOpciones);
 		referenciaVentana.setNavegacionEstadistica(navegacionEstadistica);
 
-		AccionReferencias.setListaTextFields(FXCollections.observableArrayList(
-				Arrays.asList(textFieldNombreComic, textFieldNumeroComic, textFieldFechaG, textFieldEditorComic,
+		AccionReferencias.setListaTextFields(FXCollections
+				.observableArrayList(Arrays.asList(textFieldNombreComic, textFieldNumeroComic, textFieldEditorComic,
 						textFieldArtistaComic, textFieldVarianteComic, textFieldGuionistaComic, textFieldEditorComic,
 						textFieldGradeoComic, textFieldIdComic, textFieldDireccionComic, textFieldUrlComic)));
 
 		referenciaVentana.setControlAccion(Arrays.asList(textFieldNombreComic, textFieldNumeroComic, dataPickFechaP,
-				textFieldFechaG, textFieldArtistaComic, textFieldVarianteComic, textFieldGuionistaComic,
-				textFieldUrlComic, textFieldDireccionComic, textAreaKeyComic, textFieldEditorComic,
-				textFieldGradeoComic, textFieldCodigoComic, textFieldIdComic));
+				textFieldArtistaComic, textFieldVarianteComic, textFieldGuionistaComic, textFieldUrlComic,
+				textFieldDireccionComic, textAreaKeyComic, textFieldEditorComic, textFieldGradeoComic,
+				textFieldCodigoComic, textFieldIdComic));
 
 		AccionReferencias.setListaColumnasTabla(Arrays.asList(columnaNombre, columnaNumero, columnaArtista,
 				columnaGuionista, columnaVariante, columnaCertificacion));
@@ -459,11 +450,9 @@ public class VentanaAccionController implements Initializable {
 		FuncionesManejoFront.eliminarEspacioInicialYFinal(textFieldNombreComic);
 		FuncionesManejoFront.eliminarSimbolosEspeciales(textFieldNombreComic);
 		FuncionesManejoFront.restringirSimbolos(textFieldEditorComic);
-		FuncionesManejoFront.restringirSimbolos(textFieldFechaG);
 		FuncionesManejoFront.restringirSimbolos(textFieldGradeoComic);
 
 		FuncionesManejoFront.reemplazarEspaciosMultiples(textFieldNombreComic);
-		FuncionesManejoFront.reemplazarEspaciosMultiples(textFieldFechaG);
 		FuncionesManejoFront.reemplazarEspaciosMultiples(textFieldArtistaComic);
 		FuncionesManejoFront.reemplazarEspaciosMultiples(textFieldArtistaComic);
 		FuncionesManejoFront.reemplazarEspaciosMultiples(textFieldVarianteComic);
@@ -476,7 +465,6 @@ public class VentanaAccionController implements Initializable {
 		FuncionesManejoFront.permitirUnSimbolo(textFieldGradeoComic);
 		FuncionesManejoFront.permitirUnSimbolo(busquedaCodigo);
 		textFieldIdComic.setTextFormatter(FuncionesComboBox.validadorNenteros());
-		textFieldFechaG.setTextFormatter(FuncionesComboBox.validadorNenteros());
 
 		if (AccionFuncionesComunes.TIPO_ACCION.equalsIgnoreCase("aniadir")) {
 			textFieldIdComic.setTextFormatter(FuncionesComboBox.desactivarValidadorNenteros());
@@ -781,55 +769,53 @@ public class VentanaAccionController implements Initializable {
 	 */
 	@FXML
 	public void busquedaPorCodigo(ActionEvent event) throws IOException, URISyntaxException {
-//		enviarReferencias();
-//		if (Utilidades.isInternetAvailable()) {
-			String valorCodigo = busquedaCodigo.getText();
-//			String tipoTienda = comboBoxTienda.getValue();
-//			if (valorCodigo.isEmpty() || tipoTienda.isEmpty()) {
-//				return;
-//			}
-//			nav.cerrarMenuOpciones();
-//			AccionControlUI.borrarDatosGraficos();
-//
-//			AccionFuncionesComunes.cargarRuning();
-//
-//			// Aquí se asigna el CompletableFuture, este es un ejemplo de cómo podría ser
-//			// asignado:
-//			CompletableFuture<List<String>> future = CompletableFuture.supplyAsync(() -> {
-//				// Lógica para obtener los enlaces, esto es solo un ejemplo
-//				return obtenerEnlaces(valorCodigo);
-//			});
-//
-//			// Si el future es null, entonces es necesario inicializarlo apropiadamente
-//			// antes de usarlo
-//			if (future != null) {
-//				future.thenAccept(enlaces -> {
-//
-//					File fichero;
-//					try {
-//						fichero = createTempFile(enlaces);
-//
-//						if (fichero != null) {
-//							enviarReferencias();
-//							rellenarCombosEstaticos();
-//							if (WebScrapNodeJSInstall.checkNodeJSVersion()) {
-//								AccionFuncionesComunes.busquedaPorCodigoImportacion(fichero, tipoTienda);
-//							}
-//						}
-//
-//					} catch (IOException e) {
-//						e.printStackTrace();
-//					}
-//				});
-//
-//				future.exceptionally(ex -> {
-//					ex.printStackTrace();
-//					return null; // Manejar errores aquí según sea necesario
-//				});
-//			}
-//		}
-		
-		WebScrapCGC.abrirWeb(valorCodigo);
+		enviarReferencias();
+		if (Utilidades.isInternetAvailable()) {
+		String valorCodigo = busquedaCodigo.getText();
+			String tipoTienda = comboBoxTienda.getValue();
+			if (valorCodigo.isEmpty() || tipoTienda.isEmpty()) {
+				return;
+			}
+			nav.cerrarMenuOpciones();
+			AccionControlUI.borrarDatosGraficos();
+
+			AccionFuncionesComunes.cargarRuning();
+
+			// Aquí se asigna el CompletableFuture, este es un ejemplo de cómo podría ser
+			// asignado:
+			CompletableFuture<List<String>> future = CompletableFuture.supplyAsync(() -> {
+				// Lógica para obtener los enlaces, esto es solo un ejemplo
+				return obtenerEnlaces(valorCodigo);
+			});
+
+			// Si el future es null, entonces es necesario inicializarlo apropiadamente
+			// antes de usarlo
+			if (future != null) {
+				future.thenAccept(enlaces -> {
+
+					File fichero;
+					try {
+						fichero = createTempFile(enlaces);
+
+						if (fichero != null) {
+							enviarReferencias();
+							rellenarCombosEstaticos();
+							if (WebScrapNodeJSInstall.checkNodeJSVersion()) {
+								AccionFuncionesComunes.busquedaPorCodigoImportacion(fichero, tipoTienda);
+							}
+						}
+
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				});
+
+				future.exceptionally(ex -> {
+					ex.printStackTrace();
+					return null; // Manejar errores aquí según sea necesario
+				});
+			}
+		}
 	}
 
 	// Ejemplo de método para obtener los enlaces

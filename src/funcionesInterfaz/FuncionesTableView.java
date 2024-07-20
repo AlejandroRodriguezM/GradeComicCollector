@@ -163,11 +163,11 @@ public class FuncionesTableView {
 
 		mensajeBuilder.append("Nombre: ").append(comic.getTituloComic()).append("\n").append("Número: ")
 				.append(comic.getNumeroComic()).append("\n").append("Edición: ").append(comic.getEditorComic())
-				.append("\n").append("Colección: ").append(comic.getAnioPublicacion()).append("\n").append("Gradeo: ")
-				.append(comic.getGradeoComic()).append("\n").append("Comentarios: ").append(comic.getKeyComentarios())
-				.append("\n").append("Artista: ").append(comic.getArtistaComic()).append("\n").append("Guionista: ")
-				.append(comic.getGuionistaComic()).append("\n").append("Variante: ").append(comic.getVarianteComic())
-				.append("\n").append("Dirección Imagen: ").append(comic.getDireccionImagenComic()).append("\n")
+				.append("\n").append("\n").append("Gradeo: ").append(comic.getGradeoComic()).append("\n")
+				.append("Comentarios: ").append(comic.getKeyComentarios()).append("\n").append("Artista: ")
+				.append(comic.getArtistaComic()).append("\n").append("Guionista: ").append(comic.getGuionistaComic())
+				.append("\n").append("Variante: ").append(comic.getVarianteComic()).append("\n")
+				.append("Dirección Imagen: ").append(comic.getDireccionImagenComic()).append("\n")
 				.append("URL Referencia: ").append(comic.getUrlReferenciaComic()).append("\n");
 
 		return mensajeBuilder.toString();

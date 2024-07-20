@@ -96,7 +96,6 @@ public class AccionReferencias {
 	private Label labelArtista;
 	private Label labelGuionista;
 	private Label labelVariante;
-	private Label labelfechaP;
 	private Label labelfechaG;
 	private Label prontInfoEspecial;
 	private Label prontInfoPreviews;
@@ -107,7 +106,6 @@ public class AccionReferencias {
 	private TextField busquedaCodigoTextField;
 	private TextField tituloComicTextField;
 	private TextField codigoComicTextField;
-	private TextField fechaGradeoTextField;
 	private TextField nombreEditorTextField;
 	private TextField artistaComicTextField;
 	private TextField guionistaComicTextField;
@@ -138,7 +136,6 @@ public class AccionReferencias {
 
 	private MenuItem menuImportarFicheroCodigoBarras;
 	private MenuItem menuComicAniadir;
-	private MenuItem menuComicEliminar;
 	private MenuItem menuComicModificar;
 	private MenuItem menuEstadisticaEstadistica;
 	private MenuItem menuArchivoCerrar;
@@ -598,13 +595,6 @@ public class AccionReferencias {
 	}
 
 	/**
-	 * @return the labelfechaP
-	 */
-	public Label getLabelfechaP() {
-		return labelfechaP;
-	}
-
-	/**
 	 * @return the labelfechaG
 	 */
 	public Label getLabelfechaG() {
@@ -665,13 +655,6 @@ public class AccionReferencias {
 	 */
 	public TextField getCodigoComicTextField() {
 		return codigoComicTextField;
-	}
-
-	/**
-	 * @return the fechaGradeoTextField
-	 */
-	public TextField getFechaGradeoTextField() {
-		return fechaGradeoTextField;
 	}
 
 	/**
@@ -847,13 +830,6 @@ public class AccionReferencias {
 	 */
 	public MenuItem getMenuComicAniadir() {
 		return menuComicAniadir;
-	}
-
-	/**
-	 * @return the menuComicEliminar
-	 */
-	public MenuItem getMenuComicEliminar() {
-		return menuComicEliminar;
 	}
 
 	/**
@@ -1445,13 +1421,6 @@ public class AccionReferencias {
 	}
 
 	/**
-	 * @param labelfechaP the labelfechaP to set
-	 */
-	public void setLabelfechaP(Label labelfechaP) {
-		this.labelfechaP = labelfechaP;
-	}
-
-	/**
 	 * @param labelfechaG the labelfechaG to set
 	 */
 	public void setLabelfechaG(Label labelfechaG) {
@@ -1512,13 +1481,6 @@ public class AccionReferencias {
 	 */
 	public void setCodigoComicTextField(TextField codigoComicTextField) {
 		this.codigoComicTextField = codigoComicTextField;
-	}
-
-	/**
-	 * @param fechaGradeoTextField the fechaGradeoTextField to set
-	 */
-	public void setFechaGradeoTextField(TextField fechaGradeoTextField) {
-		this.fechaGradeoTextField = fechaGradeoTextField;
 	}
 
 	/**
@@ -1694,13 +1656,6 @@ public class AccionReferencias {
 	 */
 	public void setMenuComicAniadir(MenuItem menuComicAniadir) {
 		this.menuComicAniadir = menuComicAniadir;
-	}
-
-	/**
-	 * @param menuComicEliminar the menuComicEliminar to set
-	 */
-	public void setMenuComicEliminar(MenuItem menuComicEliminar) {
-		this.menuComicEliminar = menuComicEliminar;
 	}
 
 	/**

@@ -17,7 +17,6 @@ public class ComicGradeo implements Cloneable {
     protected String codigoComic;
     protected String numeroComic;
     protected String fechaGradeo;
-    protected String anioPublicacion;
     protected String editorComic;
     protected String gradeoComic;
     protected String keyComentarios;
@@ -46,10 +45,6 @@ public class ComicGradeo implements Cloneable {
 
     public String getFechaGradeo() {
         return fechaGradeo;
-    }
-
-    public String getAnioPublicacion() {
-        return anioPublicacion;
     }
 
     public String getEditorComic() {
@@ -105,10 +100,6 @@ public class ComicGradeo implements Cloneable {
         this.fechaGradeo = fechaGradeo;
     }
 
-    public void setAnioPublicacion(String anioPublicacion) {
-        this.anioPublicacion = anioPublicacion;
-    }
-
     public void setEditorComic(String editorComic) {
         this.editorComic = editorComic;
     }
@@ -148,7 +139,6 @@ public class ComicGradeo implements Cloneable {
         private String codigoComic;
         private String numeroComic;
         private String fechaGradeo;
-        private String anioPublicacion;
         private String editorComic;
         private String gradeoComic;
         private String keyComentarios;
@@ -175,11 +165,6 @@ public class ComicGradeo implements Cloneable {
 
         public ComicGradeoBuilder fechaGradeo(String fechaGradeo) {
             this.fechaGradeo = fechaGradeo;
-            return this;
-        }
-
-        public ComicGradeoBuilder anioPublicacion(String anioPublicacion) {
-            this.anioPublicacion = anioPublicacion;
             return this;
         }
 
@@ -234,7 +219,6 @@ public class ComicGradeo implements Cloneable {
         this.codigoComic = builder.codigoComic;
         this.numeroComic = builder.numeroComic;
         this.fechaGradeo = builder.fechaGradeo;
-        this.anioPublicacion = builder.anioPublicacion;
         this.editorComic = builder.editorComic;
         this.gradeoComic = builder.gradeoComic;
         this.keyComentarios = builder.keyComentarios;
@@ -251,7 +235,6 @@ public class ComicGradeo implements Cloneable {
         this.codigoComic = "";
         this.numeroComic = "";
         this.fechaGradeo = "";
-        this.anioPublicacion = "";
         this.editorComic = "";
         this.gradeoComic = "";
         this.keyComentarios = "";
@@ -329,7 +312,6 @@ public class ComicGradeo implements Cloneable {
         Utilidades.appendIfNotEmpty(contenidoComic, "Código", codigoComic);
         Utilidades.appendIfNotEmpty(contenidoComic, "Número", numeroComic);
         Utilidades.appendIfNotEmpty(contenidoComic, "Fecha de Gradeo", fechaGradeo);
-        Utilidades.appendIfNotEmpty(contenidoComic, "Año de Publicación", anioPublicacion);
         Utilidades.appendIfNotEmpty(contenidoComic, "Editor", editorComic);
         Utilidades.appendIfNotEmpty(contenidoComic, "Gradeo", gradeoComic);
         Utilidades.appendIfNotEmpty(contenidoComic, "Comentarios Clave", keyComentarios);
@@ -350,13 +332,12 @@ public class ComicGradeo implements Cloneable {
         return Objects.equals(codigoComic, comic.codigoComic) && 
                Objects.equals(tituloComic, comic.tituloComic) && 
                Objects.equals(numeroComic, comic.numeroComic) && 
-               Objects.equals(anioPublicacion, comic.anioPublicacion) && 
                Objects.equals(editorComic, comic.editorComic);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codigoComic, tituloComic, numeroComic, anioPublicacion, editorComic);
+        return Objects.hash(codigoComic, tituloComic, numeroComic, editorComic);
     }
 
     @Override

@@ -341,11 +341,11 @@ public class FuncionesManejoFront {
 
 		disableMenuItems(estadoAccion, referenciaVentana.getMenuArchivoExcel(),
 				referenciaVentana.getMenuArchivoImportar(), referenciaVentana.getMenuArchivoDelete(),
-				referenciaVentana.getMenuComicAniadir(), referenciaVentana.getMenuComicEliminar(),
-				referenciaVentana.getMenuComicModificar(), referenciaVentana.getMenuArchivoAvanzado(),
-				referenciaVentana.getMenuImportarFicheroCodigoBarras(), referenciaVentana.getNavegacionEstadistica(),
-				referenciaVentana.getMenuImportarFicheroCodigoBarras(), referenciaVentana.getMenuArchivoSobreMi(),
-				referenciaVentana.getMenuArchivoDesconectar(), referenciaVentana.getMenuArchivoCerrar());
+				referenciaVentana.getMenuComicAniadir(), referenciaVentana.getMenuComicModificar(),
+				referenciaVentana.getMenuArchivoAvanzado(), referenciaVentana.getMenuImportarFicheroCodigoBarras(),
+				referenciaVentana.getNavegacionEstadistica(), referenciaVentana.getMenuImportarFicheroCodigoBarras(),
+				referenciaVentana.getMenuArchivoSobreMi(), referenciaVentana.getMenuArchivoDesconectar(),
+				referenciaVentana.getMenuArchivoCerrar());
 
 		disableButtons(estadoAccion, referenciaVentana.getBotonIntroducir(), referenciaVentana.getBotonModificar(),
 				referenciaVentana.getBotonEliminar(), referenciaVentana.getBotonLimpiar(),
@@ -365,7 +365,6 @@ public class FuncionesManejoFront {
 				referenciaVentana.getNombreGuionistaCombobox());
 
 		disableTextFields(estadoAccion, referenciaVentana.getTituloComicTextField(), // Título del cómic
-				referenciaVentana.getFechaGradeoTextField(), // Fecha de gradeo
 				referenciaVentana.getNombreEditorTextField(), // Nombre del editor
 				referenciaVentana.getGradeoComicTextField(), // Gradeo del cómic
 				referenciaVentana.getBusquedaGeneralTextField(), // Campo de búsqueda general

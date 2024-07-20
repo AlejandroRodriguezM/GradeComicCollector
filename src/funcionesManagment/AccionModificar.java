@@ -181,7 +181,6 @@ public class AccionModificar {
 				referenciaVentana.getLabelGuionista(), // Etiqueta para el guionista
 				referenciaVentana.getLabelVariante(), // Etiqueta para la variante
 				referenciaVentana.getLabelfechaG(), // Etiqueta para la fecha de gradeo
-				referenciaVentana.getLabelfechaP(), // Etiqueta para la fecha de publicación
 				referenciaVentana.getLabelEditor(), // Etiqueta para el editor
 				referenciaVentana.getLabelKeyComic(), // Etiqueta para los comentarios clave
 				referenciaVentana.getLabelNombre(), // Etiqueta para el nombre
@@ -196,15 +195,15 @@ public class AccionModificar {
 				getReferenciaVentana().getBotonbbdd(), getReferenciaVentana().getTablaBBDD(),
 				getReferenciaVentana().getBotonParametroComic(), getReferenciaVentana().getBotonEliminar()));
 
-		elementosAMostrarYHabilitar.addAll(Arrays.asList(referenciaVentana.getTituloComicTextField(),
-				referenciaVentana.getFechaGradeoTextField(), referenciaVentana.getNombreEditorTextField(),
-				referenciaVentana.getGradeoComicTextField(), referenciaVentana.getBusquedaGeneralTextField(),
-				referenciaVentana.getNumeroComicTextField(), referenciaVentana.getCodigoComicTratarTextField(),
-				referenciaVentana.getDireccionImagenTextField(), referenciaVentana.getIdComicTratarTextField(),
-				referenciaVentana.getUrlReferenciaTextField(), referenciaVentana.getCodigoComicTextField(),
-				referenciaVentana.getArtistaComicTextField(), referenciaVentana.getGuionistaComicTextField(),
-				referenciaVentana.getVarianteTextField(), referenciaVentana.getKeyComicData(),
-				referenciaVentana.getNombreEditorTextField(), referenciaVentana.getDataPickFechaP()));
+		elementosAMostrarYHabilitar.addAll(
+				Arrays.asList(referenciaVentana.getTituloComicTextField(), referenciaVentana.getNombreEditorTextField(),
+						referenciaVentana.getGradeoComicTextField(), referenciaVentana.getBusquedaGeneralTextField(),
+						referenciaVentana.getNumeroComicTextField(), referenciaVentana.getCodigoComicTratarTextField(),
+						referenciaVentana.getDireccionImagenTextField(), referenciaVentana.getIdComicTratarTextField(),
+						referenciaVentana.getUrlReferenciaTextField(), referenciaVentana.getCodigoComicTextField(),
+						referenciaVentana.getArtistaComicTextField(), referenciaVentana.getGuionistaComicTextField(),
+						referenciaVentana.getVarianteTextField(), referenciaVentana.getKeyComicData(),
+						referenciaVentana.getNombreEditorTextField(), referenciaVentana.getDataPickFechaP()));
 
 		elementosAMostrarYHabilitar.addAll(Arrays.asList(referenciaVentana.getBotonSubidaPortada(),
 				getReferenciaVentana().getBotonModificarComic()));

@@ -123,7 +123,6 @@ public class DatabaseManagerDAO {
 					    "codigoComic",          // Código del cómic
 					    "numeroComic",          // Número del cómic
 					    "fechaGradeo",          // Fecha de grado
-					    "anioPublicacion",      // Año de publicación
 					    "editorComic",          // Editor del cómic
 					    "gradeoComic",          // Grado del cómic
 					    "keyComentarios",       // Comentarios
