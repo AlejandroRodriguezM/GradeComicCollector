@@ -572,7 +572,7 @@ public class FuncionesComboBox {
 	 * @param comboboxes La lista de ComboBoxes a rellenar.
 	 */
 	public static void rellenarComboBoxEstaticos(List<ComboBox<String>> comboboxes) {
-		String[] valores = { "CGG" };
+		String[] valores = { "CGC" };
 		String[] ids = { "comboBoxTienda" };
 
 		// Verificar que la lista de ComboBox tenga al menos el mismo tamaño que los

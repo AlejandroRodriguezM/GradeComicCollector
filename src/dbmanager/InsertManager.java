@@ -10,7 +10,7 @@ public class InsertManager {
 	public static final String INSERT_SENTENCIA = "INSERT INTO comicsGbbdd ("
 	        + "tituloComic, codigoComic, numeroComic, fechaGradeo, editorComic, "
 	        + "gradeoComic, keyComentarios, artistaComic, guionistaComic, varianteComic, direccionImagenComic, urlReferenciaComic) "
-	        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 
 	/**

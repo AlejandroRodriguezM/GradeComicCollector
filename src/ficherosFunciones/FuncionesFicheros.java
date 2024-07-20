@@ -217,7 +217,7 @@ public class FuncionesFicheros {
 	}
 
 	public static void descargarRecursos() {
-		String urlArchivoZip = "https://github.com/AlejandroRodriguezM/GradeComic-Collector/raw/main/src/recursos/recursos.zip";
+		String urlArchivoZip = "https://github.com/AlejandroRodriguezM/GradeComicCollector/raw/main/src/recursos/recursos.zip";
 
 		String archivoDestino = rutaDestinoRecursos + File.separator + "recursos.zip";
 

@@ -450,7 +450,7 @@ public class VentanaAccionController implements Initializable {
 		FuncionesManejoFront.eliminarEspacioInicialYFinal(textFieldNombreComic);
 		FuncionesManejoFront.eliminarSimbolosEspeciales(textFieldNombreComic);
 		FuncionesManejoFront.restringirSimbolos(textFieldEditorComic);
-		FuncionesManejoFront.restringirSimbolos(textFieldGradeoComic);
+//		FuncionesManejoFront.restringirSimbolos(textFieldGradeoComic);
 
 		FuncionesManejoFront.reemplazarEspaciosMultiples(textFieldNombreComic);
 		FuncionesManejoFront.reemplazarEspaciosMultiples(textFieldArtistaComic);

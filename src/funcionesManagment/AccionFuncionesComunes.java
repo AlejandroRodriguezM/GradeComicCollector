@@ -289,16 +289,8 @@ public class AccionFuncionesComunes {
 	}
 
 	public static String determinarTipoTienda(String url) {
-		if (url.contains("cgccards.com")) {
+		if (url.contains("cgc")) {
 			return "CGC";
-		} else if (url.contains("psacard.com")) {
-			return "PSA";
-		} else if (url.contains("cgggrade.com")) {
-			return "CGG";
-		} else if (url.contains("acegrading.com")) {
-			return "ACE";
-		} else if (url.contains("onlygraded.com")) {
-			return "OnlyGraded";
 		}
 		return "";
 	}
@@ -319,9 +311,6 @@ public class AccionFuncionesComunes {
 			parts = url.split("/");
 			lastPart = parts[parts.length - 1];
 		}
-
-		System.out.println(url);
-		System.out.println(lastPart);
 
 		return lastPart;
 	}
@@ -554,6 +543,8 @@ public class AccionFuncionesComunes {
 			String direccionImagenComic = Utilidades.defaultIfNullOrEmpty(comic.getDireccionImagenComic(), "Vacio");
 			String urlReferenciaComic = Utilidades.defaultIfNullOrEmpty(comic.getUrlReferenciaComic(), "Vacio");
 
+			System.out.println(comic.toString());
+			
 			// Variables relacionadas con la imagen del cómic
 			String imagen = esClonar ? direccionImagenComic : descargarImagenComic(comic);
 
@@ -575,7 +566,7 @@ public class AccionFuncionesComunes {
 		List<ComicGradeo> comicInfo = new ArrayList<>();
 
 		if (esImport && tipoTienda.equalsIgnoreCase("CGC")) {
-			WebScrapCGC.extraerDatosMTG(finalValorCodigo);
+			comicInfo.add(WebScrapCGC.extraerDatosMTG(finalValorCodigo));
 		}
 
 		// Convertir la lista a un Set para eliminar duplicados

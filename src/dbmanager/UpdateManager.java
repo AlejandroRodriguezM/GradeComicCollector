@@ -14,7 +14,6 @@ public class UpdateManager {
 	        + "codigoComic = ?, "
 	        + "numeroComic = ?, "
 	        + "fechaGradeo = ?, "
-	        + "anioPublicacion = ?, "
 	        + "editorComic = ?, "
 	        + "gradeoComic = ?, "
 	        + "keyComentarios = ?, "

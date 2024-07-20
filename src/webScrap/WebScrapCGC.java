@@ -1,22 +1,16 @@
 package webScrap;
 
-import java.awt.Desktop;
 import java.io.File;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
 
 import comicManagement.ComicGradeo;
 import ficherosFunciones.FuncionesFicheros;
-import funcionesAuxiliares.Utilidades;
 
 public class WebScrapCGC {
 
 	public static ComicGradeo extraerDatosMTG(String codigoCarta) {
 		String scriptPath = FuncionesFicheros.rutaDestinoRecursos + File.separator + "scrapCGC.js";
 		List<String> data = FuncionesScrapeoComunes.getCartaFromPuppeteer(codigoCarta, scriptPath);
-
 		String certNumber = "";
 		String titulo = "";
 		String numero = "";
