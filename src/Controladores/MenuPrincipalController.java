@@ -413,11 +413,9 @@ public class MenuPrincipalController implements Initializable {
 		enviarReferencias();
 		ComicGradeo comic = guardarReferencia().getTablaBBDD().getSelectionModel().getSelectedItem();
 		ImagenAmpliadaController.setComicCache(comic);
-		if (ImagenAmpliadaController.getComicCache() != null) {
-
-			if (guardarReferencia().getImagenComic().getOpacity() != 0) {
-				Ventanas.verVentanaImagen();
-			}
+		if (ImagenAmpliadaController.getComicCache() != null
+				&& guardarReferencia().getImagenComic().getOpacity() != 0) {
+			Ventanas.verVentanaImagen();
 		}
 	}
 

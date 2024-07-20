@@ -13,6 +13,6 @@
          </image>
       </ImageView>
       <ImageView fx:id="imagenAmpliada" fitHeight="686.0" fitWidth="460.0" layoutX="15.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <TextArea fx:id="infoCarta" editable="false" layoutX="481.0" layoutY="13.0" prefHeight="478.0" prefWidth="354.0" wrapText="true" />
+      <TextArea fx:id="infoComic" editable="false" layoutX="481.0" layoutY="13.0" prefHeight="478.0" prefWidth="354.0" wrapText="true" />
    </children>
 </Pane>
