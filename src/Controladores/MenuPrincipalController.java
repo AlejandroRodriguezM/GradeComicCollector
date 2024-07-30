@@ -117,7 +117,7 @@ public class MenuPrincipalController implements Initializable {
 	private TableColumn<ComicGradeo, String> columnaDibujante;
 
 	@FXML
-	private TableColumn<ComicGradeo, String> columnaEditor;
+	private TableColumn<ComicGradeo, String> columnaFirma;
 
 	@FXML
 	private TableColumn<ComicGradeo, String> columnaGuionista;
@@ -157,6 +157,9 @@ public class MenuPrincipalController implements Initializable {
 
 	@FXML
 	private ComboBox<String> comboboxVarianteComic;
+
+	@FXML
+	private ComboBox<String> comboboxFirmaComic;
 
 	@FXML
 	private VBox comboboxVbox;
@@ -290,7 +293,7 @@ public class MenuPrincipalController implements Initializable {
 		referenciaVentana.setiDColumna(columnaId);
 		referenciaVentana.setTituloColumna(columnaTitulo);
 		referenciaVentana.setNumeroColumna(columnaNumero);
-		referenciaVentana.setEditorColumna(columnaEditor);
+		referenciaVentana.setFirmaColumna(columnaFirma);
 		referenciaVentana.setArtistaColumna(columnaDibujante);
 		referenciaVentana.setGuionistaColumna(columnaGuionista);
 		referenciaVentana.setVarianteColumna(columnaVariante);
@@ -301,7 +304,7 @@ public class MenuPrincipalController implements Initializable {
 		referenciaVentana.setTituloComicCombobox(comboboxTituloComic);
 		referenciaVentana.setNumeroComicCombobox(comboboxNumeroComic);
 		referenciaVentana.setNombreEditorCombobox(comboboxEditorComic);
-
+		referenciaVentana.setNombreFirmaCombobox(comboboxFirmaComic);
 		referenciaVentana.setNombreGradeoCombobox(comboboxGradeoComic);
 		referenciaVentana.setNombreGuionistaCombobox(comboboxGuionistaComic);
 		referenciaVentana.setNombreArtistaCombobox(comboboxDibujanteComic);
@@ -320,9 +323,9 @@ public class MenuPrincipalController implements Initializable {
 		referenciaVentana.setStageVentana(estadoStage());
 
 		// ComboBox List
-		AccionReferencias
-				.setListaComboboxes(Arrays.asList(comboboxTituloComic, comboboxNumeroComic, comboboxEditorComic,
-						comboboxGradeoComic, comboboxGuionistaComic, comboboxVarianteComic, comboboxDibujanteComic));
+		AccionReferencias.setListaComboboxes(
+				Arrays.asList(comboboxTituloComic, comboboxNumeroComic, comboboxEditorComic, comboboxGradeoComic,
+						comboboxFirmaComic, comboboxGuionistaComic, comboboxVarianteComic, comboboxDibujanteComic));
 
 		// FXCollections Lists
 		AccionReferencias.setListaElementosFondo(FXCollections.observableArrayList(backgroundImage, menuNavegacion));
@@ -330,7 +333,7 @@ public class MenuPrincipalController implements Initializable {
 				FXCollections.observableArrayList(botonLimpiar, botonMostrarParametro, botonbbdd, botonCancelarSubida));
 
 		AccionReferencias
-				.setListaColumnasTabla(Arrays.asList(columnaTitulo, columnaNumero, columnaEditor, columnaDibujante,
+				.setListaColumnasTabla(Arrays.asList(columnaTitulo, columnaNumero, columnaFirma, columnaDibujante,
 						columnaVariante, columnaGuionista, columnaId, columnaCertificacion, columnaReferencia));
 
 		return referenciaVentana;

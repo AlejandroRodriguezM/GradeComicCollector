@@ -17,6 +17,8 @@ public class UpdateManager {
 	        + "editorComic = ?, "
 	        + "gradeoComic = ?, "
 	        + "keyComentarios = ?, "
+	        + "firmaComic = ?, "
+	        + "valorComic = ?, "
 	        + "artistaComic = ?, "
 	        + "guionistaComic = ?, "
 	        + "varianteComic = ?, "
@@ -51,7 +53,7 @@ public class UpdateManager {
 	}
 
 	public static void modificarComic(ComicGradeo datos, String sentenciaSQL) {
-		
+		datos.sustituirCaracteres(datos);
 		// Comprobar si el identificador de la comic es válido
 		if (SelectManager.comprobarIdentificadorComic(datos.getIdComic())) {
 			// Usar try-with-resources para asegurar el cierre de recursos

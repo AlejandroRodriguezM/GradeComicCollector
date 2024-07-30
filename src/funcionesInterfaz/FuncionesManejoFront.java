@@ -225,18 +225,21 @@ public class FuncionesManejoFront {
 					newValue = newValue.trim();
 
 					// Remueve caracteres no permitidos según allowedPattern
-					newValue = newValue.replaceAll("[^\\p{L}\\p{N}\\s!`´\"\\-,.'\"]", "");
+					newValue = newValue.replaceAll("[^\\p{L}\\p{N}\\s!`´\"\\-]", "");
 
 					// Reemplazar letras con acentos por sus equivalentes sin acento
 					String updatedValue = removeAccents(newValue);
 
+					// Si el valor actualizado no coincide con el nuevo valor,
+					// y si el valor actualizado coincide con el patrón permitido, lo aplicamos.
 					if (!updatedValue.equals(newValue)) {
-						textField.setText(updatedValue);
-					}
-
-					if (!updatedValue.matches(allowedPattern)) {
-						// Si el valor no coincide con el patrón permitido, restaura el valor anterior.
-						textField.setText(oldValue);
+						if (updatedValue.matches(allowedPattern)) {
+							textField.setText(updatedValue);
+						} else {
+							// Si el valor actualizado no coincide con el patrón permitido, restaura el
+							// valor anterior.
+							textField.setText(oldValue);
+						}
 					}
 				}
 			});
@@ -371,6 +374,8 @@ public class FuncionesManejoFront {
 				referenciaVentana.getNumeroComicTextField(), // Número del cómic
 				referenciaVentana.getCodigoComicTratarTextField(), // Código del cómic a tratar
 				referenciaVentana.getDireccionImagenTextField(), // Dirección de la imagen
+				referenciaVentana.getFirmaComicTextField(), // Dirección de la imagen
+				referenciaVentana.getValorComicTextField(), // Dirección de la imagen
 				referenciaVentana.getIdComicTratarTextField(), // ID del cómic a tratar
 				referenciaVentana.getUrlReferenciaTextField(), // URL de referencia
 				referenciaVentana.getCodigoComicTextField(), // Código del cómic

@@ -37,9 +37,9 @@ public class SQLiteManager {
 					+ "idComic INTEGER PRIMARY KEY AUTOINCREMENT, " + "tituloComic TEXT NOT NULL, "
 					+ "codigoComic TEXT NOT NULL, " + "numeroComic TEXT NOT NULL, " + "fechaGradeo TEXT NOT NULL, "
 					+ "editorComic TEXT NOT NULL, " + "gradeoComic TEXT NOT NULL, " + "keyComentarios TEXT NOT NULL, "
-					+ "artistaComic TEXT NOT NULL, " + "guionistaComic TEXT NOT NULL, "
-					+ "varianteComic TEXT NOT NULL, " + "direccionImagenComic TEXT NOT NULL, "
-					+ "urlReferenciaComic TEXT NOT NULL" + ");";
+					+ "firmaComic TEXT NOT NULL, " + "valorComic TEXT NOT NULL, " + "artistaComic TEXT NOT NULL, "
+					+ "guionistaComic TEXT NOT NULL, " + "varianteComic TEXT NOT NULL, "
+					+ "direccionImagenComic TEXT NOT NULL, " + "urlReferenciaComic TEXT NOT NULL" + ");";
 
 			statement.executeUpdate(createTableSQL);
 

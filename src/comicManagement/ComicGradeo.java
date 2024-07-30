@@ -12,336 +12,391 @@ import funcionesAuxiliares.Utilidades;
  */
 public class ComicGradeo implements Cloneable {
 
-    protected String idComic;
-    protected String tituloComic;
-    protected String codigoComic;
-    protected String numeroComic;
-    protected String fechaGradeo;
-    protected String editorComic;
-    protected String gradeoComic;
-    protected String keyComentarios;
-    protected String artistaComic;
-    protected String guionistaComic;
-    protected String varianteComic;
-    protected String direccionImagenComic;
-    protected String urlReferenciaComic;
+	protected String idComic;
+	protected String tituloComic;
+	protected String codigoComic;
+	protected String numeroComic;
+	protected String fechaGradeo;
+	protected String editorComic;
+	protected String gradeoComic;
+	protected String keyComentarios;
+	protected String firmaComic;
+	protected String valorComic;
+	protected String artistaComic;
+	protected String guionistaComic;
+	protected String varianteComic;
+	protected String direccionImagenComic;
+	protected String urlReferenciaComic;
 
-    // Getters
-    public String getIdComic() {
-        return idComic;
-    }
+	// Getters
+	public String getIdComic() {
+		return idComic;
+	}
 
-    public String getTituloComic() {
-        return tituloComic;
-    }
+	public String getTituloComic() {
+		return tituloComic;
+	}
 
-    public String getCodigoComic() {
-        return codigoComic;
-    }
+	public String getCodigoComic() {
+		return codigoComic;
+	}
 
-    public String getNumeroComic() {
-        return numeroComic;
-    }
+	public String getNumeroComic() {
+		return numeroComic;
+	}
 
-    public String getFechaGradeo() {
-        return fechaGradeo;
-    }
+	public String getFechaGradeo() {
+		return fechaGradeo;
+	}
 
-    public String getEditorComic() {
-        return editorComic;
-    }
+	public String getEditorComic() {
+		return editorComic;
+	}
 
-    public String getGradeoComic() {
-        return gradeoComic;
-    }
+	public String getGradeoComic() {
+		return gradeoComic;
+	}
 
-    public String getKeyComentarios() {
-        return keyComentarios;
-    }
+	public String getKeyComentarios() {
+		return keyComentarios;
+	}
 
-    public String getArtistaComic() {
-        return artistaComic;
-    }
+	public String getValorComic() {
+		return valorComic;
+	}
 
-    public String getGuionistaComic() {
-        return guionistaComic;
-    }
+	public String getFirmaComic() {
+		return firmaComic;
+	}
 
-    public String getVarianteComic() {
-        return varianteComic;
-    }
+	public String getArtistaComic() {
+		return artistaComic;
+	}
 
-    public String getDireccionImagenComic() {
-        return direccionImagenComic;
-    }
+	public String getGuionistaComic() {
+		return guionistaComic;
+	}
 
-    public String getUrlReferenciaComic() {
-        return urlReferenciaComic;
-    }
+	public String getVarianteComic() {
+		return varianteComic;
+	}
 
-    // Setters
-    public void setIdComic(String idComic) {
-        this.idComic = idComic;
-    }
+	public String getDireccionImagenComic() {
+		return direccionImagenComic;
+	}
 
-    public void setTituloComic(String tituloComic) {
-        this.tituloComic = tituloComic;
-    }
+	public String getUrlReferenciaComic() {
+		return urlReferenciaComic;
+	}
 
-    public void setCodigoComic(String codigoComic) {
-        this.codigoComic = codigoComic;
-    }
+	// Setters
+	public void setIdComic(String idComic) {
+		this.idComic = idComic;
+	}
 
-    public void setNumeroComic(String numeroComic) {
-        this.numeroComic = numeroComic;
-    }
+	public void setTituloComic(String tituloComic) {
+		this.tituloComic = tituloComic;
+	}
 
-    public void setFechaGradeo(String fechaGradeo) {
-        this.fechaGradeo = fechaGradeo;
-    }
+	public void setCodigoComic(String codigoComic) {
+		this.codigoComic = codigoComic;
+	}
 
-    public void setEditorComic(String editorComic) {
-        this.editorComic = editorComic;
-    }
+	public void setNumeroComic(String numeroComic) {
+		this.numeroComic = numeroComic;
+	}
 
-    public void setGradeoComic(String gradeoComic) {
-        this.gradeoComic = gradeoComic;
-    }
+	public void setFechaGradeo(String fechaGradeo) {
+		this.fechaGradeo = fechaGradeo;
+	}
 
-    public void setKeyComentarios(String keyComentarios) {
-        this.keyComentarios = keyComentarios;
-    }
+	public void setEditorComic(String editorComic) {
+		this.editorComic = editorComic;
+	}
 
-    public void setArtistaComic(String artistaComic) {
-        this.artistaComic = artistaComic;
-    }
+	public void setGradeoComic(String gradeoComic) {
+		this.gradeoComic = gradeoComic;
+	}
 
-    public void setGuionistaComic(String guionistaComic) {
-        this.guionistaComic = guionistaComic;
-    }
+	public void setKeyComentarios(String keyComentarios) {
+		this.keyComentarios = keyComentarios;
+	}
 
-    public void setVarianteComic(String varianteComic) {
-        this.varianteComic = varianteComic;
-    }
+	public void setFirmaComic(String firmaComic) {
+		this.firmaComic = firmaComic;
+	}
 
-    public void setDireccionImagenComic(String direccionImagenComic) {
-        this.direccionImagenComic = direccionImagenComic;
-    }
+	public void setValorComic(String valorComic) {
+		this.valorComic = valorComic;
+	}
 
-    public void setUrlReferenciaComic(String urlReferenciaComic) {
-        this.urlReferenciaComic = urlReferenciaComic;
-    }
+	public void setArtistaComic(String artistaComic) {
+		this.artistaComic = artistaComic;
+	}
 
-    // Builder class
-    public static class ComicGradeoBuilder {
-        private String idComic;
-        private String tituloComic;
-        private String codigoComic;
-        private String numeroComic;
-        private String fechaGradeo;
-        private String editorComic;
-        private String gradeoComic;
-        private String keyComentarios;
-        private String artistaComic;
-        private String guionistaComic;
-        private String varianteComic;
-        private String direccionImagenComic;
-        private String urlReferenciaComic;
+	public void setGuionistaComic(String guionistaComic) {
+		this.guionistaComic = guionistaComic;
+	}
 
-        public ComicGradeoBuilder(String idComic, String tituloComic) {
-            this.idComic = idComic;
-            this.tituloComic = tituloComic;
-        }
+	public void setVarianteComic(String varianteComic) {
+		this.varianteComic = varianteComic;
+	}
 
-        public ComicGradeoBuilder codigoComic(String codigoComic) {
-            this.codigoComic = codigoComic;
-            return this;
-        }
+	public void setDireccionImagenComic(String direccionImagenComic) {
+		this.direccionImagenComic = direccionImagenComic;
+	}
 
-        public ComicGradeoBuilder numeroComic(String numeroComic) {
-            this.numeroComic = numeroComic;
-            return this;
-        }
+	public void setUrlReferenciaComic(String urlReferenciaComic) {
+		this.urlReferenciaComic = urlReferenciaComic;
+	}
 
-        public ComicGradeoBuilder fechaGradeo(String fechaGradeo) {
-            this.fechaGradeo = fechaGradeo;
-            return this;
-        }
+	// Builder class
+	public static class ComicGradeoBuilder {
+		private String idComic;
+		private String tituloComic;
+		private String codigoComic;
+		private String numeroComic;
+		private String fechaGradeo;
+		private String editorComic;
+		private String gradeoComic;
+		private String keyComentarios;
+		private String firmaComic;
+		private String valorComic;
+		private String artistaComic;
+		private String guionistaComic;
+		private String varianteComic;
+		private String direccionImagenComic;
+		private String urlReferenciaComic;
 
-        public ComicGradeoBuilder editorComic(String editorComic) {
-            this.editorComic = editorComic;
-            return this;
-        }
+		public ComicGradeoBuilder(String idComic, String tituloComic) {
+			this.idComic = idComic;
+			this.tituloComic = tituloComic;
+		}
 
-        public ComicGradeoBuilder gradeoComic(String gradeoComic) {
-            this.gradeoComic = gradeoComic;
-            return this;
-        }
+		public ComicGradeoBuilder codigoComic(String codigoComic) {
+			this.codigoComic = codigoComic;
+			return this;
+		}
 
-        public ComicGradeoBuilder keyComentarios(String keyComentarios) {
-            this.keyComentarios = keyComentarios;
-            return this;
-        }
+		public ComicGradeoBuilder numeroComic(String numeroComic) {
+			this.numeroComic = numeroComic;
+			return this;
+		}
 
-        public ComicGradeoBuilder artistaComic(String artistaComic) {
-            this.artistaComic = artistaComic;
-            return this;
-        }
+		public ComicGradeoBuilder fechaGradeo(String fechaGradeo) {
+			this.fechaGradeo = fechaGradeo;
+			return this;
+		}
 
-        public ComicGradeoBuilder guionistaComic(String guionistaComic) {
-            this.guionistaComic = guionistaComic;
-            return this;
-        }
+		public ComicGradeoBuilder editorComic(String editorComic) {
+			this.editorComic = editorComic;
+			return this;
+		}
 
-        public ComicGradeoBuilder varianteComic(String varianteComic) {
-            this.varianteComic = varianteComic;
-            return this;
-        }
+		public ComicGradeoBuilder gradeoComic(String gradeoComic) {
+			this.gradeoComic = gradeoComic;
+			return this;
+		}
 
-        public ComicGradeoBuilder direccionImagenComic(String direccionImagenComic) {
-            this.direccionImagenComic = direccionImagenComic;
-            return this;
-        }
+		public ComicGradeoBuilder keyComentarios(String keyComentarios) {
+			this.keyComentarios = keyComentarios;
+			return this;
+		}
 
-        public ComicGradeoBuilder urlReferenciaComic(String urlReferenciaComic) {
-            this.urlReferenciaComic = urlReferenciaComic;
-            return this;
-        }
+		public ComicGradeoBuilder firmaComic(String firmaComic) {
+			this.firmaComic = firmaComic;
+			return this;
+		}
 
-        public ComicGradeo build() {
-            return new ComicGradeo(this);
-        }
-    }
+		public ComicGradeoBuilder valorComic(String valorComic) {
+			this.valorComic = valorComic;
+			return this;
+		}
 
-    private ComicGradeo(ComicGradeoBuilder builder) {
-        this.idComic = builder.idComic;
-        this.tituloComic = builder.tituloComic;
-        this.codigoComic = builder.codigoComic;
-        this.numeroComic = builder.numeroComic;
-        this.fechaGradeo = builder.fechaGradeo;
-        this.editorComic = builder.editorComic;
-        this.gradeoComic = builder.gradeoComic;
-        this.keyComentarios = builder.keyComentarios;
-        this.artistaComic = builder.artistaComic;
-        this.guionistaComic = builder.guionistaComic;
-        this.varianteComic = builder.varianteComic;
-        this.direccionImagenComic = builder.direccionImagenComic;
-        this.urlReferenciaComic = builder.urlReferenciaComic;
-    }
+		public ComicGradeoBuilder artistaComic(String artistaComic) {
+			this.artistaComic = artistaComic;
+			return this;
+		}
 
-    public ComicGradeo() {
-        this.idComic = "";
-        this.tituloComic = "";
-        this.codigoComic = "";
-        this.numeroComic = "";
-        this.fechaGradeo = "";
-        this.editorComic = "";
-        this.gradeoComic = "";
-        this.keyComentarios = "";
-        this.artistaComic = "";
-        this.guionistaComic = "";
-        this.varianteComic = "";
-        this.direccionImagenComic = "";
-        this.urlReferenciaComic = "";
-    }
+		public ComicGradeoBuilder guionistaComic(String guionistaComic) {
+			this.guionistaComic = guionistaComic;
+			return this;
+		}
 
-    public static ComicGradeo obtenerComic(String idComic) {
-        boolean existeComic = ComicManagerDAO.comprobarIdentificadorComic(idComic);
-        if (!existeComic) {
-            existeComic = ListasComicsDAO.verificarIDExistente(idComic);
-            if (existeComic) {
-                return ListasComicsDAO.devolverComicLista(idComic);
-            }
-        } else {
-            return ComicManagerDAO.comicDatos(idComic);
-        }
-        return null;
-    }
+		public ComicGradeoBuilder varianteComic(String varianteComic) {
+			this.varianteComic = varianteComic;
+			return this;
+		}
 
-    public boolean estaVacio() {
-        return isNullOrEmpty(this.tituloComic) && this.numeroComic.equals("0")
-                && isNullOrEmpty(this.gradeoComic) && isNullOrEmpty(this.urlReferenciaComic)
-                && isNullOrEmpty(this.direccionImagenComic) && isNullOrEmpty(this.editorComic);
-    }
+		public ComicGradeoBuilder direccionImagenComic(String direccionImagenComic) {
+			this.direccionImagenComic = direccionImagenComic;
+			return this;
+		}
 
-    private boolean isNullOrEmpty(String str) {
-        return str == null || str.isEmpty();
-    }
+		public ComicGradeoBuilder urlReferenciaComic(String urlReferenciaComic) {
+			this.urlReferenciaComic = urlReferenciaComic;
+			return this;
+		}
 
-    public static void limpiarCamposComic(ComicGradeo comic) {
-        comic.setTituloComic(limpiarCampo(comic.getTituloComic()));
-        comic.setGradeoComic(limpiarCampo(comic.getGradeoComic()));
-        comic.setEditorComic(limpiarCampo(comic.getEditorComic()));
-    }
+		public ComicGradeo build() {
+			return new ComicGradeo(this);
+		}
+	}
 
-    public static String limpiarCampo(String campo) {
-        if (campo != null) {
-            campo = campo.replaceAll("^\\s*[,\\s-]+", ""); // Al principio
-            campo = campo.replaceAll("[,\\s-]+\\s*$", ""); // Al final
-            campo = campo.replaceAll(",\\s*,", ","); // Comas repetidas
-            campo = campo.replaceAll(",\\s*", " - "); // Reemplazar ", " por " - "
-            campo = campo.replace("'", " "); // Reemplazar comillas simples por espacios
-        } else {
-            return "";
-        }
-        return campo;
-    }
+	private ComicGradeo(ComicGradeoBuilder builder) {
+		this.idComic = builder.idComic;
+		this.tituloComic = builder.tituloComic;
+		this.codigoComic = builder.codigoComic;
+		this.numeroComic = builder.numeroComic;
+		this.fechaGradeo = builder.fechaGradeo;
+		this.editorComic = builder.editorComic;
+		this.gradeoComic = builder.gradeoComic;
+		this.keyComentarios = builder.keyComentarios;
+		this.firmaComic = builder.firmaComic;
+		this.valorComic = builder.valorComic;
+		this.artistaComic = builder.artistaComic;
+		this.guionistaComic = builder.guionistaComic;
+		this.varianteComic = builder.varianteComic;
+		this.direccionImagenComic = builder.direccionImagenComic;
+		this.urlReferenciaComic = builder.urlReferenciaComic;
+	}
 
-    public static boolean validarComic(ComicGradeo comic) {
-        if (comic.getTituloComic() != null && !comic.getTituloComic().isEmpty()) {
-            return true;
-        }
-        if (!comic.getNumeroComic().equals("0")) {
-            return true;
-        }
-        if (comic.getGradeoComic() != null && !comic.getGradeoComic().isEmpty()) {
-            return true;
-        }
-        if (comic.getEditorComic() != null && !comic.getEditorComic().isEmpty()) {
-            return true;
-        }
-        return false;
-    }
+	public ComicGradeo() {
+		this.idComic = "";
+		this.tituloComic = "";
+		this.codigoComic = "";
+		this.numeroComic = "";
+		this.fechaGradeo = "";
+		this.editorComic = "";
+		this.gradeoComic = "";
+		this.keyComentarios = "";
+		this.firmaComic = "";
+		this.valorComic = "";
+		this.artistaComic = "";
+		this.guionistaComic = "";
+		this.varianteComic = "";
+		this.direccionImagenComic = "";
+		this.urlReferenciaComic = "";
+	}
 
-    @Override
-    public String toString() {
-        StringBuilder contenidoComic = new StringBuilder();
+	public static ComicGradeo obtenerComic(String idComic) {
+		boolean existeComic = ComicManagerDAO.comprobarIdentificadorComic(idComic);
+		if (!existeComic) {
+			existeComic = ListasComicsDAO.verificarIDExistente(idComic);
+			if (existeComic) {
+				return ListasComicsDAO.devolverComicLista(idComic);
+			}
+		} else {
+			return ComicManagerDAO.comicDatos(idComic);
+		}
+		return null;
+	}
 
-        Utilidades.appendIfNotEmpty(contenidoComic, "ID", idComic);
-        Utilidades.appendIfNotEmpty(contenidoComic, "Título", tituloComic);
-        Utilidades.appendIfNotEmpty(contenidoComic, "Código", codigoComic);
-        Utilidades.appendIfNotEmpty(contenidoComic, "Número", numeroComic);
-        Utilidades.appendIfNotEmpty(contenidoComic, "Fecha de Gradeo", fechaGradeo);
-        Utilidades.appendIfNotEmpty(contenidoComic, "Editor", editorComic);
-        Utilidades.appendIfNotEmpty(contenidoComic, "Gradeo", gradeoComic);
-        Utilidades.appendIfNotEmpty(contenidoComic, "Comentarios Clave", keyComentarios);
-        Utilidades.appendIfNotEmpty(contenidoComic, "Artista", artistaComic);
-        Utilidades.appendIfNotEmpty(contenidoComic, "Guionista", guionistaComic);
-        Utilidades.appendIfNotEmpty(contenidoComic, "Variante", varianteComic);
-        Utilidades.appendIfNotEmpty(contenidoComic, "Dirección de Imagen", direccionImagenComic);
-        Utilidades.appendIfNotEmpty(contenidoComic, "URL de Referencia", urlReferenciaComic);
+	public boolean estaVacio() {
+		return isNullOrEmpty(this.tituloComic) && this.numeroComic.equals("0") && isNullOrEmpty(this.gradeoComic)
+				&& isNullOrEmpty(this.urlReferenciaComic) && isNullOrEmpty(this.direccionImagenComic)
+				&& isNullOrEmpty(this.editorComic);
+	}
 
-        return contenidoComic.toString();
-    }
+	private boolean isNullOrEmpty(String str) {
+		return str == null || str.isEmpty();
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ComicGradeo comic = (ComicGradeo) o;
-        return Objects.equals(codigoComic, comic.codigoComic) && 
-               Objects.equals(tituloComic, comic.tituloComic) && 
-               Objects.equals(numeroComic, comic.numeroComic) && 
-               Objects.equals(editorComic, comic.editorComic);
-    }
+	public static void limpiarCamposComic(ComicGradeo comic) {
+		comic.setTituloComic(limpiarCampo(comic.getTituloComic()));
+		comic.setGradeoComic(limpiarCampo(comic.getGradeoComic()));
+		comic.setEditorComic(limpiarCampo(comic.getEditorComic()));
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(codigoComic, tituloComic, numeroComic, editorComic);
-    }
+	public static String limpiarCampo(String campo) {
+		if (campo != null) {
+			campo = campo.replaceAll("^\\s*[,\\s-]+", ""); // Al principio
+			campo = campo.replaceAll("[,\\s-]+\\s*$", ""); // Al final
+			campo = campo.replaceAll(",\\s*,", ","); // Comas repetidas
+			campo = campo.replaceAll(",\\s*", " - "); // Reemplazar ", " por " - "
+			campo = campo.replace("'", " "); // Reemplazar comillas simples por espacios
+		} else {
+			return "";
+		}
+		return campo;
+	}
 
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
+	public static boolean validarComic(ComicGradeo comic) {
+		if (comic.getTituloComic() != null && !comic.getTituloComic().isEmpty()) {
+			return true;
+		}
+		if (!comic.getNumeroComic().equals("0")) {
+			return true;
+		}
+		if (comic.getGradeoComic() != null && !comic.getGradeoComic().isEmpty()) {
+			return true;
+		}
+		if (comic.getEditorComic() != null && !comic.getEditorComic().isEmpty()) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder contenidoComic = new StringBuilder();
+
+		Utilidades.appendIfNotEmpty(contenidoComic, "ID", idComic);
+		Utilidades.appendIfNotEmpty(contenidoComic, "Título", tituloComic);
+		Utilidades.appendIfNotEmpty(contenidoComic, "Código", codigoComic);
+		Utilidades.appendIfNotEmpty(contenidoComic, "Número", numeroComic);
+		Utilidades.appendIfNotEmpty(contenidoComic, "Fecha de Gradeo", fechaGradeo);
+		Utilidades.appendIfNotEmpty(contenidoComic, "Editor", editorComic);
+		Utilidades.appendIfNotEmpty(contenidoComic, "Gradeo", gradeoComic);
+		Utilidades.appendIfNotEmpty(contenidoComic, "Comentarios Clave", keyComentarios);
+		Utilidades.appendIfNotEmpty(contenidoComic, "Firmado por", firmaComic);
+		Utilidades.appendIfNotEmpty(contenidoComic, "Valor del gradeo", valorComic);
+		Utilidades.appendIfNotEmpty(contenidoComic, "Artista", artistaComic);
+		Utilidades.appendIfNotEmpty(contenidoComic, "Guionista", guionistaComic);
+		Utilidades.appendIfNotEmpty(contenidoComic, "Variante", varianteComic);
+		Utilidades.appendIfNotEmpty(contenidoComic, "Dirección de Imagen", direccionImagenComic);
+		Utilidades.appendIfNotEmpty(contenidoComic, "URL de Referencia", urlReferenciaComic);
+
+		return contenidoComic.toString();
+	}
+
+	// Método para sustituir comillas dobles, comillas simples y punto y coma por
+	// una cadena vacía
+	public void sustituirCaracteres(ComicGradeo comic) {
+		comic.setIdComic(comic.getIdComic().replaceAll("[\"';]", ""));
+		comic.setTituloComic(comic.getTituloComic().replaceAll("[\"';]", ""));
+		comic.setCodigoComic(comic.getCodigoComic().replaceAll("[\"';]", ""));
+		comic.setNumeroComic(comic.getNumeroComic().replaceAll("[\"';]", ""));
+		comic.setFechaGradeo(comic.getFechaGradeo().replaceAll("[\"';]", ""));
+		comic.setEditorComic(comic.getEditorComic().replaceAll("[\"';]", ""));
+		comic.setKeyComentarios(comic.getKeyComentarios().replaceAll("[\"';]", ""));
+		comic.setFirmaComic(comic.getFirmaComic().replaceAll("[\"';]", ""));
+		comic.setValorComic(comic.getValorComic().replaceAll("[\"';]", ""));
+		comic.setArtistaComic(comic.getArtistaComic().replaceAll("[\"';]", ""));
+		comic.setGuionistaComic(comic.getGuionistaComic().replaceAll("[\"';]", ""));
+		comic.setVarianteComic(comic.getVarianteComic().replaceAll("[\"';]", ""));
+		comic.setDireccionImagenComic(comic.getDireccionImagenComic().replaceAll("[\"';]", ""));
+		comic.setUrlReferenciaComic(comic.getUrlReferenciaComic().replaceAll("[\"';]", ""));
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		ComicGradeo comic = (ComicGradeo) o;
+		return Objects.equals(codigoComic, comic.codigoComic) && Objects.equals(tituloComic, comic.tituloComic)
+				&& Objects.equals(numeroComic, comic.numeroComic) && Objects.equals(editorComic, comic.editorComic);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(codigoComic, tituloComic, numeroComic, editorComic);
+	}
+
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
 }

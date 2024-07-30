@@ -52,6 +52,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
 
@@ -2458,6 +2460,19 @@ public class Utilidades {
 			}
 		}
 	}
+	
+    public static String extractNumberFromUrl(String url) {
+        // Define una expresión regular para encontrar números en la URL
+        Pattern pattern = Pattern.compile("\\d+");
+        Matcher matcher = pattern.matcher(url);
+        
+        // Encuentra y muestra todos los números en la URL
+        while (matcher.find()) {
+            String number = matcher.group();
+            return number;
+        }
+        return "";
+    }
 
 	public static AccionReferencias getReferenciaVentana() {
 		return referenciaVentana;

@@ -31,6 +31,7 @@ public class AccionReferencias {
 	private TableColumn<ComicGradeo, String> tituloColumna;
 	private TableColumn<ComicGradeo, String> numeroColumna;
 	private TableColumn<ComicGradeo, String> editorColumna;
+	private TableColumn<ComicGradeo, String> firmaColumna;
 	private TableColumn<ComicGradeo, String> artistaColumna;
 	private TableColumn<ComicGradeo, String> guionistaColumna;
 	private TableColumn<ComicGradeo, String> varianteColumna;
@@ -115,6 +116,8 @@ public class AccionReferencias {
 	private TextField direccionImagenTextField;
 	private TextField urlReferenciaTextField;
 	private TextField numeroComicTextField;
+	private TextField firmaComicTextField;
+	private TextField valorComicTextField;
 
 	private TextField codigoComicTratarTextField;
 	private TextField busquedaGeneralTextField;
@@ -126,9 +129,10 @@ public class AccionReferencias {
 	private ComboBox<String> nombreArtistaCombobox;
 	private ComboBox<String> nombreGuionistaCombobox;
 	private ComboBox<String> nombreVarianteCombobox;
+	private ComboBox<String> nombreFirmaCombobox;
 	private ComboBox<String> nombreGradeoCombobox;
 	private ComboBox<String> comboPreviewsCombobox;
-	
+
 	private DatePicker dataPickFechaP;
 
 	private TextArea prontInfoTextArea;
@@ -721,6 +725,20 @@ public class AccionReferencias {
 	}
 
 	/**
+	 * @return the firmaComicTextField
+	 */
+	public TextField getFirmaComicTextField() {
+		return firmaComicTextField;
+	}
+
+	/**
+	 * @return the valorComicTextField
+	 */
+	public TextField getValorComicTextField() {
+		return valorComicTextField;
+	}
+
+	/**
 	 * @return the codigoComicTratarTextField
 	 */
 	public TextField getCodigoComicTratarTextField() {
@@ -781,6 +799,13 @@ public class AccionReferencias {
 	 */
 	public ComboBox<String> getNombreVarianteCombobox() {
 		return nombreVarianteCombobox;
+	}
+
+	/**
+	 * @return the nombreFirmaCombobox
+	 */
+	public ComboBox<String> getNombreFirmaCombobox() {
+		return nombreFirmaCombobox;
 	}
 
 	/**
@@ -991,6 +1016,20 @@ public class AccionReferencias {
 	 */
 	public Stage getStageVentana() {
 		return stageVentana;
+	}
+
+	/**
+	 * @return the firmaColumna
+	 */
+	public TableColumn<ComicGradeo, String> getFirmaColumna() {
+		return firmaColumna;
+	}
+
+	/**
+	 * @param firmaColumna the firmaColumna to set
+	 */
+	public void setFirmaColumna(TableColumn<ComicGradeo, String> firmaColumna) {
+		this.firmaColumna = firmaColumna;
 	}
 
 	/**
@@ -1302,7 +1341,8 @@ public class AccionReferencias {
 	}
 
 	/**
-	 * @param botonEliminarImportadoListaComic the botonEliminarImportadoListaComic to set
+	 * @param botonEliminarImportadoListaComic the botonEliminarImportadoListaComic
+	 *                                         to set
 	 */
 	public void setBotonEliminarImportadoListaComic(Button botonEliminarImportadoListaComic) {
 		this.botonEliminarImportadoListaComic = botonEliminarImportadoListaComic;
@@ -1547,6 +1587,20 @@ public class AccionReferencias {
 	}
 
 	/**
+	 * @param firmaComicTextField the firmaComicTextField to set
+	 */
+	public void setFirmaComicTextField(TextField firmaComicTextField) {
+		this.firmaComicTextField = firmaComicTextField;
+	}
+
+	/**
+	 * @param valorComicTextField the valorComicTextField to set
+	 */
+	public void setValorComicTextField(TextField valorComicTextField) {
+		this.valorComicTextField = valorComicTextField;
+	}
+
+	/**
 	 * @param codigoComicTratarTextField the codigoComicTratarTextField to set
 	 */
 	public void setCodigoComicTratarTextField(TextField codigoComicTratarTextField) {
@@ -1610,6 +1664,13 @@ public class AccionReferencias {
 	}
 
 	/**
+	 * @param nombreFirmaCombobox the nombreFirmaCombobox to set
+	 */
+	public void setNombreFirmaCombobox(ComboBox<String> nombreFirmaCombobox) {
+		this.nombreFirmaCombobox = nombreFirmaCombobox;
+	}
+
+	/**
 	 * @param nombreGradeoCombobox the nombreGradeoCombobox to set
 	 */
 	public void setNombreGradeoCombobox(ComboBox<String> nombreGradeoCombobox) {
@@ -1645,7 +1706,8 @@ public class AccionReferencias {
 	}
 
 	/**
-	 * @param menuImportarFicheroCodigoBarras the menuImportarFicheroCodigoBarras to set
+	 * @param menuImportarFicheroCodigoBarras the menuImportarFicheroCodigoBarras to
+	 *                                        set
 	 */
 	public void setMenuImportarFicheroCodigoBarras(MenuItem menuImportarFicheroCodigoBarras) {
 		this.menuImportarFicheroCodigoBarras = menuImportarFicheroCodigoBarras;

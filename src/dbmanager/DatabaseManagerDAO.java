@@ -57,7 +57,7 @@ public class DatabaseManagerDAO {
 		String url = "jdbc:sqlite:" + DB_FOLDER + nombreDatabase;
 
 		System.out.println(url);
-		
+
 		try (Connection connection = DriverManager.getConnection(url)) {
 			try (Statement statement = connection.createStatement()) {
 				String dropTableSQL = "DROP TABLE IF EXISTS comicGbbdd";
@@ -65,12 +65,14 @@ public class DatabaseManagerDAO {
 			}
 
 			try (Statement statement = connection.createStatement()) {
-				String createTableSQL = "CREATE TABLE IF NOT EXISTS comicGbbdd ("
-						+ "idComic INTEGER PRIMARY KEY AUTOINCREMENT, " + "nomComic TEXT NOT NULL, "
-						+ "codComic TEXT NOT NULL, " + "numComic TEXT NOT NULL, " + "anioComic TEXT NOT NULL, "
-						+ "coleccionComic TEXT NOT NULL, " + "edicionComic TEXT NOT NULL, "
-						+ "empresaComic TEXT NOT NULL, " + "gradeoComic TEXT NOT NULL, "
-						+ "urlReferenciaComic TEXT NOT NULL, " + "direccionImagenComic TEXT NOT NULL)";
+				String createTableSQL = "CREATE TABLE IF NOT EXISTS comicsGbbdd ("
+						+ "idComic INTEGER PRIMARY KEY AUTOINCREMENT, " + "tituloComic TEXT NOT NULL, "
+						+ "codigoComic TEXT NOT NULL, " + "numeroComic TEXT NOT NULL, " + "fechaGradeo TEXT NOT NULL, "
+						+ "editorComic TEXT NOT NULL, " + "gradeoComic TEXT NOT NULL, "
+						+ "keyComentarios TEXT NOT NULL, " + "firmaComic TEXT NOT NULL, " + "valorComic TEXT NOT NULL, "
+						+ "artistaComic TEXT NOT NULL, " + "guionistaComic TEXT NOT NULL, "
+						+ "varianteComic TEXT NOT NULL, " + "direccionImagenComic TEXT NOT NULL, "
+						+ "urlReferenciaComic TEXT NOT NULL" + ");";
 
 				statement.executeUpdate(createTableSQL);
 			}
@@ -117,22 +119,22 @@ public class DatabaseManagerDAO {
 			if (tables.next()) {
 				// La tabla existe, ahora verifiquemos las columnas
 				ResultSet columns = metaData.getColumns(nombreDatabase, null, "comicsGbbdd", null);
-				Set<String> expectedColumns = Set.of(
-					    "idComic",              // ID del cómic
-					    "tituloComic",          // Título del cómic
-					    "codigoComic",          // Código del cómic
-					    "numeroComic",          // Número del cómic
-					    "fechaGradeo",          // Fecha de grado
-					    "editorComic",          // Editor del cómic
-					    "gradeoComic",          // Grado del cómic
-					    "keyComentarios",       // Comentarios
-					    "artistaComic",         // Artista del cómic
-					    "guionistaComic",       // Guionista del cómic
-					    "varianteComic",        // Variante del cómic
-					    "direccionImagenComic", // Dirección de la imagen
-					    "urlReferenciaComic"    // URL de referencia
-					);
-
+				Set<String> expectedColumns = Set.of("idComic", // ID del cómic
+						"tituloComic", // Título del cómic
+						"codigoComic", // Código del cómic
+						"numeroComic", // Número del cómic
+						"fechaGradeo", // Fecha de grado
+						"editorComic", // Editor del cómic
+						"gradeoComic", // Grado del cómic
+						"keyComentarios", // Comentarios
+						"firmaComic", // firma del comic
+						"valorComic", // valor del comic
+						"artistaComic", // Artista del cómic
+						"guionistaComic", // Guionista del cómic
+						"varianteComic", // Variante del cómic
+						"direccionImagenComic", // Dirección de la imagen
+						"urlReferenciaComic" // URL de referencia
+				);
 
 				Set<String> actualColumns = new HashSet<>();
 

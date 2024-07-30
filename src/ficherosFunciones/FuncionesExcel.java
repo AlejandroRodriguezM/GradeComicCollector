@@ -19,6 +19,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -306,8 +308,7 @@ public class FuncionesExcel {
 	}
 
 	private void crearEncabezados(Sheet hoja) {
-		String[] encabezados = { 
-				"idComic", // ID del cómic
+		String[] encabezados = { "idComic", // ID del cómic
 				"tituloComic", // Título del cómic
 				"codigoComic", // Código del cómic
 				"numeroComic", // Número del cómic
@@ -315,6 +316,8 @@ public class FuncionesExcel {
 				"editorComic", // Editor del cómic
 				"gradeoComic", // Grado del cómic
 				"keyComentarios", // Comentarios
+				"firmaComic", // Comentarios
+				"valorComic", // Comentarios
 				"artistaComic", // Artista del cómic
 				"guionistaComic", // Guionista del cómic
 				"varianteComic", // Variante del cómic
@@ -340,6 +343,7 @@ public class FuncionesExcel {
 			AtomicReference<CargaComicsController> cargaComicsControllerRef, File directorioImagenes) {
 		int indiceFinal = 1; // Comenzar desde 1 para omitir la fila de encabezado
 		for (ComicGradeo comic : listaComics) {
+			comic.sustituirCaracteres(comic);
 			Row fila = hoja.createRow(indiceFinal);
 			llenarFilaConDatos(comic, fila);
 
@@ -367,11 +371,13 @@ public class FuncionesExcel {
 		fila.createCell(5).setCellValue(comic.getEditorComic());
 		fila.createCell(6).setCellValue(comic.getGradeoComic());
 		fila.createCell(7).setCellValue(comic.getKeyComentarios());
-		fila.createCell(8).setCellValue(comic.getArtistaComic());
-		fila.createCell(9).setCellValue(comic.getGuionistaComic());
-		fila.createCell(10).setCellValue(comic.getVarianteComic());
-		fila.createCell(11).setCellValue(comic.getDireccionImagenComic());
-		fila.createCell(12).setCellValue(comic.getUrlReferenciaComic());
+		fila.createCell(8).setCellValue(comic.getFirmaComic());
+		fila.createCell(9).setCellValue(comic.getValorComic());
+		fila.createCell(10).setCellValue(comic.getArtistaComic());
+		fila.createCell(11).setCellValue(comic.getGuionistaComic());
+		fila.createCell(12).setCellValue(comic.getVarianteComic());
+		fila.createCell(13).setCellValue(comic.getDireccionImagenComic());
+		fila.createCell(14).setCellValue(comic.getUrlReferenciaComic());
 	}
 
 	private void actualizarProgreso(AtomicReference<CargaComicsController> cargaComicsControllerRef) {
@@ -470,7 +476,7 @@ public class FuncionesExcel {
 					if (comicNuevo != null) {
 						InsertManager.insertarDatos(comicNuevo, true);
 					}
-
+					comicNuevo.sustituirCaracteres(comicNuevo);
 					cargaComics(comicNuevo, cargaComicsControllerRef, directorioRef.get(), true);
 
 				} catch (Exception e) {
@@ -630,16 +636,17 @@ public class FuncionesExcel {
 	}
 
 	private static void checkCSVColumns(String filePath) throws IOException {
-		// Columnas esperadas
-		String[] expectedColumns = { 
-				"idComic", // ID del cómic
+		
+		String[] expectedColumns = { "idComic", // ID del cómic
 				"tituloComic", // Título del cómic
 				"codigoComic", // Código del cómic
 				"numeroComic", // Número del cómic
-				"fechaGradeo", // Fecha de gradeo
+				"fechaGradeo", // Fecha de grado
 				"editorComic", // Editor del cómic
-				"gradeoComic", // Gradeo del cómic
-				"keyComentarios", // Comentarios clave
+				"gradeoComic", // Grado del cómic
+				"keyComentarios", // Comentarios
+				"firmaComic", // Comentarios
+				"valorComic", // Comentarios
 				"artistaComic", // Artista del cómic
 				"guionistaComic", // Guionista del cómic
 				"varianteComic", // Variante del cómic

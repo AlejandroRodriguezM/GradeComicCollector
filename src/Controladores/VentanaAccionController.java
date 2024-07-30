@@ -196,6 +196,12 @@ public class VentanaAccionController implements Initializable {
 	private Label labelVariante;
 
 	@FXML
+	private Label labelFirma;
+
+	@FXML
+	private Label labelValor;
+
+	@FXML
 	private MenuItem menuImportarFichero;
 
 	@FXML
@@ -259,6 +265,12 @@ public class VentanaAccionController implements Initializable {
 	private TextField textFieldVarianteComic;
 
 	@FXML
+	private TextField textFieldValorComic;
+
+	@FXML
+	private TextField textFieldFirmaComic;
+
+	@FXML
 	private VBox vboxImage;
 
 	/**
@@ -297,6 +309,8 @@ public class VentanaAccionController implements Initializable {
 		referenciaVentana.setNombreEditorTextField(textFieldEditorComic);
 		referenciaVentana.setIdComicTratarTextField(textFieldIdComic);
 		referenciaVentana.setBusquedaCodigoTextField(busquedaCodigo);
+		referenciaVentana.setFirmaComicTextField(textFieldFirmaComic);
+		referenciaVentana.setValorComicTextField(textFieldValorComic);
 
 		referenciaVentana.setKeyComicData(textAreaKeyComic);
 
@@ -349,15 +363,15 @@ public class VentanaAccionController implements Initializable {
 		referenciaVentana.setNavegacionCerrar(navegacionOpciones);
 		referenciaVentana.setNavegacionEstadistica(navegacionEstadistica);
 
-		AccionReferencias.setListaTextFields(FXCollections
-				.observableArrayList(Arrays.asList(textFieldNombreComic, textFieldNumeroComic, textFieldEditorComic,
-						textFieldArtistaComic, textFieldVarianteComic, textFieldGuionistaComic, textFieldEditorComic,
-						textFieldGradeoComic, textFieldIdComic, textFieldDireccionComic, textFieldUrlComic)));
+		AccionReferencias.setListaTextFields(FXCollections.observableArrayList(Arrays.asList(textFieldNombreComic,
+				textFieldNumeroComic, textFieldEditorComic, textFieldArtistaComic, textFieldVarianteComic,
+				textFieldGuionistaComic, textFieldFirmaComic, textFieldValorComic, textFieldEditorComic,
+				textFieldGradeoComic, textFieldIdComic, textFieldDireccionComic, textFieldUrlComic)));
 
 		referenciaVentana.setControlAccion(Arrays.asList(textFieldNombreComic, textFieldNumeroComic, dataPickFechaP,
 				textFieldArtistaComic, textFieldVarianteComic, textFieldGuionistaComic, textFieldUrlComic,
-				textFieldDireccionComic, textAreaKeyComic, textFieldEditorComic, textFieldGradeoComic,
-				textFieldCodigoComic, textFieldIdComic));
+				textFieldDireccionComic, textAreaKeyComic, textFieldFirmaComic, textFieldValorComic,
+				textFieldEditorComic, textFieldGradeoComic, textFieldCodigoComic, textFieldIdComic));
 
 		AccionReferencias.setListaColumnasTabla(Arrays.asList(columnaNombre, columnaNumero, columnaArtista,
 				columnaGuionista, columnaVariante, columnaCertificacion));
@@ -680,7 +694,6 @@ public class VentanaAccionController implements Initializable {
 	void clickRaton(MouseEvent event) {
 		enviarReferencias();
 		if (!tablaBBDD.isDisabled()) {
-
 			ComicGradeo comic = guardarReferencia().getTablaBBDD().getSelectionModel().getSelectedItem();
 			ImagenAmpliadaController.setComicCache(comic);
 			AccionSeleccionar.seleccionarComics(false);
@@ -771,7 +784,7 @@ public class VentanaAccionController implements Initializable {
 	public void busquedaPorCodigo(ActionEvent event) throws IOException, URISyntaxException {
 		enviarReferencias();
 		if (Utilidades.isInternetAvailable()) {
-		String valorCodigo = busquedaCodigo.getText();
+			String valorCodigo = busquedaCodigo.getText();
 			String tipoTienda = comboBoxTienda.getValue();
 			if (valorCodigo.isEmpty() || tipoTienda.isEmpty()) {
 				return;

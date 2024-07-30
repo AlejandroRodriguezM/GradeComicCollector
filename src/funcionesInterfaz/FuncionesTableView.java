@@ -213,7 +213,7 @@ public class FuncionesTableView {
 						if (empty || item == null) {
 							setGraphic(null);
 						} else {
-							if (!item.equals(lastItem)) { // Verificar si el contenido ha cambiado
+							if (!item.equals(lastItem)) {
 								lastItem = item;
 								vbox.getChildren().clear();
 								createLabels(columna, item, vbox);
@@ -324,8 +324,8 @@ public class FuncionesTableView {
 		case "Numero":
 			property = "numeroComic";
 			break;
-		case "Editor":
-			property = "editorComic";
+		case "Firma":
+			property = "firmaComic";
 			break;
 		case "Referencia":
 			property = "urlReferenciaComic";

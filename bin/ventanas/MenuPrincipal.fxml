@@ -81,6 +81,11 @@
                   <Font size="14.0" />
                </font>
             </Label>
+            <Label style="-fx-font-size: 14; -fx-background-color: grey;" stylesheets="@../style/genericos_style.css" text="Firma">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
             <Label style="-fx-font-size: 14; -fx-background-color: grey;" stylesheets="@../style/genericos_style.css" text="Guionista">
                <font>
                   <Font size="14.0" />
@@ -106,7 +111,7 @@
 						<TableColumn fx:id="columnaId" prefWidth="47.0" text="ID" visible="false" />
 						<TableColumn fx:id="columnaTitulo" editable="false" maxWidth="5500.0" prefWidth="150.0" text="Titulo" />
 						<TableColumn fx:id="columnaNumero" editable="false" maxWidth="2500.0" prefWidth="75.0" text="Numero" />
-						<TableColumn fx:id="columnaEditor" editable="false" prefWidth="86.39996337890625" text="Editor" />
+                  <TableColumn fx:id="columnaFirma" editable="false" maxWidth="5500.0" minWidth="0.0" prefWidth="90.0" text="Firma" />
                   <TableColumn fx:id="columnaDibujante" editable="false" maxWidth="4100.0" prefWidth="228.00006103515625" sortType="DESCENDING" text="Dibujante" />
 						<TableColumn fx:id="columnaVariante" editable="false" maxWidth="4100.0" prefWidth="194.39996337890625" sortType="DESCENDING" text="Variante" />
 						<TableColumn fx:id="columnaGuionista" editable="false" maxWidth="4500.0" minWidth="0.0" prefWidth="160.0" text="Guionista" />
@@ -157,9 +162,10 @@
 		<ComboBox fx:id="comboboxNumeroComic" layoutX="79.0" layoutY="96.0" prefHeight="25.0" prefWidth="151.0" promptText="Filtro Numero" style="-fx-font-size: 13;" stylesheets="@../style/combobox_style.css" />
       <ComboBox fx:id="comboboxEditorComic" layoutX="79.0" layoutY="130.0" prefHeight="25.0" prefWidth="151.0" promptText="Filtro Editor" style="-fx-font-size: 13;" stylesheets="@../style/combobox_style.css" />
       <ComboBox fx:id="comboboxGradeoComic" layoutX="79.0" layoutY="162.0" prefHeight="25.0" prefWidth="151.0" promptText="Filtro Gradeo" style="-fx-font-size: 13;" stylesheets="@../style/combobox_style.css" />
-      <ComboBox fx:id="comboboxGuionistaComic" layoutX="78.0" layoutY="197.0" prefHeight="25.0" prefWidth="151.0" promptText="Filtro Guionista" style="-fx-font-size: 13;" stylesheets="@../style/combobox_style.css" />
-      <ComboBox fx:id="comboboxVarianteComic" layoutX="78.0" layoutY="230.0" prefHeight="25.0" prefWidth="151.0" promptText="Filtro Variante" style="-fx-font-size: 13;" stylesheets="@../style/combobox_style.css" />
-      <ComboBox fx:id="comboboxDibujanteComic" layoutX="78.0" layoutY="264.0" prefHeight="25.0" prefWidth="151.0" promptText="Filtro Dibujante" style="-fx-font-size: 13;" stylesheets="@../style/combobox_style.css" />
+      <ComboBox fx:id="comboboxGuionistaComic" layoutX="78.0" layoutY="230.0" prefHeight="25.0" prefWidth="151.0" promptText="Filtro Guionista" style="-fx-font-size: 13;" stylesheets="@../style/combobox_style.css" />
+      <ComboBox fx:id="comboboxVarianteComic" layoutX="78.0" layoutY="263.0" prefHeight="25.0" prefWidth="151.0" promptText="Filtro Variante" style="-fx-font-size: 13;" stylesheets="@../style/combobox_style.css" />
+      <ComboBox fx:id="comboboxDibujanteComic" layoutX="78.0" layoutY="297.0" prefHeight="25.0" prefWidth="151.0" promptText="Filtro Dibujante" style="-fx-font-size: 13;" stylesheets="@../style/combobox_style.css" />
+      <ComboBox fx:id="comboboxFirmaComic" layoutX="78.0" layoutY="196.0" prefHeight="25.0" prefWidth="151.0" promptText="Filtro firma" style="-fx-font-size: 13;" stylesheets="@../style/combobox_style.css" />
 
     </children>
 </AnchorPane>

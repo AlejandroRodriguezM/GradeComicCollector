@@ -74,6 +74,8 @@ public class ListasComicsDAO {
 
 	public static List<String> listaVariante = new ArrayList<>();
 
+	public static List<String> listaFirma = new ArrayList<>();
+
 	/**
 	 * Lista de nombres de cómics.
 	 */
@@ -84,6 +86,7 @@ public class ListasComicsDAO {
 	public static List<String> nombreGuionistaList = new ArrayList<>();
 	public static List<String> nombreVarianteList = new ArrayList<>();
 	public static List<String> nombreDibujanteList = new ArrayList<>();
+	public static List<String> nombreFirmaList = new ArrayList<>();
 
 	/**
 	 * Lista de nombres de dibujantes.
@@ -107,7 +110,7 @@ public class ListasComicsDAO {
 	 * Lista ordenada que contiene todas las listas anteriores.
 	 */
 	public static List<List<String>> listaOrdenada = Arrays.asList(nombreComicList, numeroComicList, nombreEditorList,
-			nombreDibujanteList, nombreGuionistaList, nombreVarianteList, nombreGradeList);
+			nombreFirmaList, nombreDibujanteList, nombreGuionistaList, nombreVarianteList, nombreGradeList);
 
 	/**
 	 * Lista de listas de elementos.
@@ -158,6 +161,7 @@ public class ListasComicsDAO {
 		listaNombre = DBUtilidades.obtenerValoresColumna("tituloComic");
 		listaNumeroComic = DBUtilidades.obtenerValoresColumna("numeroComic");
 		listaEditor = DBUtilidades.obtenerValoresColumna("editorComic");
+		listaFirma = DBUtilidades.obtenerValoresColumna("firmaComic");
 		listaArtista = DBUtilidades.obtenerValoresColumna("artistaComic");
 		listaGuionista = DBUtilidades.obtenerValoresColumna("guionistaComic");
 		listaVariante = DBUtilidades.obtenerValoresColumna("varianteComic");
@@ -166,7 +170,7 @@ public class ListasComicsDAO {
 
 		listaID = ordenarLista(listaID);
 
-		itemsList = Arrays.asList(listaNombre, listaNumeroComic, listaEditor, listaGradeo, listaGuionista,
+		itemsList = Arrays.asList(listaNombre, listaNumeroComic, listaEditor, listaGradeo, listaFirma, listaGuionista,
 				listaVariante, listaArtista, listaReferencia);
 
 	}
@@ -182,6 +186,7 @@ public class ListasComicsDAO {
 				List<String> nombreComicSet = new ArrayList<>();
 				List<String> numeroComicSet = new ArrayList<>();
 				List<String> nombreEditorSet = new ArrayList<>();
+				List<String> nombreFirmaSet = new ArrayList<>();
 				List<String> nombreArtistaSet = new ArrayList<>();
 				List<String> nombreVarianteSet = new ArrayList<>();
 				List<String> nombreGuionistaSet = new ArrayList<>();
@@ -196,6 +201,9 @@ public class ListasComicsDAO {
 
 					String nomEditor = rs.getString("editorComic").trim();
 					nombreEditorSet.add(nomEditor);
+
+					String nomFirma = rs.getString("firmaComic").trim();
+					nombreFirmaSet.add(nomFirma);
 
 					String nomArtista = rs.getString("artistaComic").trim();
 					nombreArtistaSet.add(nomArtista);
@@ -214,11 +222,13 @@ public class ListasComicsDAO {
 				procesarDatosAutocompletado(nombreArtistaSet);
 				procesarDatosAutocompletado(nombreVarianteSet);
 				procesarDatosAutocompletado(nombreGuionistaSet);
+				procesarDatosAutocompletado(nombreFirmaSet);
 
 				// Eliminar elementos repetidos
 				nombreComicSet = listaArregladaAutoComplete(nombreComicSet);
 				numeroComicSet = listaArregladaAutoComplete(numeroComicSet);
 				nombreEditorSet = listaArregladaAutoComplete(nombreEditorSet);
+				nombreFirmaSet = listaArregladaAutoComplete(nombreFirmaSet);
 				nombreArtistaSet = listaArregladaAutoComplete(nombreArtistaSet);
 				nombreVarianteSet = listaArregladaAutoComplete(nombreVarianteSet);
 				nombreGuionistaSet = listaArregladaAutoComplete(nombreGuionistaSet);
@@ -230,6 +240,7 @@ public class ListasComicsDAO {
 				listaOrdenada.add(numeroComicSet.stream().map(String::valueOf).toList());
 				listaOrdenada.add(nombreEditorSet);
 				listaOrdenada.add(gradeoComicSet);
+				listaOrdenada.add(nombreFirmaSet);
 				listaOrdenada.add(nombreVarianteSet);
 				listaOrdenada.add(nombreGuionistaSet);
 				listaOrdenada.add(nombreArtistaSet);
@@ -288,6 +299,7 @@ public class ListasComicsDAO {
 		nombreComicList.clear();
 		numeroComicList.clear();
 		nombreEditorList.clear();
+		listaFirma.clear();
 	}
 
 	/**
@@ -300,6 +312,7 @@ public class ListasComicsDAO {
 		listaNumeroComic.clear();
 		listaGradeo.clear();
 		listaEditor.clear();
+		listaFirma.clear();
 		listaArtista.clear();
 		listaGuionista.clear();
 		listaVariante.clear();
@@ -326,7 +339,7 @@ public class ListasComicsDAO {
 		listaVariante.clear();
 		nombreComicList.clear();
 		nombreEditorList.clear();
-
+		listaFirma.clear();
 		nombreComicList.clear();
 		numeroComicList.clear();
 		nombreEditorList.clear();
@@ -379,7 +392,7 @@ public class ListasComicsDAO {
 
 			while (rs.next()) {
 				String datosAutocompletado = rs.getString(columna);
-				if (columna.equals("nomComic")) {
+				if (columna.equals("tituloComic")) {
 					listaAutoCompletado.add(datosAutocompletado.trim());
 				} else if (columna.equals("direccionImagenComic")) {
 					listaAutoCompletado.add(SOURCE_PATH + Utilidades.obtenerUltimoSegmentoRuta(datosAutocompletado));

@@ -8,10 +8,10 @@ import comicManagement.ComicGradeo;
 public class InsertManager {
 
 	public static final String INSERT_SENTENCIA = "INSERT INTO comicsGbbdd ("
-	        + "tituloComic, codigoComic, numeroComic, fechaGradeo, editorComic, "
-	        + "gradeoComic, keyComentarios, artistaComic, guionistaComic, varianteComic, direccionImagenComic, urlReferenciaComic) "
-	        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+			+ "tituloComic, codigoComic, numeroComic, fechaGradeo, editorComic, "
+			+ "gradeoComic, keyComentarios,firmaComic,valorComic, artistaComic, "
+			+ "guionistaComic, varianteComic, direccionImagenComic, urlReferenciaComic) "
+			+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	/**
 	 * Inserta los datos de un cómic en la base de datos.
@@ -21,6 +21,8 @@ public class InsertManager {
 	 * @throws SQLException si ocurre un error al ejecutar la consulta SQL
 	 */
 	public static void insertarDatos(ComicGradeo datos, boolean esImportar) {
+
+		datos.sustituirCaracteres(datos);
 
 		DatabaseManagerDAO.subirComic(datos, esImportar);
 	}

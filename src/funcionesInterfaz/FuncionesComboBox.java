@@ -81,12 +81,15 @@ public class FuncionesComboBox {
 				comic.setGradeoComic(value);
 				break;
 			case 4:
-				comic.setGuionistaComic(value);
+				comic.setFirmaComic(value);
 				break;
 			case 5:
-				comic.setVarianteComic(value);
+				comic.setGuionistaComic(value);
 				break;
 			case 6:
+				comic.setVarianteComic(value);
+				break;
+			case 7:
 				comic.setArtistaComic(value);
 				break;
 			default:
@@ -150,6 +153,7 @@ public class FuncionesComboBox {
 				.codigoComic(comic.getCodigoComic()).numeroComic(comic.getNumeroComic())
 				.fechaGradeo(comic.getFechaGradeo()).editorComic(comic.getEditorComic())
 				.gradeoComic(comic.getGradeoComic()).keyComentarios(comic.getKeyComentarios())
+				.firmaComic(comic.getFirmaComic()).valorComic(comic.getValorComic())
 				.artistaComic(comic.getArtistaComic()).guionistaComic(comic.getGuionistaComic())
 				.varianteComic(comic.getVarianteComic()).direccionImagenComic("").urlReferenciaComic("").build();
 

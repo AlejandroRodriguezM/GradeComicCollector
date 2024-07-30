@@ -533,13 +533,12 @@ public class AccionFuncionesComunes {
 			String editorComic = Utilidades.defaultIfNullOrEmpty(comic.getEditorComic(), "Vacio");
 			String gradeoComic = Utilidades.defaultIfNullOrEmpty(comic.getGradeoComic(), "Vacio");
 			String keyComentarios = Utilidades.defaultIfNullOrEmpty(comic.getKeyComentarios(), "Vacio");
+			String firmaComic = Utilidades.defaultIfNullOrEmpty(comic.getFirmaComic(), "Vacio");
 			String artistaComic = Utilidades.defaultIfNullOrEmpty(comic.getArtistaComic(), "Vacio");
 			String guionistaComic = Utilidades.defaultIfNullOrEmpty(comic.getGuionistaComic(), "Vacio");
 			String varianteComic = Utilidades.defaultIfNullOrEmpty(comic.getVarianteComic(), "Vacio");
 			String direccionImagenComic = Utilidades.defaultIfNullOrEmpty(comic.getDireccionImagenComic(), "Vacio");
 			String urlReferenciaComic = Utilidades.defaultIfNullOrEmpty(comic.getUrlReferenciaComic(), "Vacio");
-
-			System.out.println(comic.toString());
 
 			// Variables relacionadas con la imagen del cómic
 			String imagen = esClonar ? direccionImagenComic : descargarImagenComic(comic);
@@ -547,9 +546,9 @@ public class AccionFuncionesComunes {
 			// Construcción del objeto ComicGradeo usando el builder
 			ComicGradeo comicImport = new ComicGradeo.ComicGradeoBuilder(idComic, tituloComic).codigoComic(codigoComic)
 					.numeroComic(numeroComic).fechaGradeo(fechaGradeo).editorComic(editorComic).gradeoComic(gradeoComic)
-					.keyComentarios(keyComentarios).artistaComic(artistaComic).guionistaComic(guionistaComic)
-					.varianteComic(varianteComic).direccionImagenComic(imagen).urlReferenciaComic(urlReferenciaComic)
-					.build();
+					.keyComentarios(keyComentarios).firmaComic(firmaComic).valorComic("").artistaComic(artistaComic)
+					.guionistaComic(guionistaComic).varianteComic(varianteComic).direccionImagenComic(imagen)
+					.urlReferenciaComic(urlReferenciaComic).build();
 
 			// Añadir el cómic a la lista e actualizar la tabla
 			ListasComicsDAO.comicsImportados.add(comicImport);
@@ -564,7 +563,6 @@ public class AccionFuncionesComunes {
 		if (esImport && tipoTienda.equalsIgnoreCase("CGC")) {
 			comicInfo.add(WebScrapCGC.extraerDatosMTG(finalValorCodigo));
 		}
-
 		// Convertir la lista a un Set para eliminar duplicados
 		Set<ComicGradeo> comicSet = new HashSet<>(comicInfo);
 		comicInfo.clear(); // Limpiar la lista original
@@ -665,10 +663,7 @@ public class AccionFuncionesComunes {
 								return;
 							}
 
-							if (linea.contains("https:") || linea.contains("www.") || linea.contains(".com")) {
-								tipoTiendaRef[0] = determinarTipoTienda(linea);
-								linea = devolverCodigo(linea);
-							}
+							tipoTiendaRef[0] = "CGC";
 							List<ComicGradeo> listaOriginal = obtenerComicInfo(linea, true, tipoTiendaRef[0]);
 
 							for (ComicGradeo comic : listaOriginal) {
@@ -676,8 +671,8 @@ public class AccionFuncionesComunes {
 
 								processComic(comic, "");
 							}
-							getReferenciaVentana().getTablaBBDD().setOpacity(1);
-							getReferenciaVentana().getTablaBBDD().setDisable(false);
+//							getReferenciaVentana().getTablaBBDD().setOpacity(1);
+//							getReferenciaVentana().getTablaBBDD().setDisable(false);
 						});
 
 					} catch (IOException e) {
@@ -817,6 +812,7 @@ public class AccionFuncionesComunes {
 	public static void handleTaskEvents(Task<Void> tarea, String tipoUpdate) {
 
 		tarea.setOnRunning(ev -> {
+			getReferenciaVentana().getTablaBBDD().setDisable(true);
 			if (tipoUpdate.isEmpty()) {
 				cargarRuning();
 			} else {

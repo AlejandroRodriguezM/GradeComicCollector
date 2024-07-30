@@ -18,8 +18,7 @@ public class ComicGradeoFichero {
 		String[] data = lineText.split(";");
 
 		// Verificar si hay suficientes elementos en el array 'data'
-		if (data.length >= 13) { // Ajusta este valor según la cantidad de campos esperados
-			String idComic = data[0];
+		if (data.length >= 14) { // Ajusta este valor según la cantidad de campos esperados
 			String tituloComic = data[1];
 			String codigoComic = data[2];
 			String numeroComic = data[3];
@@ -27,20 +26,22 @@ public class ComicGradeoFichero {
 			String editorComic = data[5];
 			String gradeoComic = data[6];
 			String keyComentarios = data[7];
-			String artistaComic = data[8];
-			String guionistaComic = data[9];
-			String varianteComic = data[10];
-			String direccionImagenComic = data[11];
-			String urlReferenciaComic = data[12];
+			String firmaComic = data[8];
+			String valorComic = data[9];
+			String artistaComic = data[10];
+			String guionistaComic = data[11];
+			String varianteComic = data[12];
+			String direccionImagenComic = data[13];
+			String urlReferenciaComic = data[14];
 
 			String nombrePortada = Utilidades.obtenerNombrePortada(false, direccionImagenComic);
 			String imagen = FuncionesExcel.DEFAULT_PORTADA_IMAGE_PATH + File.separator + nombrePortada;
 
 			urlReferenciaComic = (urlReferenciaComic.isEmpty()) ? "Sin referencia" : urlReferenciaComic;
 
-			return new ComicGradeo.ComicGradeoBuilder(idComic, tituloComic).codigoComic(codigoComic)
-					.numeroComic(numeroComic).fechaGradeo(fechaGradeo)
-					.editorComic(editorComic).gradeoComic(gradeoComic).keyComentarios(keyComentarios)
+			return new ComicGradeo.ComicGradeoBuilder("", tituloComic).codigoComic(codigoComic).numeroComic(numeroComic)
+					.fechaGradeo(fechaGradeo).editorComic(editorComic).gradeoComic(gradeoComic)
+					.keyComentarios(keyComentarios).firmaComic(firmaComic).valorComic(valorComic)
 					.artistaComic(artistaComic).guionistaComic(guionistaComic).varianteComic(varianteComic)
 					.direccionImagenComic(imagen).urlReferenciaComic(urlReferenciaComic).build();
 		} else {

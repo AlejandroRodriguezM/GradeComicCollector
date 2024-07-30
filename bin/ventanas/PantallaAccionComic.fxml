@@ -31,7 +31,7 @@
             <Font size="10.0" />
          </font>
       </TextField>
-      <TextField fx:id="textFieldGradeoComic" layoutX="232.0" layoutY="164.0" prefHeight="21.0" prefWidth="125.0" promptText="Introduce grado comic">
+      <TextField fx:id="textFieldGradeoComic" layoutX="231.0" layoutY="169.0" prefHeight="21.0" prefWidth="125.0" promptText="Introduce grado comic">
          <font>
             <Font size="10.0" />
          </font>
@@ -49,11 +49,11 @@
       <Label fx:id="labelNombre" layoutX="5.0" layoutY="53.0" prefHeight="21.0" prefWidth="35.0" style="-fx-background-color: white; -fx-background-radius: 5;" stylesheets="@../style/genericos_style.css" text="Titulo" />
       <Label layoutX="5.0" layoutY="76.0" style="-fx-background-color: white; -fx-background-radius: 5;" stylesheets="@../style/genericos_style.css" text="Numero" />
       <Label fx:id="labelFechaG" layoutX="5.0" layoutY="102.0" prefHeight="12.0" prefWidth="46.0" style="-fx-background-color: white; -fx-background-radius: 5; -fx-font-size: 10;" stylesheets="@../style/genericos_style.css" text="Fecha G" />
-      <Label fx:id="labelGradeo" layoutX="187.0" layoutY="164.0" style="-fx-background-color: white; -fx-background-radius: 5;" stylesheets="@../style/genericos_style.css" text="Grado" />
+      <Label fx:id="labelGradeo" layoutX="185.0" layoutY="169.0" style="-fx-background-color: white; -fx-background-radius: 5;" stylesheets="@../style/genericos_style.css" text="Grado" />
       <Label fx:id="labelReferencia" layoutX="5.0" layoutY="199.0" prefHeight="21.0" prefWidth="29.0" style="-fx-background-color: white; -fx-background-radius: 5;" stylesheets="@../style/genericos_style.css" text="URL" />
       <Label fx:id="labelPortada" focusTraversable="false" layoutX="5.0" layoutY="223.0" style="-fx-background-color: white; -fx-background-radius: 5;" stylesheets="@../style/genericos_style.css" text="Portada" />
       <Label fx:id="labelId" focusTraversable="false" layoutX="5.0" layoutY="28.0" prefHeight="21.0" prefWidth="45.0" style="-fx-background-color: white; -fx-background-radius: 5; -fx-font-size: 9;" stylesheets="@../style/genericos_style.css" text="Comic ID" />
-      <Button fx:id="botonLimpiar" layoutX="187.0" layoutY="28.0" mnemonicParsing="false" onAction="#limpiarDatos" prefHeight="21.0" prefWidth="57.0" stylesheets="@../style/genericos_style.css" text="Limpiar" />
+      <Button fx:id="botonLimpiar" layoutX="187.0" layoutY="28.0" mnemonicParsing="false" onAction="#limpiarDatos" prefHeight="33.0" prefWidth="45.0" style="-fx-font-size: 10;" stylesheets="@../style/genericos_style.css" text="Limpiar" />
       <Button fx:id="botonBusquedaAvanzada" layoutX="5.0" layoutY="274.0" mnemonicParsing="false" onAction="#busquedaAvanzada" prefHeight="25.0" prefWidth="90.0" stylesheets="@../style/genericos_style.css" text="Opciones avanzada" visible="false" />
       <Button fx:id="botonClonarComic" layoutX="98.0" layoutY="273.0" mnemonicParsing="false" onAction="#clonarComicSeleccionada" prefHeight="29.0" prefWidth="81.0" stylesheets="@../style/genericos_style.css" text="Clonar comic" visible="false" wrapText="true" />
       <ComboBox fx:id="comboBoxTienda" layoutX="4.0" layoutY="309.0" prefHeight="25.0" prefWidth="114.0" promptText="Tienda" visible="false" />
@@ -133,12 +133,12 @@
             <Font size="10.0" />
          </font>
       </TextField>
-      <TextField fx:id="textFieldEditorComic" layoutX="232.0" layoutY="140.0" prefHeight="21.0" prefWidth="125.0" promptText="Introduce empresa comic">
+      <TextField fx:id="textFieldEditorComic" layoutX="231.0" layoutY="145.0" prefHeight="21.0" prefWidth="125.0" promptText="Introduce empresa comic">
          <font>
             <Font size="10.0" />
          </font>
       </TextField>
-      <Label fx:id="labelEditor" layoutX="187.0" layoutY="141.0" prefHeight="21.0" prefWidth="35.0" style="-fx-background-color: white; -fx-background-radius: 5;" stylesheets="@../style/genericos_style.css" text="Editor">
+      <Label fx:id="labelEditor" layoutX="185.0" layoutY="146.0" prefHeight="21.0" prefWidth="35.0" style="-fx-background-color: white; -fx-background-radius: 5;" stylesheets="@../style/genericos_style.css" text="Editor">
          <font>
             <Font size="10.0" />
          </font>
@@ -149,12 +149,12 @@
          </font>
       </TextField>
       <Label fx:id="labelArtista" layoutX="5.0" layoutY="128.0" prefHeight="21.0" prefWidth="46.0" style="-fx-background-color: white; -fx-background-radius: 5;" stylesheets="@../style/genericos_style.css" text="Artista" />
-      <TextField fx:id="textFieldCodigoComic" layoutX="232.0" layoutY="189.0" prefHeight="21.0" prefWidth="125.0" promptText="Introduce codigo comic">
+      <TextField fx:id="textFieldCodigoComic" layoutX="231.0" layoutY="193.0" prefHeight="21.0" prefWidth="125.0" promptText="Introduce codigo comic">
          <font>
             <Font size="10.0" />
          </font>
       </TextField>
-      <Label fx:id="labelCodigo" layoutX="187.0" layoutY="189.0" style="-fx-background-color: white; -fx-background-radius: 5;" stylesheets="@../style/genericos_style.css" text="Codigo" />
+      <Label fx:id="labelCodigo" layoutX="185.0" layoutY="193.0" style="-fx-background-color: white; -fx-background-radius: 5;" stylesheets="@../style/genericos_style.css" text="Codigo" />
       <TextField fx:id="textFieldVarianteComic" layoutX="56.0" layoutY="152.0" prefHeight="21.0" prefWidth="125.0" promptText="Introduce variante comic">
          <font>
             <Font size="10.0" />
@@ -168,11 +168,23 @@
       </TextField>
       <Label fx:id="labelGuionista" layoutX="5.0" layoutY="175.0" prefHeight="21.0" prefWidth="46.0" style="-fx-background-color: white; -fx-background-radius: 5; -fx-font-size: 8;" stylesheets="@../style/genericos_style.css" text="Guionista" />
       <Label fx:id="labelKey" layoutX="187.0" layoutY="66.0" style="-fx-background-color: white; -fx-background-radius: 5;" stylesheets="@../../../Album/src/style/genericos_style.css" text="Key" />
-      <TextArea fx:id="textAreaKeyComic" layoutX="232.0" layoutY="64.0" prefHeight="73.0" prefWidth="125.0" promptText="Key Comic" wrapText="true">
+      <TextArea fx:id="textAreaKeyComic" layoutX="231.0" layoutY="64.0" prefHeight="14.0" prefWidth="125.0" promptText="Key Comic" wrapText="true">
          <font>
             <Font size="10.0" />
          </font>
       </TextArea>
       <DatePicker fx:id="dataPickFechaP" layoutX="56.0" layoutY="99.0" prefHeight="25.0" prefWidth="125.0" promptText="01/01/2000" />
+      <TextField fx:id="textFieldFirmaComic" layoutX="231.0" layoutY="97.0" prefHeight="21.0" prefWidth="125.0" promptText="Introduce firma comic">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </TextField>
+      <Label fx:id="labelFirma" layoutX="184.0" layoutY="97.0" prefHeight="21.0" prefWidth="35.0" style="-fx-background-color: white; -fx-background-radius: 5;" stylesheets="@../style/genericos_style.css" text="Firma" />
+      <TextField fx:id="textFieldValorComic" layoutX="230.0" layoutY="121.0" prefHeight="21.0" prefWidth="125.0" promptText="Introduce valor comic">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </TextField>
+      <Label fx:id="labelValor" layoutX="184.0" layoutY="121.0" prefHeight="21.0" prefWidth="35.0" style="-fx-background-color: white; -fx-background-radius: 5;" stylesheets="@../style/genericos_style.css" text="Valor" />
    </children>
 </Pane>
