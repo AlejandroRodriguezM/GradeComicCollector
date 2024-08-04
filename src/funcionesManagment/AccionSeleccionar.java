@@ -65,9 +65,7 @@ public class AccionSeleccionar {
 
 						if ("modificar".equals(AccionFuncionesComunes.TIPO_ACCION)) {
 							AccionControlUI.mostrarOpcion(AccionFuncionesComunes.TIPO_ACCION);
-
 							Utilidades.cambiarVisibilidad(elementos[0], true);
-
 						}
 
 						if (!getReferenciaVentana().getIdComicTratarTextField().getText().isEmpty()) {

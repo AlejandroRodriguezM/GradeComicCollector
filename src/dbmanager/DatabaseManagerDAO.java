@@ -190,75 +190,9 @@ public class DatabaseManagerDAO {
 		}
 	}
 
-	// Método para corregir los nombres según los patrones especificados
-	public static String corregirNombre(String nombre) {
-		// Convertir primera letra de cada palabra a mayúscula
-		nombre = nombre.replace("(^|[-,\\s])(\\p{L})", "$1$2".toUpperCase());
 
-		// Añadir las líneas adicionales
-		nombre = nombre.trim();
-		// Reemplazar ',' por '-'
-		nombre = nombre.replace(",", "-");
-		nombre = nombre.replace(", ", " - ");
-		// Reemplazar ',-' por '-'
-		nombre = nombre.replace(",-", "-");
-		// Reemplazar '-,' por '-'
-		nombre = nombre.replace("-,", "-");
-		// Remover espacios extra alrededor de '-'
-		nombre = nombre.replace("\\s*-\\s*", " - ");
-		// Remover ',' al final si existe
-		nombre = nombre.replace(",$", "");
-		// Remover '-' al final si existe
-		nombre = nombre.replace("-$", "");
 
-		// Si el nombre comienza con guion o coma, convertirlo en mayúscula
-		if (nombre.startsWith("-") || nombre.startsWith(",")) {
-			nombre = nombre.substring(0, 1).toUpperCase() + nombre.substring(1);
-		}
 
-		// Agregar la lógica para corregir los patrones específicos
-		// Reemplazar múltiples espacios entre palabras por un solo espacio
-		nombre = corregirPatrones(nombre);
-
-		nombre = nombre.replace("-", " - ");
-
-		return nombre;
-	}
-
-	public static String corregirPatrones(String texto) {
-
-		// Reemplazar ' o ``´´ por ( seguido de texto y ) al final
-		texto = texto.replaceAll("('`´)(\\p{L}+)", "($2)");
-
-		// Reemplazar múltiples espacios entre palabras por un solo espacio
-		texto = texto.replaceAll("\\s{2,}", " ");
-
-		// Remover espacios alrededor de '-'
-		texto = texto.replaceAll("\\s*-\\s*", "-");
-
-		// Remover espacios alrededor de ','
-		texto = texto.replaceAll("\\s*,\\s*", ",");
-
-		// Agregar espacios alrededor de '(' y ')' si no están presentes ya
-		texto = texto.replaceAll("(?<!\\s)\\((?!\\s)", " (");
-		texto = texto.replaceAll("(?<!\\s)\\)(?!\\s)", ") ");
-
-		// Convertir la letra después de '-' a mayúscula
-		Pattern pattern = Pattern.compile("-(\\p{L})");
-		Matcher matcher = pattern.matcher(texto);
-		StringBuffer sb = new StringBuffer();
-		while (matcher.find()) {
-			matcher.appendReplacement(sb, "-" + matcher.group(1).toUpperCase());
-		}
-
-		matcher.appendTail(sb);
-		texto = sb.toString();
-
-		texto = texto.replace("'", " ");
-		texto = texto.replaceAll("^\\s*[,\\s-]+", ""); // Al principio
-		texto = texto.replaceAll("[,\\s-]+\\s*$", ""); // Al final
-		return texto;
-	}
 
 	/**
 	 * Funcion crea el fichero SQL segun el sistema operativo en el que te

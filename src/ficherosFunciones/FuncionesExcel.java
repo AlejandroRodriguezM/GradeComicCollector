@@ -472,11 +472,11 @@ public class FuncionesExcel {
 					}
 
 					ComicGradeo comicNuevo = ComicGradeoFichero.datosComicFichero(lineText);
-
+					comicNuevo.sustituirCaracteres(comicNuevo);
 					if (comicNuevo != null) {
 						InsertManager.insertarDatos(comicNuevo, true);
 					}
-					comicNuevo.sustituirCaracteres(comicNuevo);
+					
 					cargaComics(comicNuevo, cargaComicsControllerRef, directorioRef.get(), true);
 
 				} catch (Exception e) {

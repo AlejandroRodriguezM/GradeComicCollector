@@ -26,11 +26,11 @@ public class ComicGradeoFichero {
 			String editorComic = data[5];
 			String gradeoComic = data[6];
 			String keyComentarios = data[7];
-			String firmaComic = data[8];
+			String firmaComic = Utilidades.corregirNombre(data[8]);
 			String valorComic = data[9];
-			String artistaComic = data[10];
-			String guionistaComic = data[11];
-			String varianteComic = data[12];
+			String artistaComic = Utilidades.corregirNombre(data[10]);
+			String guionistaComic = Utilidades.corregirNombre(data[11]);
+			String varianteComic = Utilidades.corregirNombre(data[12]);
 			String direccionImagenComic = data[13];
 			String urlReferenciaComic = data[14];
 

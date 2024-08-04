@@ -95,8 +95,8 @@ public class Utilidades {
 
 	private static boolean fileChooserOpen = false;
 
-    private static final DateTimeFormatter SQLITE_DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-	
+	private static final DateTimeFormatter SQLITE_DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
 	/**
 	 * Sistema operativo actual.
 	 */
@@ -389,16 +389,19 @@ public class Utilidades {
 	}
 
 	public String crearNuevoNombre(ComicGradeo datos) {
-	    // Obtener los valores y reemplazar caracteres no válidos
-	    String nombreComic = sanitizeString(datos.getTituloComic()); // Cambiado a getTituloComic() según los getters proporcionados
-	    String numeroComic = sanitizeString(datos.getNumeroComic()); // Cambiado a getNumeroComic() según los getters proporcionados
-	    String editorialComic = sanitizeString(datos.getEditorComic()); // Cambiado a getEditorComic() según los getters proporcionados
+		// Obtener los valores y reemplazar caracteres no válidos
+		String nombreComic = sanitizeString(datos.getTituloComic()); // Cambiado a getTituloComic() según los getters
+																		// proporcionados
+		String numeroComic = sanitizeString(datos.getNumeroComic()); // Cambiado a getNumeroComic() según los getters
+																		// proporcionados
+		String editorialComic = sanitizeString(datos.getEditorComic()); // Cambiado a getEditorComic() según los getters
+																		// proporcionados
 
-	    // Construir el nombre completo
-	    String nombreCompleto = String.join("_", nombreComic, numeroComic, editorialComic);
-	    String extension = ".jpg";
+		// Construir el nombre completo
+		String nombreCompleto = String.join("_", nombreComic, numeroComic, editorialComic);
+		String extension = ".jpg";
 
-	    return nombreCompleto + extension;
+		return nombreCompleto + extension;
 	}
 
 	/**
@@ -408,23 +411,13 @@ public class Utilidades {
 	 * @return Cadena de entrada limpia.
 	 */
 	private String sanitizeString(String input) {
-	    if (input == null) {
-	        return "";
-	    }
-	    return input.replace(" ", "_")
-	                .replace(":", "_")
-	                .replace("-", "_")
-	                .replace(",", "_")
-	                .replace("\\", "_")
-	                .replace("/", "_")
-	                .replace("?", "_")
-	                .replace("*", "_")
-	                .replace("\"", "_")
-	                .replace("<", "_")
-	                .replace(">", "_")
-	                .replace("|", "_");
+		if (input == null) {
+			return "";
+		}
+		return input.replace(" ", "_").replace(":", "_").replace("-", "_").replace(",", "_").replace("\\", "_")
+				.replace("/", "_").replace("?", "_").replace("*", "_").replace("\"", "_").replace("<", "_")
+				.replace(">", "_").replace("|", "_");
 	}
-
 
 	/**
 	 * Obtiene el nombre de archivo de una ruta completa.
@@ -676,23 +669,22 @@ public class Utilidades {
 	 * @return
 	 */
 	public static String generarCodigoUnico(String carpeta) {
-	    String codigo;
-	    File directorio = new File(carpeta);
+		String codigo;
+		File directorio = new File(carpeta);
 
-	    // Manejo de excepciones si el directorio no existe o no se puede acceder
-	    if (!directorio.exists() || !directorio.isDirectory()) {
-	        System.err.println("El directorio no existe o no se puede acceder.");
-	        return null;
-	    }
+		// Manejo de excepciones si el directorio no existe o no se puede acceder
+		if (!directorio.exists() || !directorio.isDirectory()) {
+			System.err.println("El directorio no existe o no se puede acceder.");
+			return null;
+		}
 
-	    // Genera un nuevo código único y verifica su existencia
-	    do {
-	        codigo = generarCodigo();
-	    } while (new File(directorio, codigo + ".jpg").exists());
+		// Genera un nuevo código único y verifica su existencia
+		do {
+			codigo = generarCodigo();
+		} while (new File(directorio, codigo + ".jpg").exists());
 
-	    return codigo;
+		return codigo;
 	}
-
 
 	private static String generarCodigo() {
 		StringBuilder codigo = new StringBuilder(10); // Predefinimos el tamaño del StringBuilder
@@ -2185,7 +2177,7 @@ public class Utilidades {
 
 	public static String nombreDB() {
 		String nombreCompletoDB = FuncionesFicheros.datosEnvioFichero();
-		
+
 		if (nombreCompletoDB != null && !nombreCompletoDB.isEmpty()) {
 			String[] nombreCortado = nombreCompletoDB.split("\\.");
 			String nombredb = nombreCortado[0];
@@ -2407,47 +2399,47 @@ public class Utilidades {
 		// Redondear el resultado a dos decimales
 		return Math.round(suma * 100.0) / 100.0;
 	}
-	
-    public static boolean isValidURL(String urlString) {
-        try {
-            URL url = new URL(urlString);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            connection.setConnectTimeout(100); // 5 segundos de tiempo de espera
-            connection.setReadTimeout(100);
-            int responseCode = connection.getResponseCode();
 
-            // Si el código de respuesta es 200-299, la URL es válida
-            return (200 <= responseCode && responseCode <= 299);
-        } catch (IOException e) {
-            return false; // Si ocurre una excepción, la URL no es válida
-        }
-    }
-    
-    public static String parseDate(DatePicker datePicker) {
-        LocalDate date = datePicker.getValue();
-        if (date != null) {
-            return date.format(SQLITE_DATE_FORMATTER);
-        } else {
-            return "";
-        }
-    }
-    
-    public static LocalDate parseStringToDate(String dateString) {
-        try {
-            return LocalDate.parse(dateString, SQLITE_DATE_FORMATTER);
-        } catch (DateTimeParseException e) {
-            return null;
-        }
-    }
-    
-    public static void setDatePickerValue(DatePicker datePicker, String dateString) {
-        LocalDate date = parseStringToDate(dateString);
-        if (date != null) {
-            datePicker.setValue(date);
-        }
-    }
-    
+	public static boolean isValidURL(String urlString) {
+		try {
+			URL url = new URL(urlString);
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+			connection.setRequestMethod("GET");
+			connection.setConnectTimeout(100); // 5 segundos de tiempo de espera
+			connection.setReadTimeout(100);
+			int responseCode = connection.getResponseCode();
+
+			// Si el código de respuesta es 200-299, la URL es válida
+			return (200 <= responseCode && responseCode <= 299);
+		} catch (IOException e) {
+			return false; // Si ocurre una excepción, la URL no es válida
+		}
+	}
+
+	public static String parseDate(DatePicker datePicker) {
+		LocalDate date = datePicker.getValue();
+		if (date != null) {
+			return date.format(SQLITE_DATE_FORMATTER);
+		} else {
+			return "";
+		}
+	}
+
+	public static LocalDate parseStringToDate(String dateString) {
+		try {
+			return LocalDate.parse(dateString, SQLITE_DATE_FORMATTER);
+		} catch (DateTimeParseException e) {
+			return null;
+		}
+	}
+
+	public static void setDatePickerValue(DatePicker datePicker, String dateString) {
+		LocalDate date = parseStringToDate(dateString);
+		if (date != null) {
+			datePicker.setValue(date);
+		}
+	}
+
 	public static void abrirEnlace(String url) {
 		if (Utilidades.isWindows()) {
 			Utilidades.accesoWebWindows(url); // Llamada a funcion
@@ -2460,19 +2452,89 @@ public class Utilidades {
 			}
 		}
 	}
+
+	public static String extractNumberFromUrl(String url) {
+		// Define una expresión regular para encontrar números en la URL
+		Pattern pattern = Pattern.compile("\\d+");
+		Matcher matcher = pattern.matcher(url);
+
+		// Encuentra y muestra todos los números en la URL
+		while (matcher.find()) {
+			String number = matcher.group();
+			return number;
+		}
+		return "";
+	}
+
+	// Método para corregir los nombres según los patrones especificados
+	public static String corregirNombre(String nombre) {
+		// Convertir primera letra de cada palabra a mayúscula
+		nombre = nombre.replace("(^|[-,\\s])(\\p{L})", "$1$2".toUpperCase());
+
+		// Añadir las líneas adicionales
+		nombre = nombre.trim();
+		// Reemplazar ',' por '-'
+		nombre = nombre.replace(",", "-");
+		nombre = nombre.replace(", ", " - ");
+		// Reemplazar ',-' por '-'
+		nombre = nombre.replace(",-", "-");
+		// Reemplazar '-,' por '-'
+		nombre = nombre.replace("-,", "-");
+		// Remover espacios extra alrededor de '-'
+		nombre = nombre.replace("\\s*-\\s*", " - ");
+		// Remover ',' al final si existe
+		nombre = nombre.replace(",$", "");
+		// Remover '-' al final si existe
+		nombre = nombre.replace("-$", "");
+
+		// Si el nombre comienza con guion o coma, convertirlo en mayúscula
+		if (nombre.startsWith("-") || nombre.startsWith(",")) {
+			nombre = nombre.substring(0, 1).toUpperCase() + nombre.substring(1);
+		}
+
+		// Agregar la lógica para corregir los patrones específicos
+		// Reemplazar múltiples espacios entre palabras por un solo espacio
+		nombre = corregirPatrones(nombre);
+
+		nombre = nombre.replace("-", " - ");
+
+		return nombre;
+	}
 	
-    public static String extractNumberFromUrl(String url) {
-        // Define una expresión regular para encontrar números en la URL
-        Pattern pattern = Pattern.compile("\\d+");
-        Matcher matcher = pattern.matcher(url);
-        
-        // Encuentra y muestra todos los números en la URL
-        while (matcher.find()) {
-            String number = matcher.group();
-            return number;
-        }
-        return "";
-    }
+	public static String corregirPatrones(String texto) {
+
+		// Reemplazar ' o ``´´ por ( seguido de texto y ) al final
+		texto = texto.replaceAll("('`´)(\\p{L}+)", "($2)");
+
+		// Reemplazar múltiples espacios entre palabras por un solo espacio
+		texto = texto.replaceAll("\\s{2,}", " ");
+
+		// Remover espacios alrededor de '-'
+		texto = texto.replaceAll("\\s*-\\s*", "-");
+
+		// Remover espacios alrededor de ','
+		texto = texto.replaceAll("\\s*,\\s*", ",");
+
+		// Agregar espacios alrededor de '(' y ')' si no están presentes ya
+		texto = texto.replaceAll("(?<!\\s)\\((?!\\s)", " (");
+		texto = texto.replaceAll("(?<!\\s)\\)(?!\\s)", ") ");
+
+		// Convertir la letra después de '-' a mayúscula
+		Pattern pattern = Pattern.compile("-(\\p{L})");
+		Matcher matcher = pattern.matcher(texto);
+		StringBuffer sb = new StringBuffer();
+		while (matcher.find()) {
+			matcher.appendReplacement(sb, "-" + matcher.group(1).toUpperCase());
+		}
+
+		matcher.appendTail(sb);
+		texto = sb.toString();
+
+		texto = texto.replace("'", " ");
+		texto = texto.replaceAll("^\\s*[,\\s-]+", ""); // Al principio
+		texto = texto.replaceAll("[,\\s-]+\\s*$", ""); // Al final
+		return texto;
+	}
 
 	public static AccionReferencias getReferenciaVentana() {
 		return referenciaVentana;

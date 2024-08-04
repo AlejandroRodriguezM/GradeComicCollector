@@ -205,14 +205,20 @@ public class SelectManager {
 	 * @throws SQLException
 	 */
 	public static List<ComicGradeo> libreriaSeleccionado(String datoSeleccionado) {
-		String sentenciaSQL = "SELECT * FROM comicsGbbdd WHERE " + "numeroComic = '" + datoSeleccionado + "' OR "
-				+ "tituloComic LIKE '%" + datoSeleccionado + "%' OR " + "codigoComic = '" + datoSeleccionado + "' OR "
-				+ "anioPublicacion = '" + datoSeleccionado + "' OR " + "editorComic LIKE '%" + datoSeleccionado
-				+ "%' OR " + "gradeoComic LIKE '%" + datoSeleccionado + "%' OR " + "keyComentarios LIKE '%"
-				+ datoSeleccionado + "%' OR " + "artistaComic LIKE '%" + datoSeleccionado + "%' OR "
-				+ "guionistaComic LIKE '%" + datoSeleccionado + "%' OR " + "varianteComic LIKE '%" + datoSeleccionado
-				+ "%' OR " + "direccionImagenComic LIKE '%" + datoSeleccionado + "%' OR " + "urlReferenciaComic LIKE '%"
-				+ datoSeleccionado + "%' " + "ORDER BY tituloComic ASC, numeroComic ASC";
+		String sentenciaSQL = "SELECT * FROM comicsGbbdd WHERE " +
+				"tituloComic = '" + datoSeleccionado + "' OR " +
+			    "numeroComic = '" + datoSeleccionado + "' OR " +
+			    "codigoComic = '" + datoSeleccionado + "' OR " +
+			    "firmaComic = '" + datoSeleccionado + "' OR " +
+			    "editorComic LIKE '%" + datoSeleccionado + "%' OR " +
+			    "gradeoComic LIKE '%" + datoSeleccionado + "%' OR " +
+			    "keyComentarios LIKE '%" + datoSeleccionado + "%' OR " +
+			    "artistaComic LIKE '%" + datoSeleccionado + "%' OR " +
+			    "guionistaComic LIKE '%" + datoSeleccionado + "%' OR " +
+			    "varianteComic LIKE '%" + datoSeleccionado + "%' OR " +
+			    "urlReferenciaComic LIKE '%" + datoSeleccionado + "%' " +
+			    "ORDER BY tituloComic ASC, numeroComic ASC";
+
 
 		return verLibreria(sentenciaSQL, false);
 	}

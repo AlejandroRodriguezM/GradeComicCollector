@@ -25,7 +25,6 @@ import Controladores.CargaComicsController;
 import alarmas.AlarmaList;
 import comicManagement.ComicGradeo;
 import dbmanager.ComicManagerDAO;
-import dbmanager.DatabaseManagerDAO;
 import dbmanager.ListasComicsDAO;
 import dbmanager.UpdateManager;
 import ficherosFunciones.FuncionesFicheros;
@@ -199,7 +198,7 @@ public class AccionFuncionesComunes {
 		String numComicGradeo = comicOriginal.getNumeroComic();
 		String nombreCorregido = Utilidades.eliminarParentesis(comicOriginal.getTituloComic());
 		String nombreLimpio = Utilidades.extraerNombreLimpio(nombreCorregido);
-		nombreLimpio = DatabaseManagerDAO.corregirPatrones(nombreLimpio);
+		nombreLimpio = Utilidades.corregirPatrones(nombreLimpio);
 		String editor = comicOriginal.getEditorComic();
 
 		comicOriginal.setTituloComic(nombreLimpio);
@@ -214,7 +213,7 @@ public class AccionFuncionesComunes {
 		String numComicGradeo = comicOriginal.getNumeroComic();
 		String nombreCorregido = Utilidades.eliminarParentesis(comicOriginal.getTituloComic());
 		String nombreLimpio = Utilidades.extraerNombreLimpio(nombreCorregido);
-		nombreLimpio = DatabaseManagerDAO.corregirPatrones(nombreLimpio);
+		nombreLimpio = Utilidades.corregirPatrones(nombreLimpio);
 		String editor = (comicOriginal.getEditorComic());
 
 		comicOriginal.setTituloComic(nombreLimpio);

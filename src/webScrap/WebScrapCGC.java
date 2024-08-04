@@ -43,21 +43,21 @@ public class WebScrapCGC {
 			} else if (line.startsWith("Numero: ")) {
 				numero = line.substring("Numero: ".length()).trim();
 			} else if (line.startsWith("Editor: ")) {
-				editor = line.substring("Editor: ".length()).trim();
+				editor = line.substring("Editor: ".length()).trim().replace(".", " ");
 			} else if (line.startsWith("FechaG: ")) {
 				fechaG = line.substring("FechaG: ".length()).trim();
 			} else if (line.startsWith("Grade: ")) {
 				grade = line.substring("Grade: ".length()).trim();
 			} else if (line.startsWith("Firma: ")) {
-				firma = line.substring("Firma: ".length()).trim();
+				firma = Utilidades.corregirNombre(line.substring("Firma: ".length()).trim());
 			} else if (line.startsWith("Referencia: ")) {
 				referencia = line.substring("Referencia: ".length()).trim();
 			} else if (line.startsWith("Dibujante: ")) {
-				dibujante = line.substring("Dibujante: ".length()).trim();
+				dibujante = Utilidades.corregirNombre(line.substring("Dibujante: ".length()).trim());
 			} else if (line.startsWith("Variante: ")) {
-				variante = line.substring("Variante: ".length()).trim();
+				variante = Utilidades.corregirNombre(line.substring("Variante: ".length()).trim());
 			} else if (line.startsWith("Guionista: ")) {
-				guionista = line.substring("Guionista: ".length()).trim();
+				guionista = Utilidades.corregirNombre(line.substring("Guionista: ".length()).trim());
 			} else if (line.startsWith("Imagen: ")) {
 				imageUrl = line.substring("Imagen: ".length()).trim();
 			} else if (line.startsWith("KeyC: ")) {

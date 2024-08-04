@@ -28,11 +28,11 @@ public class DBUtilidades {
 		ps.setString(5, datos.getEditorComic()); // editor del cómic
 		ps.setString(6, datos.getGradeoComic()); // gradeo del cómic
 		ps.setString(7, datos.getKeyComentarios()); // key de comentarios
-		ps.setString(8, datos.getFirmaComic()); // firma del cómic
+		ps.setString(8, Utilidades.corregirNombre(datos.getFirmaComic())); // firma del cómic
 		ps.setString(9, datos.getValorComic()); // valor del cómic
-		ps.setString(10, datos.getArtistaComic()); // artista del cómic
-		ps.setString(11, datos.getGuionistaComic()); // guionista del cómic
-		ps.setString(12, datos.getVarianteComic()); // variante del cómic
+		ps.setString(10, Utilidades.corregirNombre(datos.getArtistaComic())); // artista del cómic
+		ps.setString(11, Utilidades.corregirNombre(datos.getGuionistaComic())); // guionista del cómic
+		ps.setString(12, Utilidades.corregirNombre(datos.getVarianteComic())); // variante del cómic
 		ps.setString(13, datos.getDireccionImagenComic()); // dirección de la imagen
 		ps.setString(14, datos.getUrlReferenciaComic()); // URL de referencia
 
